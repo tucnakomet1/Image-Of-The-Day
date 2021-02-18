@@ -1,7 +1,7 @@
 package sample;
 
-import Settings.*;
-import edu.stanford.ejalbert.BrowserLauncher;
+import Settings.CheckVersion;
+import Settings.OpenUrl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,18 +9,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import org.json.simple.parser.ParseException;
+
 import java.awt.*;
 import java.io.*;
-import java.net.*;
+import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -30,16 +31,24 @@ public class Settings implements Initializable {
     private AnchorPane WholeSettingsPane, AboutPane, settingsPane, WallpaperPane, PagesPane;
 
     @FXML
-    private ImageView BackImg, LogoImg, imgBack, GitUmg;
+    private ImageView BackImg, LogoImg, imgBack, GitUmg, WallpaperBackgrounImage, monitor_img, BrowserImg, FolderImg, FileImg, TaskBarImg, TaskBarLinuxImg, MacTaskBarImg;
 
     @FXML
-    private Button About, Settings, Wallpaper, Pages, backButton, clickPath;
+    private Button About;
+    @FXML
+    private Button Settings;
+    @FXML
+    private Button Wallpaper;
+    @FXML
+    private Button Pages;
+    @FXML
+    private Button backButton;
 
     @FXML
-    private Label showVersion, AuthorAb, mailLabelAb, GitMyLabelAb, VersionAb, SourceLabelAb, LicenseLabelAb;
+    private Label showVersion;
 
     @FXML
-    private Hyperlink AuthorMailLinkAb, GitHubLinkAb, VersionLinkAb, SourceCLinkAb, LicenseLinkAb, CheckUpdatesOnline;
+    private Hyperlink VersionLinkAb;
 
     @FXML
     private CheckBox CheckAutoUpdates, CheckSplashScreen;
@@ -47,7 +56,90 @@ public class Settings implements Initializable {
     @FXML
     private TextField textPathField;
 
+    @FXML
+    private ChoiceBox<String> ChoiceBoxSetSource;
+
+    public Settings() {
+    }
+
     public void initialize(URL location, ResourceBundle resources) {
+        String OS = System.getProperty("os.name");
+        monitor_img.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/monitor.png"));
+        monitor_img.setPreserveRatio(true);
+        monitor_img.setFitWidth(530);
+
+        BrowserImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/brave.png"));
+        BrowserImg.setPreserveRatio(true);
+        BrowserImg.setFitWidth(50);
+
+        System.out.println(OS);
+        //OS = "Windows";
+        if (OS.contains("Linux")){
+            FolderImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Linux/LinuxFolder.png"));
+            FolderImg.setPreserveRatio(true);
+            FolderImg.setFitWidth(25);
+            FileImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Linux/LinuxFile.png"));
+            FileImg.setPreserveRatio(true);
+            FileImg.setFitWidth(25);
+            TaskBarLinuxImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Linux/LinuxTaskBar.png"));
+            TaskBarLinuxImg.setPreserveRatio(true);
+            TaskBarLinuxImg.setFitWidth(40);
+        }
+        else if (OS.contains("Windows")){
+            FolderImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Windows/WindowsFolder.png"));
+            FolderImg.setPreserveRatio(true);
+            FolderImg.setFitWidth(25);
+            FileImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Windows/WindowsFile.png"));
+            FileImg.setPreserveRatio(true);
+            FileImg.setFitWidth(25);
+            TaskBarImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Windows/WindowsTaskBar.png"));
+            TaskBarImg.setPreserveRatio(true);
+            TaskBarImg.setFitWidth(470);
+        }
+        else if (OS.contains("Mac")){
+            FolderImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/MacOs/MacFolder.png"));
+            FolderImg.setPreserveRatio(true);
+            FolderImg.setFitWidth(25);
+            FileImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/MacOs/MacFile.png"));
+            FileImg.setPreserveRatio(true);
+            FileImg.setFitWidth(25);
+            MacTaskBarImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/MacOs/MacTaskBar.png"));
+            MacTaskBarImg.setPreserveRatio(true);
+            MacTaskBarImg.setFitWidth(370);
+        }
+
+        ChoiceBoxSetSource.getItems().add("Unsplash");
+        ChoiceBoxSetSource.getItems().add("Bing");
+        ChoiceBoxSetSource.getItems().add("NASA");
+        ChoiceBoxSetSource.getItems().add("National Geographic");
+        ChoiceBoxSetSource.getItems().add("Wikimedia Common");
+        ChoiceBoxSetSource.getItems().add("EPOD-USRA");
+        ChoiceBoxSetSource.getItems().add("NESDIS-NOAA");
+        ChoiceBoxSetSource.getItems().add("Earth Observatory");
+        ChoiceBoxSetSource.getItems().add("Big Geek Daddy");
+        ChoiceBoxSetSource.getItems().add("APOD NASA");
+
+        ChoiceBoxSetSource.setValue("None");
+
+        ChoiceBoxSetSource.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            System.out.println(newValue);
+
+            String ImgPathJSON = "/home/tucna/Dokumenty/Java/ImageOfTheDay/JSON_data/img.json";
+
+            String img = null;
+            try {
+                img = new ReadJson().GetElement(newValue, new FileReader(ImgPathJSON));
+            } catch (IOException | ParseException e) {
+                e.printStackTrace();
+            }
+
+            WallpaperBackgrounImage.setImage(new Image("file:" + img));
+            WallpaperBackgrounImage.setPreserveRatio(false);
+            WallpaperBackgrounImage.setFitWidth(500);
+            WallpaperBackgrounImage.setFitHeight(282);
+        });
+
+
         BackImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/background_image.png"));
         BackImg.setPreserveRatio(false);
         BackImg.setFitWidth(1280);
@@ -85,7 +177,7 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void aboutAction(ActionEvent event) {
+    void aboutAction() {
         About.setStyle("-fx-background-color: #8F8F8F");
         Settings.setStyle("-fx-background-color: #444");
         Wallpaper.setStyle("-fx-background-color: #444");
@@ -97,7 +189,7 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void settingsAction(ActionEvent event) {
+    void settingsAction() {
         About.setStyle("-fx-background-color: #444");
         Settings.setStyle("-fx-background-color: #8F8F8F");
         Wallpaper.setStyle("-fx-background-color: #444");
@@ -109,7 +201,7 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void wallAction(ActionEvent event) {
+    void wallAction() {
         About.setStyle("-fx-background-color: #444");
         Settings.setStyle("-fx-background-color: #444");
         Wallpaper.setStyle("-fx-background-color: #8F8F8F");
@@ -121,7 +213,7 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void pagesAction(ActionEvent event) {
+    void pagesAction() {
         About.setStyle("-fx-background-color: #444");
         Settings.setStyle("-fx-background-color: #444");
         Wallpaper.setStyle("-fx-background-color: #444");
@@ -215,7 +307,7 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void OpenPathManager(ActionEvent event) throws IOException {
+    void OpenPathManager() {
         DirectoryChooser dir = new DirectoryChooser();
 
         Stage stage = (Stage) WholeSettingsPane.getScene().getWindow();
@@ -228,7 +320,7 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void CheckAutoUpdatesChoice(ActionEvent event) throws IOException {
+    void CheckAutoUpdatesChoice() throws IOException {
         if (CheckAutoUpdates.isSelected()){
             String filePath = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/AutoUpdates.txt";
             FileWriter fw = new FileWriter(filePath, false);
@@ -245,7 +337,7 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void CheckSplashScreenChoice(ActionEvent event) throws IOException {
+    void CheckSplashScreenChoice() throws IOException {
         if (CheckSplashScreen.isSelected()){
             String filePath = "//home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/SplashScreen.txt";
             FileWriter fw = new FileWriter(filePath, false);

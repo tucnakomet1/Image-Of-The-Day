@@ -44,6 +44,33 @@ public class MainIoTdPage implements Initializable {
     private Button settingsButt, downloadButt;
 
     @FXML
+    void downloadButt(ActionEvent event){
+        if (event.getSource() == downloadButt) {
+            try {
+                Parent root = null;
+                Stage primaryStage = new Stage();
+                try {
+                    root = FXMLLoader.load(getClass().getResource("Downloaded.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                primaryStage.setTitle("Image Of The Day - Downloaded");
+
+                assert root != null;
+                Scene scene = new Scene(root);
+                double maxW = 1280;
+                primaryStage.setMaxWidth(maxW);
+                primaryStage.setScene(scene);
+                primaryStage.show();
+                MainPagePane.getScene().getWindow().hide();
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
     void settingsButtClick(ActionEvent event) {
 
         if (event.getSource() == settingsButt) {
@@ -55,7 +82,7 @@ public class MainIoTdPage implements Initializable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                primaryStage.setTitle("Image Of The Day - settings");
+                primaryStage.setTitle("Image Of The Day - Settings");
 
                 assert root != null;
                 Scene scene = new Scene(root);

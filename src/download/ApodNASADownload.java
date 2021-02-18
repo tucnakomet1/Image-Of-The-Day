@@ -43,38 +43,42 @@ public class ApodNASADownload {
     }
 
     public static String get_author() {
-        String author_name = null;
-        Document doc = null;
-        String URL = "https://apod.nasa.gov/apod/astropix.html";
-
+        String author_name = "Error";
         try {
-            doc = Jsoup.connect(URL).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            Document doc = null;
+            String URL = "https://apod.nasa.gov/apod/astropix.html";
 
-        assert doc != null;
-        Elements els = doc.select("center");
+            try {
+                doc = Jsoup.connect(URL).get();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-        int AuthNum = 0;
-        for (Element el : els ) {
-            AuthNum++;
-            if (AuthNum == 2) {
-                String[] toSplit = el.text().split(",");
-                if (toSplit[0].contains(";")){
-                    String[] toSplit2 =  toSplit[0].split(";");
-                    author_name = (toSplit2[0].split(": ")[1]).replace(" /", ",");
-                }
-                else {
-                    author_name = (toSplit[0].split(": ")[1]).replace(" /", ",");
+            assert doc != null;
+            Elements els = doc.select("center");
+
+            int AuthNum = 0;
+            for (Element el : els) {
+                AuthNum++;
+                if (AuthNum == 2) {
+                    String[] toSplit = el.text().split(",");
+                    if (toSplit[0].contains(";")) {
+                        String[] toSplit2 = toSplit[0].split(";");
+                        author_name = (toSplit2[0].split(": ")[1]).replace(" /", ",");
+                    } else {
+                        author_name = (toSplit[0].split(": ")[1]).replace(" /", ",");
+                    }
                 }
             }
-        }
 
-        try {
-            System.out.println(author_name);
-        } catch (Exception ex) {
-            ex.printStackTrace();
+
+            try {
+                System.out.println(author_name);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
         }
 
         return author_name;

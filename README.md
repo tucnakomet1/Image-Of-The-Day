@@ -1,6 +1,6 @@
 <h1 align="center" id="head">Image Of The Day</h1>
 
-<a href="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo.png"><img src="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo.png" alt="info"  style="max-width:10%;" align="left" hspace="10"></a>Image-Of-The-Day is a JavaFX project that allows you to see, download or set image as a wallpaper from [NASA](https://www.nasa.gov/), [Bing](https://bing.com/), [National Geographic](https://www.nationalgeographic.co.uk/), [etc.](#resources) in a friendly graphical interface. Software can be installed on any Windows, MacOS or Linux device. This project is mainly used for self-improvement in Java and to understand the JavaFX library. Any idea for upgrade is welcome.
+<a href="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo.png"><img src="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo_75x75.png" alt="info"  style="max-width:10%;" align="left" hspace="10"></a>Image-Of-The-Day is a JavaFX project that allows you to see, download or set image as a wallpaper from [NASA](https://www.nasa.gov/), [Bing](https://bing.com/), [National Geographic](https://www.nationalgeographic.co.uk/), [etc.](#resources) in a friendly graphical interface. Software can be installed on any Windows, MacOS or Linux device. This project is mainly used for self-improvement in Java and to understand the JavaFX library. Any idea for upgrade is welcome.
 <h2></h2>
 
 <h2>Table of contents</h2>
