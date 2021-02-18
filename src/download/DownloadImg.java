@@ -1,0 +1,62 @@
+package download;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DownloadImg {
+    public DownloadImg(String img_url, String author, String site, boolean resize) throws IOException {
+        try {
+            String basic_path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Day/";
+            int WIDTH, HEIGHT;
+
+            Format myFormatObj = new SimpleDateFormat("yyyy-MM-dd-hh-mm-s");
+            String formattedDate = myFormatObj.format(new Date());
+            String output = basic_path + site.replace(" ", "") + "-" + formattedDate + ".png";
+
+            BufferedImage image = ImageIO.read(new URL(img_url));
+
+            if (resize) {
+
+                int PrefferedWidth = 580;
+                int MaxHeight = 386;
+
+                String[] BOTH = (GetImgResolution.get_img_resolution(img_url, PrefferedWidth, MaxHeight, false)).split(":");
+                int width = Integer.parseInt(BOTH[0]);
+                int height = Integer.parseInt(BOTH[1]);
+                Dimension size = new Dimension(width, height);
+                WIDTH = size.width;
+                HEIGHT = size.height;
+
+            }
+            else{
+                WIDTH = image.getWidth();
+                HEIGHT = image.getHeight();
+            }
+
+            String resolution = WIDTH + "x" + HEIGHT;
+            System.out.println();
+
+            BufferedImage resized = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D gd = resized.createGraphics();
+            gd.drawImage(image, 0, 0, WIDTH, HEIGHT, null);
+            gd.dispose();
+
+            ImageIO.write(resized, "png", new File(output));
+
+            System.out.println(resolution);
+
+            new AddJson(output, author, site, resolution);
+        } catch (IOException e) {
+            e.printStackTrace();
+            new AddJson("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/error.png", "unknown", site, "100x300");
+        }
+    }
+}
