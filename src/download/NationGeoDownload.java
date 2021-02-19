@@ -8,12 +8,12 @@ import java.io.IOException;
 
 public class NationGeoDownload {
 
-    public NationGeoDownload(boolean resize) throws IOException {
+    public NationGeoDownload(boolean resize, String path) throws IOException {
         String img_url = get_url();
         String author = get_author();
         String site = "National Geographic";
 
-        new DownloadImg(img_url, author, site, resize);
+        new DownloadImg(img_url, author, site, resize, path);
     }
 
     public static String get_url() {

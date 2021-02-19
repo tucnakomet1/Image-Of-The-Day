@@ -8,12 +8,12 @@ import java.io.IOException;
 
 public class ApodNASADownload {
 
-    public ApodNASADownload(boolean resize) throws IOException {
+    public ApodNASADownload(boolean resize, String path) throws IOException {
         String img_url = get_url();
         String author = get_author();
         String site = "APOD NASA";
 
-        new DownloadImg(img_url, author, site, resize);
+        new DownloadImg(img_url, author, site, resize, path);
     }
 
     public static String get_url() {

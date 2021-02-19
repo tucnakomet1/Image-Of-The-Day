@@ -101,6 +101,26 @@ public class Main extends Application {
         return RunSplash;
     }
 
+    public static void CheckDownloadPath() throws FileNotFoundException {
+        String path = null;
+        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/DownloadPath.txt";
+        Scanner myReader = new Scanner(new File(dir));
+        int num = 0;
+        while (myReader.hasNextLine()) {
+            num++;
+            if (num == 1) {
+                path = myReader.nextLine();
+                System.out.println(path);
+            }
+        }
+        myReader.close();
+        File REAL_PATH = new File(path);
+        System.out.println(REAL_PATH + "\t" + path);
+        if (!Files.exists(REAL_PATH.toPath())) {
+            REAL_PATH.mkdir();
+        }
+    }
+
     public static void check_free() throws IOException {
         String[] pathname;
         String directory = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/";

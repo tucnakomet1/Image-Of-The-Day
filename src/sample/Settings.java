@@ -59,8 +59,6 @@ public class Settings implements Initializable {
     @FXML
     private ChoiceBox<String> ChoiceBoxSetSource;
 
-    public Settings() {
-    }
 
     public void initialize(URL location, ResourceBundle resources) {
         String OS = System.getProperty("os.name");
@@ -121,6 +119,12 @@ public class Settings implements Initializable {
 
         ChoiceBoxSetSource.setValue("None");
 
+        try {
+            textPathField.setText(GetDownloadPath());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         ChoiceBoxSetSource.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             System.out.println(newValue);
 
@@ -174,6 +178,23 @@ public class Settings implements Initializable {
             CheckSplashScreen.setSelected(true);
         }
 
+    }
+
+    private String GetDownloadPath() throws FileNotFoundException {
+        String path = null;
+        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/DownloadPath.txt";
+        Scanner myReader = new Scanner(new File(dir));
+        int num = 0;
+        while (myReader.hasNextLine()) {
+            num++;
+            if (num == 1) {
+                path = myReader.nextLine();
+                System.out.println(path);
+            }
+        }
+        myReader.close();
+
+        return path;
     }
 
     @FXML
@@ -307,7 +328,7 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void OpenPathManager() {
+    void OpenPathManager() throws IOException {
         DirectoryChooser dir = new DirectoryChooser();
 
         Stage stage = (Stage) WholeSettingsPane.getScene().getWindow();
@@ -315,7 +336,14 @@ public class Settings implements Initializable {
 
         if (file != null) {
             System.out.println(file.getAbsoluteFile());
-            textPathField.setText(String.valueOf(file.getAbsoluteFile()));
+            String SelectedPath = String.valueOf(file.getAbsoluteFile());
+            textPathField.clear();
+            textPathField.setText(SelectedPath);
+
+            File FilePath = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/DownloadPath.txt");
+            FileWriter fWriter = new FileWriter(FilePath, false);
+            fWriter.write(SelectedPath + "/");
+            fWriter.close();
         }
     }
 

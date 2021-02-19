@@ -8,12 +8,12 @@ import java.io.IOException;
 
 public class EarthObservDownload {
 
-    public EarthObservDownload(boolean resize) throws IOException {
+    public EarthObservDownload(boolean resize, String path) throws IOException {
         String img_url = get_url();
         String author = "Earth Observatory";
         String site = "Earth Observatory";
 
-        new DownloadImg(img_url, author, site, resize);
+        new DownloadImg(img_url, author, site, resize, path);
     }
 
 

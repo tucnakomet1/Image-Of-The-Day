@@ -36,52 +36,52 @@
                      </cursor>
                   </Label>
                   <Label fx:id="DateLabel" textFill="#d7d7d7" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="10.0" />
-                  <ImageView fx:id="imgView1" fitHeight="386.0" fitWidth="580.0" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+                  <ImageView fx:id="imgView1" fitHeight="386.0" fitWidth="580.0" onMouseClicked="#OpenImageView1" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="imgView2" fitHeight="386.0" fitWidth="580.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="100.0">
+                  <ImageView fx:id="imgView2" fitHeight="386.0" fitWidth="580.0" onMouseClicked="#OpenImageView2" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="100.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="imgView3" fitHeight="386.0" fitWidth="580.0" layoutX="33.0" layoutY="538.0" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="540.0">
+                  <ImageView fx:id="imgView3" fitHeight="386.0" fitWidth="580.0" layoutX="33.0" layoutY="538.0" onMouseClicked="#OpenImageView3" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="540.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="imgView4" fitHeight="386.0" fitWidth="580.0" layoutX="653.0" layoutY="538.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="540.0">
+                  <ImageView fx:id="imgView4" fitHeight="386.0" fitWidth="580.0" layoutX="653.0" layoutY="538.0" onMouseClicked="#OpenImageView4" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="540.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="imgView5" fitHeight="386.0" fitWidth="580.0" layoutX="43.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="980.0">
+                  <ImageView fx:id="imgView5" fitHeight="386.0" fitWidth="580.0" layoutX="43.0" layoutY="548.0" onMouseClicked="#OpenImageView5" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="980.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="imgView6" fitHeight="386.0" fitWidth="580.0" layoutX="663.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="980.0">
+                  <ImageView fx:id="imgView6" fitHeight="386.0" fitWidth="580.0" layoutX="663.0" layoutY="548.0" onMouseClicked="#OpenImageView6" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="980.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="imgView7" fitHeight="386.0" fitWidth="580.0" layoutX="53.0" layoutY="558.0" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="1420.0">
+                  <ImageView fx:id="imgView7" fitHeight="386.0" fitWidth="580.0" layoutX="53.0" layoutY="558.0" onMouseClicked="#OpenImageView7" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="1420.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="imgView8" fitHeight="386.0" fitWidth="580.0" layoutX="673.0" layoutY="558.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="1420.0">
+                  <ImageView fx:id="imgView8" fitHeight="386.0" fitWidth="580.0" layoutX="673.0" layoutY="558.0" onMouseClicked="#OpenImageView8" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="1420.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="imgView9" fitHeight="386.0" fitWidth="580.0" layoutX="63.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="1860.0">
+                  <ImageView fx:id="imgView9" fitHeight="386.0" fitWidth="580.0" layoutX="63.0" layoutY="568.0" onMouseClicked="#OpenImageView9" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="1860.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="imgView10" fitHeight="386.0" fitWidth="580.0" layoutX="683.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="1860.0">
+                  <ImageView fx:id="imgView10" fitHeight="386.0" fitWidth="580.0" layoutX="683.0" layoutY="568.0" onMouseClicked="#OpenImageView10" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="1860.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -136,9 +136,84 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
+                  <Pane fx:id="BlurPane" onMouseClicked="#CloseAnchorPane" opacity="0.86" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
+      <ImageView fx:id="View1" fitHeight="386.0" fitWidth="580.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#OpenImageView1" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="View2" fitHeight="386.0" fitWidth="580.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#OpenImageView2" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="View3" fitHeight="386.0" fitWidth="580.0" layoutX="43.0" layoutY="548.0" onMouseClicked="#OpenImageView3" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="View4" fitHeight="386.0" fitWidth="580.0" layoutX="663.0" layoutY="548.0" onMouseClicked="#OpenImageView4" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="View5" fitHeight="386.0" fitWidth="580.0" layoutX="53.0" layoutY="558.0" onMouseClicked="#OpenImageView5" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="View6" fitHeight="386.0" fitWidth="580.0" layoutX="673.0" layoutY="558.0" onMouseClicked="#OpenImageView6" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="View7" fitHeight="386.0" fitWidth="580.0" layoutX="63.0" layoutY="568.0" onMouseClicked="#OpenImageView7" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="View8" fitHeight="386.0" fitWidth="580.0" layoutX="683.0" layoutY="568.0" onMouseClicked="#OpenImageView8" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="View9" fitHeight="386.0" fitWidth="580.0" layoutX="73.0" layoutY="578.0" onMouseClicked="#OpenImageView9" pickOnBounds="true" preserveRatio="true" styleClass="imgView1" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="View10" fitHeight="386.0" fitWidth="580.0" layoutX="693.0" layoutY="578.0" onMouseClicked="#OpenImageView10" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="120.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Button fx:id="SetButt" mnemonicParsing="false" onAction="#SetButtGo" styleClass="ButtonsDownOpenSet" stylesheets="@css.css" text="Set" textFill="WHITE" visible="false" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="550.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgSetWall" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </Button>
+      <Button fx:id="DownloadButt" mnemonicParsing="false" onAction="#DownloadButtGo" styleClass="ButtonsDownOpenSet" stylesheets="@css.css" text="Download" textFill="WHITE" visible="false" AnchorPane.leftAnchor="570.0" AnchorPane.topAnchor="550.0">
+         <graphic>
+            <ImageView fx:id="imgDownloadButton" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="SearchButt" mnemonicParsing="false" onAction="#SearchButtGo" styleClass="ButtonsDownOpenSet" stylesheets="@css.css" text="Open" textFill="WHITE" visible="false" AnchorPane.leftAnchor="800.0" AnchorPane.topAnchor="550.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <graphic>
+            <ImageView fx:id="imgOpenPage" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

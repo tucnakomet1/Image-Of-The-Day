@@ -12,14 +12,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DownloadImg {
-    public DownloadImg(String img_url, String author, String site, boolean resize) throws IOException {
+    public DownloadImg(String img_url, String author, String site, boolean resize, String path) throws IOException {
         try {
-            String basic_path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Day/";
             int WIDTH, HEIGHT;
 
             Format myFormatObj = new SimpleDateFormat("yyyy-MM-dd-hh-mm-s");
             String formattedDate = myFormatObj.format(new Date());
-            String output = basic_path + site.replace(" ", "") + "-" + formattedDate + ".png";
+            String output = path + site.replace(" ", "") + "-" + formattedDate + ".png";
 
             BufferedImage image = ImageIO.read(new URL(img_url));
 
@@ -53,10 +52,17 @@ public class DownloadImg {
 
             System.out.println(resolution);
 
-            new AddJson(output, author, site, resolution);
+            if (resize) {
+                System.out.println("Adding JSON");
+                new AddJson(output, author, site, resolution);
+            }
+            System.out.println("DONE");
+            System.out.println("Downloaded in: " + output);
         } catch (IOException e) {
             e.printStackTrace();
-            new AddJson("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/error.png", "unknown", site, "100x300");
+            if (resize) {
+                new AddJson("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/error.png", "unknown", site, "100x300");
+            }
         }
     }
 }

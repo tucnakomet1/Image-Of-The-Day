@@ -1,7 +1,10 @@
-<h1 align="center" id="head">Image Of The Day</h1>
+<h1 align="center">Image Of The Day</h1>
 
-<a href="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo.png"><img src="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo_75x75.png" alt="info"  style="max-width:10%;" align="left" hspace="10"></a>Image-Of-The-Day is a JavaFX project that allows you to see, download or set image as a wallpaper from [NASA](https://www.nasa.gov/), [Bing](https://bing.com/), [National Geographic](https://www.nationalgeographic.co.uk/), [etc.](#resources) in a friendly graphical interface. Software can be installed on any Windows, MacOS or Linux device. This project is mainly used for self-improvement in Java and to understand the JavaFX library. Any idea for upgrade is welcome.
+<a href="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo.png"><img src="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo_75x75.png" alt="info"  style="max-width:10%;" align="left" hspace="10"></a>Image-Of-The-Day is a JavaFX project that allows you to see, download or set image as a wallpaper from [NASA](https://www.nasa.gov/), [Bing](https://bing.com/), [National Geographic](https://www.nationalgeographic.co.uk/), [etc.](#resources) in a friendly graphical interface. Software can be installed on any Windows and Linux device. This project is mainly used for self-improvement in Java and to understand the JavaFX library. Any idea for upgrade is welcome.
 <h2></h2>
+
+![maingif](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainGif.gif)
+
 
 <h2>Table of contents</h2>
 
@@ -9,11 +12,10 @@
 * <a href="#install">INSTALLATION</a><br/>
   * <a href = "#windows">Windows</a><br/>
   * <a href = "#linux">Linux</a><br/>
-  	* <a href = "debian">Debian based</a><br/>
-  	* <a href = "arch">Arch based</a><br/>
-  	* <a href = "fedora">Fedora based</a><br/>
-  * <a href = "#darwin">MacOS</a><br/>
-  * <a href = "tar">Tarball/ Source</a><br/>
+  	* <a href = "#debian">Debian based</a><br/>
+  	* <a href = "#arch">Arch based</a><br/>
+  	* <a href = "#fedora">Fedora based</a><br/>
+  * <a href = "#tar">Tarball/ Source</a><br/>
 * <a href = "#resources">RESOURCES</a><br/>
 * <a href = "#libraries">LIBRARIES</a><br/>
 * <a href = "#screen">SCREENSHOTS</a><br/>
@@ -31,7 +33,6 @@
      * <a href = "debian">Debian based</a><br/>
      * <a href = "arch">Arch based</a><br/>
      * <a href = "fedora">Fedora based</a><br/>
- * <a href = "#darwin">MacOS</a><br/>
  * <a href = "tar">Tarball/ Source</a><br/>
 
 <h3 id="windows">Windows</h3>
@@ -70,12 +71,6 @@ You can download *.* package using [release](https://github.com/tucnakomet1/Imag
 
 ```
 
-
-<br/>
-
-<h3 id="darwin">MacOS</h3>
-
-Download newest [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) and choose your installation format ( *.dmg*).
 
 <br/>
 
@@ -133,7 +128,9 @@ Created with [Java openjdk-15.0.2](https://www.oracle.com/java/technologies/java
 
 ![splashscreen](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/SplashScreen.png)
 
-![mainpage](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/mainpagegif.gif)
+![mainpage](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainPage.png)
+
+![mainpageimg](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainPageImg.png)
 
 ![settings](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/settings.png)<br/><br/><br/>
 
@@ -173,8 +170,4 @@ You can contact me via my gmail address <a href="mailto:tucnakomet@gmail.com">tu
  <br/>
 
 If you like my project you can look at my [profile](https://github.com/tucnakomet1) or straight visit my next project [who-is-on-my-wifi](https://github.com/tucnakomet1/Python-Who-Is-On-My-WiFi).
-
-</br></br>
-
-<a href = "#head"><span title="Go UP!"><img alt="up" src="https://ps.w.org/wpfront-scroll-top/assets/icon.svg?rev=1534312" width="40" height="40" style="border:0px solid;" /></a></span><a href = "https://github.com/tucnakomet1"><span title="GitHub"><img alt="github" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png" width="40" height="40" style="border:0px solid;" /></a></span>
 

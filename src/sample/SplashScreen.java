@@ -83,16 +83,18 @@ public class SplashScreen implements Initializable {
         @Override
         public void run() {
             try {
-                new UnsplashDownload(true);
-                new BigGeekDaddyDownload(true);
-                new NationGeoDownload(true);
-                new ApodNASADownload(true);
-                new WikimediaDownload(true);
-                new USRA(true);
-                new NASADownload(true);
-                new BingDownload(true);
-                new NOAADownload(true);
-                new EarthObservDownload(true);
+                String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Day/";
+
+                new UnsplashDownload(true, path);
+                new BigGeekDaddyDownload(true, path);
+                new NationGeoDownload(true, path);
+                new ApodNASADownload(true, path);
+                new WikimediaDownload(true, path);
+                new USRA(true, path);
+                new NASADownload(true, path);
+                new BingDownload(true, path);
+                new NOAADownload(true, path);
+                new EarthObservDownload(true, path);
 
                 Platform.runLater(new Runnable() {
                     @Override

@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class WikimediaDownload {
-    public WikimediaDownload(boolean resize) throws IOException {
+    public WikimediaDownload(boolean resize, String path) throws IOException {
         String[] splitted_urls = get_url().split(" /// ");
 
         String img_url = splitted_urls[0];
@@ -15,7 +15,7 @@ public class WikimediaDownload {
         String author = get_author(http_url);
         String site = "Wikimedia Common";
 
-        new DownloadImg(img_url, author, site, resize);
+        new DownloadImg(img_url, author, site, resize, path);
     }
 
     public static String get_url() {

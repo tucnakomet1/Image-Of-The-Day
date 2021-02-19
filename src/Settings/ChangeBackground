@@ -1,0 +1,23 @@
+XFCE4
+=====
+xfconf-query -c xfce4-desktop -l | grep last-image | while read path; do xfconf-query -c xfce4-desktop -p $path -s "/home/tucna/Desktop/Images/Bing-2021-02-19-09-32-24.png"; done
+
+GNOME
+=====
+gsettings set org.gnome.desktop.background picture-uri file:///your/picture/location.jpg
+
+
+Windows
+=======
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d  wallpaper_path /f
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d E:\photos\image1.bmp /f
+RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
+
+https://coderanch.com/t/658715/java/Change-Desktop-background-jna
+https://stackoverflow.com/questions/12207574/programmatically-change-the-desktop-wallpaper-periodically
+
+
+MACOS
+=====
+osascript -e ‘tell application “Finder” to set desktop picture to POSIX file “/path/to/picture.jpg”’
+

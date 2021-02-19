@@ -8,12 +8,12 @@ import java.io.*;
 
 public class USRA {
 
-    public USRA(boolean resize) throws IOException {
+    public USRA(boolean resize, String path) throws IOException {
         String img_url = get_url();
         String author = get_author();
         String site = "EPOD-USRA";
 
-        new DownloadImg(img_url, author, site, resize);
+        new DownloadImg(img_url, author, site, resize, path);
     }
 
     public static String get_url() {

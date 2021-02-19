@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class BingDownload {
 
-    public BingDownload(boolean resize) throws IOException {
+    public BingDownload(boolean resize, String path) throws IOException {
         String[] splitted_urls = get_url().split(" /// ");
 
         String img_url = splitted_urls[0];
@@ -17,7 +17,7 @@ public class BingDownload {
 
         String site = "Bing";
 
-        new DownloadImg(img_url, author, site, resize);
+        new DownloadImg(img_url, author, site, resize, path);
     }
 
     public static String get_url() {

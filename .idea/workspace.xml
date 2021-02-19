@@ -5,40 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/Downloaded.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Downloaded.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Settings/SetWallpaper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON_data/author.json" beforeDir="false" afterPath="$PROJECT_DIR$/JSON_data/author.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON_data/img.json" beforeDir="false" afterPath="$PROJECT_DIR$/JSON_data/img.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON_data/resolution.json" beforeDir="false" afterPath="$PROJECT_DIR$/JSON_data/resolution.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/APODNASA-2021-02-17-09-14-51.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/BigGeekDaddy-2021-02-17-09-14-49.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/Bing-2021-02-17-09-16-41.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/EPOD-USRA-2021-02-17-09-16-35.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/EarthObservatory-2021-02-17-09-16-47.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/NASA-2021-02-17-09-16-36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/NESDIS-NOAA-2021-02-17-09-16-43.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/NationalGeographic-2021-02-17-09-14-49.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/Unsplash-2021-02-17-09-14-39.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/WikimediaCommon-2021-02-17-09-16-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Logo/logo_50x50.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Logo/logo_50x50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Logo/logo_75x75.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Logo/logo_75x75.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Logo/logo_blackwhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Logo/logo_blackwhite_50x50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Logo/logo_blackwhite_75x75.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Logo/logo_not_rounded.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AutoUpdates.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AutoUpdates.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/APODNASA-2021-02-18-06-57-51.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/BigGeekDaddy-2021-02-18-06-57-48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/Bing-2021-02-18-06-58-11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/EPOD-USRA-2021-02-18-06-58-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/EarthObservatory-2021-02-18-06-58-18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/NASA-2021-02-18-06-58-5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/NESDIS-NOAA-2021-02-18-06-58-14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/NationalGeographic-2021-02-18-06-57-49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/Unsplash-2021-02-18-06-57-39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/WikimediaCommon-2021-02-18-06-57-57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Splash/Sean-Davey-2021-57-18-06-57-34.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/Splash/author.txt" beforeDir="false" afterPath="$PROJECT_DIR$/images/Splash/author.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/back1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/ApodNASADownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/ApodNASADownload.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/BigGeekDaddyDownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/BigGeekDaddyDownload.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/BingDownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/BingDownload.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/ConvertImage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/DetectImage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/DownloadImg.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/DownloadImg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/EarthObservDownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/EarthObservDownload.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/NASADownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/NASADownload.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/NOAADownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/NOAADownload.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/NationGeoDownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/NationGeoDownload.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/USRA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/USRA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/UnsplashDownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/UnsplashDownload.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/WikimediaDownload.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/WikimediaDownload.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/convert_webp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/MainIoTdPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/MainIoTdPage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/MainIoTdPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/MainIoTdPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/mainpagegif.gif" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/mainpagegif.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/css.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/download/ApodNASADownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/ApodNASADownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/BigGeekDaddyDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/BigGeekDaddyDownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/BingDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/BingDownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/ConvertImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/DetectImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/DownloadImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/DownloadImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/EarthObservDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/EarthObservDownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/NASADownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/NASADownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/NOAADownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/NOAADownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/NationGeoDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/NationGeoDownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/USRA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/USRA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/UnsplashDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/UnsplashDownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/WikimediaDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/WikimediaDownload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/convert_webp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MainIoTdPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainIoTdPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MainIoTdPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainIoTdPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Settings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SplashScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/css.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

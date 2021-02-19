@@ -10,12 +10,12 @@ import java.util.Arrays;
 
 public class BigGeekDaddyDownload {
 
-    public BigGeekDaddyDownload(boolean resize) throws IOException {
+    public BigGeekDaddyDownload(boolean resize, String path) throws IOException {
         String img_url = get_url();
         String author = get_author();
         String site = "Big Geek Daddy";
 
-        new DownloadImg(img_url, author, site, resize);
+        new DownloadImg(img_url, author, site, resize, path);
     }
 
     public static String get_url() {

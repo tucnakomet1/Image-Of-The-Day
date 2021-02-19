@@ -8,12 +8,12 @@ import java.net.URL;
 
 public class NASADownload {
 
-    public NASADownload(boolean resize) throws IOException {
+    public NASADownload(boolean resize, String path) throws IOException {
         String img_url = get_url();
         String author = "NASA";
         String site = "NASA";
 
-        new DownloadImg(img_url, author, site, resize);
+        new DownloadImg(img_url, author, site, resize, path);
     }
 
     public static String get_url() throws IOException {

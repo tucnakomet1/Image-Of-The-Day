@@ -10,12 +10,12 @@ import java.util.List;
 
 public class NOAADownload {
 
-    public NOAADownload(boolean resize) throws IOException {
+    public NOAADownload(boolean resize, String path) throws IOException {
         String img_url = get_url();
         String author = "NESDIS-NOAA";
         String site = "NESDIS-NOAA";
 
-        new DownloadImg(img_url, author, site, resize);
+        new DownloadImg(img_url, author, site, resize, path);
     }
 
     public static String get_url() {

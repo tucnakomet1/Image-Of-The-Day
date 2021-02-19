@@ -37,7 +37,15 @@
 .ButtonBrowse:hover {
     -fx-background-color: #4763ff;
 }
-.imgHover:hover {
-    webkit-filter: blur(4px); /* Chrome, Safari, Opera */
-    filter: blur(4px);
+
+.ButtonsDownOpenSet {
+    -fx-border-color: white;
+    -fx-background-color: transparent;
+    -fx-border-radius: 19px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 29,8,5,4;
+    
+}
+.ButtonsDownOpenSet:hover {
+    -fx-background-color: #242424;
 }
