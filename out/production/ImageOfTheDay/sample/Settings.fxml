@@ -38,7 +38,7 @@
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
-      <Button fx:id="Pages" maxHeight="10.0" minHeight="70.0" mnemonicParsing="false" onAction="#pagesAction" prefHeight="70.0" styleClass="button_settings" stylesheets="@css.css" text="Pages" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1000.0" AnchorPane.topAnchor="240.0">
+      <Button fx:id="Pages" maxHeight="10.0" minHeight="70.0" mnemonicParsing="false" onAction="#pagesAction" prefHeight="70.0" styleClass="button_settings" stylesheets="@css.css" text="Web Pages" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1000.0" AnchorPane.topAnchor="240.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -46,7 +46,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor></Button>
       <Pane opacity="0.86" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2f2f2f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane fx:id="AboutPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="AboutPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="LogoImg" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="100.0">
                <image>
@@ -112,59 +112,33 @@
                   <Font name="Times New Roman Bold" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="45.0" layoutY="172.0" text="Startup:" textFill="#cccccc" AnchorPane.leftAnchor="45.0">
-               <font>
-                  <Font name="Times New Roman Bold" size="28.0" />
-               </font>
-            </Label>
-            <Label layoutX="45.0" layoutY="274.0" text="Side Logo (Background process):" textFill="#cccccc" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="274.0">
-               <font>
-                  <Font name="Times New Roman Bold" size="28.0" />
-               </font>
-            </Label>
-            <Label layoutX="45.0" layoutY="385.0" text="Splash Screen:" textFill="#cccccc" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="385.0">
-               <font>
-                  <Font name="Times New Roman Bold" size="28.0" />
-               </font>
-            </Label>
-            <Label layoutX="45.0" layoutY="496.0" text="Download:" textFill="#cccccc" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="496.0">
-               <font>
-                  <Font name="Times New Roman Bold" size="28.0" />
-               </font>
-            </Label>
             <CheckBox fx:id="CheckAutoUpdates" mnemonicParsing="false" onAction="#CheckAutoUpdatesChoice" text="Set Auto Updates" textFill="#cccccc" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="80.0">
-               <font>
-                  <Font name="Times New Roman" size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="60.0" layoutY="207.0" mnemonicParsing="false" text="Run At Startup" textFill="#cccccc" AnchorPane.leftAnchor="60.0">
-               <font>
-                  <Font name="Times New Roman" size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="60.0" layoutY="314.0" mnemonicParsing="false" text="Active Side Logo" textFill="#cccccc" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="314.0">
-               <font>
-                  <Font name="Times New Roman" size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="CheckSplashScreen" layoutX="60.0" layoutY="425.0" mnemonicParsing="false" onAction="#CheckSplashScreenChoice" text="Active Splash Screen" textFill="#cccccc" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="425.0">
                <font>
                   <Font name="Times New Roman" size="18.0" />
                </font>
             </CheckBox>
             <Hyperlink fx:id="checkUpdatesSet" layoutX="32.0" layoutY="88.0" onAction="#CheckUpdatesOnline" text="Check Updates Online" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="80.0" />
             <Pane opacity="0.15" prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="145.0" />
-            <Pane layoutX="10.0" layoutY="264.0" opacity="0.15" prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="264.0" />
-            <Pane layoutX="10.0" layoutY="375.0" opacity="0.15" prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="375.0" />
-            <Pane layoutX="10.0" layoutY="486.0" opacity="0.15" prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="486.0" />
             <Label fx:id="showVersion" textFill="#cccccc" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="110.0">
                <font>
                   <Font name="Times New Roman" size="15.0" />
                </font>
             </Label>
+            <Label layoutX="43.0" layoutY="323.0" text="Location Capacity" textFill="#cccccc" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="170.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="28.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="MaxCapacityClick" layoutX="58.0" layoutY="358.0" mnemonicParsing="false" onAction="#MaxCapacityClickChoice" text="Set max capacity" textFill="#cccccc" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="210.0">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+            </CheckBox>
+            <ChoiceBox fx:id="MaxCapacityBox" disable="true" layoutX="298.0" layoutY="331.0" prefWidth="100.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="210.0" />
          </children></AnchorPane>
-      <AnchorPane fx:id="WallpaperPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="WallpaperPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <Pane opacity="0.15" prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="140.0" />
             <Pane opacity="0.5" prefHeight="500.0" prefWidth="545.0" style="-fx-background-color: #444;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="140.0" />
             <Label text="Wallpaper" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                <font>
@@ -176,7 +150,7 @@
             <Button fx:id="clickPath" mnemonicParsing="false" onAction="#OpenPathManager" styleClass="ButtonBrowse" stylesheets="@css.css" text="Browse" textFill="#575757" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="100.0" />
             <Label text="Download location" textFill="#e1e1e1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="70.0">
                <font>
-                  <Font name="Times New Roman" size="20.0" />
+                  <Font name="Times New Roman" size="22.0" />
                </font>
             </Label>
             <ChoiceBox fx:id="ChoiceBoxSetSource" layoutX="806.0" layoutY="152.0" prefWidth="150.0" style="-fx-background-color: #ccc;" AnchorPane.leftAnchor="806.0" AnchorPane.topAnchor="152.0" />
@@ -192,33 +166,87 @@
                   <Font name="Times New Roman" size="20.0" />
                </font>
             </Label>
+            <Label layoutX="10.0" layoutY="10.0" text="Change everyday at startup" textFill="#e1e1e1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0">
+               <font>
+                  <Font name="Times New Roman" size="22.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="RunStartupCheck" mnemonicParsing="false" onAction="#RunAtStartupCheck" text="Run at startup" textFill="#c1c1c1" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <ChoiceBox fx:id="ChoicePage" disable="true" prefWidth="170.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="200.0" />
          </children></AnchorPane>
       <AnchorPane fx:id="PagesPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Hyperlink fx:id="BingHyp" onAction="#BingOpen" text="Bing" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="60.0" />
-            <Hyperlink fx:id="NasaHy" onAction="#NasaOpen" text="NASA" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="80.0" />
-            <Hyperlink fx:id="UnsplashHy" onAction="#UnsplashOpen" text="Unsplash" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-            <Hyperlink fx:id="NGHy" onAction="#NGOpen" text="National Geography" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="120.0" />
-            <Hyperlink fx:id="WikiHy" onAction="#WikiOpen" text="Wikimedia Commons" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="140.0" />
-            <Hyperlink fx:id="DaddyHy" onAction="#DaddyOpen" text="Big Geek Daddy" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="160.0" />
-            <Hyperlink fx:id="EarthOHy" onAction="#EarthOOpen" text="Earth Observatory (NASA)" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="180.0" />
-            <Hyperlink fx:id="APODHy" onAction="#APODOpen" text="Astronomy Picture Of The Day (APOD-NASA)" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="200.0" />
-            <Hyperlink fx:id="EPODHy" onAction="#EPODOpen" text="EPOD-USRA" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="220.0" />
-            <Hyperlink fx:id="NESDIShy" onAction="#NESDISOpen" text="NESDIS-NOAA" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="240.0" />
-            <Label text="Pages" textFill="#cccccc" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <Hyperlink fx:id="BingHyp" layoutX="54.0" layoutY="162.0" onAction="#BingOpen" onMouseEntered="#ShowBingInfo" text="Bing" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="120.0">
                <font>
-                  <Font name="Times New Roman" size="30.0" />
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="NasaHy" layoutX="54.0" layoutY="182.0" onAction="#NasaOpen" onMouseEntered="#ShowNasaInfo" text="NASA" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="160.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="UnsplashHy" layoutX="54.0" layoutY="202.0" onAction="#UnsplashOpen" onMouseEntered="#ShowUnsplashInfo" text="Unsplash" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="NGHy" layoutX="54.0" layoutY="379.0" onAction="#NGOpen" onMouseEntered="#ShowNgInfo" text="National Geography" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="240.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="WikiHy" layoutX="54.0" layoutY="242.0" onAction="#WikiOpen" onMouseEntered="#ShowWikiInfo" text="Wikimedia Commons" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="280.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="DaddyHy" layoutX="54.0" layoutY="419.0" onAction="#DaddyOpen" onMouseEntered="#ShowBGDInfo" text="Big Geek Daddy" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="320.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="EarthOHy" layoutX="54.0" layoutY="439.0" onAction="#EarthOOpen" onMouseEntered="#ShowEOInfo" text="Earth Observatory (NASA)" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="360.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="APODHy" layoutX="54.0" layoutY="459.0" onAction="#APODOpen" onMouseEntered="#ShowAPODInfo" text="Astronomy Picture Of The Day (APOD-NASA)" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="400.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="EPODHy" layoutX="54.0" layoutY="322.0" onAction="#EPODOpen" onMouseEntered="#ShowEPODInfo" text="EPOD-USRA" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="440.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Hyperlink fx:id="NESDIShy" layoutX="54.0" layoutY="499.0" onAction="#NESDISOpen" onMouseEntered="#ShowNESDISInfo" text="NESDIS-NOAA" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="480.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font></Hyperlink>
+            <Label text="Web Pages" textFill="#cccccc" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
+               <font>
+                  <Font name="Times New Roman" size="33.0" />
                </font>
             </Label>
+            <Pane opacity="0.15" prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0" />
+            <ImageView fx:id="SiteLogo" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="120.0" />
+            <Label fx:id="SiteInfo" maxHeight="200.0" prefWidth="490.0" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font name="Courier New Italic" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="SiteImage" fitHeight="280.0" fitWidth="490.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="350.0" />
          </children></AnchorPane>
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#GetMainPageBack" styleClass="backButt" stylesheets="@css.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#GetMainPageBack" styleClass="backButt" stylesheets="@css.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0">
          <graphic>
-            <ImageView fx:id="imgBack" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgBack" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Button>
-      <Button fx:id="GitButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#OpenGitHub" styleClass="backButt" stylesheets="@css.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="102.0">
+      <Button fx:id="GitButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#OpenGitHub" styleClass="backButt" stylesheets="@css.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="93.0">
          <graphic>
             <ImageView fx:id="GitUmg" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </Button>
+      <Button fx:id="GitReportBut" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#OpenGitHubReport" styleClass="backButt" stylesheets="@css.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="200.0">
+         <graphic>
+            <ImageView fx:id="GitReport" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Button>
    </children>

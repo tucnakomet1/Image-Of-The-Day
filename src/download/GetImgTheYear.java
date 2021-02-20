@@ -46,7 +46,7 @@ public class GetImgTheYear {
         int rand = (int)(Math.random() * img_urls.size());
 
         String author = author_name.get(rand);
-        url_author.add(img_urls.get(rand)+"?quality=100");
+        url_author.add(img_urls.get(rand)+"?quality=10");
         url_author.add(author);
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/author.txt"));

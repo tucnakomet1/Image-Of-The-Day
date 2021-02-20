@@ -16,7 +16,7 @@ import java.util.Date;
 public class download_img {
     public download_img(String img_urls, String author) {
         try{
-            Format myFormatObj = new SimpleDateFormat("yyyy-mm-dd-hh-mm-s");
+            Format myFormatObj = new SimpleDateFormat("yyyy-MM-dd-hh-mm-s");
             String formattedDate = myFormatObj.format(new Date());
 
             InputStream in = new URL(img_urls).openStream();
@@ -43,7 +43,7 @@ public class download_img {
 
             Files.delete(input.toPath());
 
-            copy_img(name.replace(".jpg", ".png"));
+            //copy_img(name.replace(".jpg", ".png"));
 
         } catch (IOException e) {
             e.printStackTrace();

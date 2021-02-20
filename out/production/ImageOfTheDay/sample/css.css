@@ -47,5 +47,32 @@
     
 }
 .ButtonsDownOpenSet:hover {
-    -fx-background-color: #242424;
+    -fx-background-color: #f1f1f1;
 }
+
+.alertDialog > *.label.content{
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f1f1f1;
+    -fx-font-family: "Courier New";
+}
+.alertDialog {
+    -fx-background-color: #444;
+}
+
+.alertDialog .button{
+    -fx-background-color: #444;
+    -fx-text-fill:white;
+    -fx-font-weight:bold; 
+    -fx-border-width: 3px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 29,8,5,4;
+    -fx-border-color: white;
+    -fx-wrap-text: true;
+    -fx-effect: dropshadow( three-pass-box, #f1f1f1, 10.0, 0.0, 0.0, 0.0);
+    -fx-cursor:hand;
+  }
+ 
+ .alertDialog .button:hover{     
+   -fx-background-color:#f1f1f1;
+  }

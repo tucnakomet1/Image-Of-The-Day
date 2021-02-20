@@ -16,7 +16,7 @@
   	* <a href = "#arch">Arch based</a><br/>
   	* <a href = "#fedora">Fedora based</a><br/>
   * <a href = "#tar">Tarball/ Source</a><br/>
-* <a href = "#resources">RESOURCES</a><br/>
+* <a href = "#sites">WEB PAGES</a><br/>
 * <a href = "#libraries">LIBRARIES</a><br/>
 * <a href = "#screen">SCREENSHOTS</a><br/>
 * <a href = "https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/USAGE.md">USAGE</a><br/>
@@ -99,7 +99,7 @@ sudo chmod +x install.sh
 
 <br/><br/><br/>
 
-<h2 id="resources">RESOURCES</h2>
+<h2 id="sites">WEB PAGES</h2>
 
 * [Bing](https://bing.com/)
 * [NASA](https://www.nasa.gov/)
@@ -132,7 +132,9 @@ Created with [Java openjdk-15.0.2](https://www.oracle.com/java/technologies/java
 
 ![mainpageimg](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainPageImg.png)
 
-![settings](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/settings.png)<br/><br/><br/>
+![settingswallpaper](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/SettingsWallpaper.png)
+
+![settingspages](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/SettingsPages.png)<br/><br/><br/>
 
 <h2 id="license"> LICENSE </h2>
 

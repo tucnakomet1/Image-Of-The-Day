@@ -326,6 +326,7 @@ public class MainIoTdPage implements Initializable {
             default:
                 throw new IllegalStateException("Unexpected value: " + site);
         }
+        new SendNotif().SendInfoAlert(site, path);
     }
 
     private String findPath() throws FileNotFoundException {
@@ -364,7 +365,20 @@ public class MainIoTdPage implements Initializable {
 
 
     @FXML
-    void downloadButt(ActionEvent event){
+    void downloadButt(ActionEvent event) throws IOException {
+        String OS = System.getProperty("os.name");
+        String ImgsPath = findPath();
+        if (OS.contains("Windows")) {
+            Runtime.getRuntime().exec("explorer " + ImgsPath);
+        }
+        else if (OS.contains("Linux")) {
+            Runtime.getRuntime().exec("xdg-open " + ImgsPath);
+        }
+        if (OS.contains("Darwin")) {
+            Runtime.getRuntime().exec("");
+        }
+
+        /*
         if (event.getSource() == downloadButt) {
             try {
                 Parent root = null;
@@ -387,7 +401,7 @@ public class MainIoTdPage implements Initializable {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        }
+        }*/
     }
 
     @FXML
@@ -442,7 +456,7 @@ public class MainIoTdPage implements Initializable {
         for (String file_name : names) {
             if (file_name.contains(".png")) {
                 //imgUrl = "file:" + basicUrl + file_name;
-                imgUrl = "file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/background_image.png";
+                imgUrl = "file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/background_image.png";
                 System.out.println(imgUrl);
             }
         }
@@ -556,15 +570,15 @@ public class MainIoTdPage implements Initializable {
         String Img9 = new ReadJson().GetElement(site9, new FileReader(ImgPathJSON));
         String Img10 = new ReadJson().GetElement(site10, new FileReader(ImgPathJSON));
 
-        imgDownloadButton.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/download.png"));
+        imgDownloadButton.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/ImageInfo/download.png"));
         imgDownloadButton.setPreserveRatio(true);
         imgDownloadButton.setFitWidth(37);
         imgDownloadButton.setFitHeight(34);
-        imgOpenPage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/search.png"));
+        imgOpenPage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/ImageInfo/search.png"));
         imgOpenPage.setPreserveRatio(true);
         imgOpenPage.setFitWidth(30);
         imgOpenPage.setFitHeight(30);
-        imgSetWall.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/image.png"));
+        imgSetWall.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/ImageInfo/image.png"));
         imgSetWall.setPreserveRatio(true);
         imgSetWall.setFitWidth(42);
         imgSetWall.setFitHeight(33);
@@ -609,12 +623,12 @@ public class MainIoTdPage implements Initializable {
         DateLabel.setText(todaysDate);
         System.out.println(site1 + ", " + site2 + ", " + site3 + ", " + site4 + ", " + site5 + ", " + site6 + ", " + site7 + ", " + site8 + ", " + site9 + ", " + site10);
 
-        ImageView SettButtonImg = new ImageView(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sett.png"));
+        ImageView SettButtonImg = new ImageView(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/sett.png"));
         SettButtonImg.setFitWidth(21);
         SettButtonImg.setFitHeight(21);
         settingsButt.setGraphic(SettButtonImg);
 
-        ImageView DownButtonImg = new ImageView(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/down.png"));
+        ImageView DownButtonImg = new ImageView(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/down.png"));
         DownButtonImg.setFitWidth(21);
         DownButtonImg.setFitHeight(21);
         downloadButt.setGraphic(DownButtonImg);

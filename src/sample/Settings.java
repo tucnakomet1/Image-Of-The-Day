@@ -31,38 +31,32 @@ public class Settings implements Initializable {
     private AnchorPane WholeSettingsPane, AboutPane, settingsPane, WallpaperPane, PagesPane;
 
     @FXML
-    private ImageView BackImg, LogoImg, imgBack, GitUmg, WallpaperBackgrounImage, monitor_img, BrowserImg, FolderImg, FileImg, TaskBarImg, TaskBarLinuxImg, MacTaskBarImg;
+    private ImageView BackImg, LogoImg, imgBack, GitUmg, WallpaperBackgrounImage, monitor_img, BrowserImg, FolderImg, FileImg, TaskBarImg, TaskBarLinuxImg, MacTaskBarImg, GitReport;
+    @FXML
+    private ImageView SiteImage, SiteLogo;
 
     @FXML
-    private Button About;
-    @FXML
-    private Button Settings;
-    @FXML
-    private Button Wallpaper;
-    @FXML
-    private Button Pages;
-    @FXML
-    private Button backButton;
+    private Button About, Settings, Wallpaper, Pages, backButton;
 
     @FXML
-    private Label showVersion;
+    private Label showVersion, SiteInfo;
 
     @FXML
     private Hyperlink VersionLinkAb;
 
     @FXML
-    private CheckBox CheckAutoUpdates, CheckSplashScreen;
+    private CheckBox CheckAutoUpdates, MaxCapacityClick, RunStartupCheck;
 
     @FXML
     private TextField textPathField;
 
     @FXML
-    private ChoiceBox<String> ChoiceBoxSetSource;
+    private ChoiceBox<String> ChoiceBoxSetSource, MaxCapacityBox, ChoicePage;
 
 
     public void initialize(URL location, ResourceBundle resources) {
         String OS = System.getProperty("os.name");
-        monitor_img.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/monitor.png"));
+        monitor_img.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/monitor.png"));
         monitor_img.setPreserveRatio(true);
         monitor_img.setFitWidth(530);
 
@@ -144,7 +138,7 @@ public class Settings implements Initializable {
         });
 
 
-        BackImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/background_image.png"));
+        BackImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/background_image.png"));
         BackImg.setPreserveRatio(false);
         BackImg.setFitWidth(1280);
 
@@ -152,13 +146,18 @@ public class Settings implements Initializable {
         LogoImg.setPreserveRatio(true);
         LogoImg.setFitWidth(175);
 
-        imgBack.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/back.png"));
+        imgBack.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Settings/back.png"));
         imgBack.setPreserveRatio(true);
-        imgBack.setFitWidth(50);
+        imgBack.setFitWidth(40);
+        imgBack.setFitHeight(40);
 
-        GitUmg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/git.png"));
+        GitUmg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Settings/git.png"));
         GitUmg.setPreserveRatio(true);
-        GitUmg.setFitWidth(50);
+        GitUmg.setFitWidth(75);
+
+        GitReport.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Settings/report.png"));
+        GitReport.setPreserveRatio(true);
+        GitReport.setFitWidth(40);
 
         String ver = null;
         try {
@@ -174,10 +173,6 @@ public class Settings implements Initializable {
         if (UpdatesChecked){
             CheckAutoUpdates.setSelected(true);
         }
-        if (SplashChecked){
-            CheckSplashScreen.setSelected(true);
-        }
-
     }
 
     private String GetDownloadPath() throws FileNotFoundException {
@@ -284,6 +279,11 @@ public class Settings implements Initializable {
     }
 
     @FXML
+    void OpenGitHubReport(){
+        new OpenUrl("https://github.com/tucnakomet1/Image-Of-The-Day/issues");
+    }
+
+    @FXML
     void OpenReleases() {
         new OpenUrl("https://github.com/tucnakomet1/Image-Of-The-Day/releases");
     }
@@ -321,6 +321,146 @@ public class Settings implements Initializable {
     @FXML
     void NESDISOpen() { new OpenUrl("https://www.nesdis.noaa.gov/"); }
 
+    @FXML
+    void ShowBingInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Bing/bing.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Bing/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(167);
+        SiteLogo.setFitHeight(200);
+
+        SiteInfo.setText("Microsoft Bing is a web search engine owned and operated by Microsoft. The service has its origins in Microsoft's previous search engines: MSN Search, Windows Live Search and later Live Search. Bing provides a variety of search services, including web, video, image and map search products");
+    }
+    @FXML
+    void ShowNasaInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NASA/nasa.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NASA/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(200);
+        SiteLogo.setFitHeight(150);
+
+        SiteInfo.setText("The National Aeronautics and Space Administration is an independent agency of the U.S. federal government responsible for the civilian space program, as well as aeronautics and space research. NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics.");
+    }
+    @FXML
+    void ShowUnsplashInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Unsplash/unsplash.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Unsplash/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(200);
+        SiteLogo.setFitHeight(200);
+
+        SiteInfo.setText("Unsplash is a website dedicated to sharing stock photography under the Unsplash license. The website claims over 207,000 contributing photographers and generates more than 17 billion photo impressions per month on their growing library of over 2 million photos");
+    }
+    @FXML
+    void ShowNgInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NG/ng.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NG/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(200);
+        SiteLogo.setFitHeight(150);
+
+        SiteInfo.setText("National Geographic is the long-lived official monthly magazine of the National Geographic Society. It is one of the most widely read magazines of all time.");
+    }
+    @FXML
+    void ShowWikiInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Wiki/wiki.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Wiki/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(152);
+        SiteLogo.setFitHeight(200);
+
+        SiteInfo.setText("Wikimedia Commons is an online repository of free-use images, sounds, other media, and JSON files. It is a project of the Wikimedia Foundation. Files from Wikimedia Commons can be used across all Wikimedia projects in all languages, including Wikipedia, Wiktionary, Wikibooks, Wikivoyage, Wikispecies, Wikisource, and Wikinews, or downloaded for offsite use.");
+    }
+    @FXML
+    void ShowBGDInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/BGD/bgd.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/BGD/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(200);
+        SiteLogo.setFitHeight(200);
+
+        SiteInfo.setText("I like to share videos that I find funny, interesting, cool, or otherwise entertaining as well as some computer information I think people might find helpful. I have a very diverse set of interests and a sense of humor.");
+    }
+    @FXML
+    void ShowEOInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/EO/eo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/EO/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(200);
+        SiteLogo.setFitHeight(104);
+
+        SiteInfo.setText("NASA Earth Observatory is an online publishing outlet for NASA which was created in 1999. It is the principal source of satellite imagery and other scientific information pertaining to the climate and the environment which are being provided by NASA for consumption by the general public.");
+    }
+    @FXML
+    void ShowAPODInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/APOD/apod.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/APOD/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(200);
+        SiteLogo.setFitHeight(200);
+
+        SiteInfo.setText("Astronomy Picture of the Day is a website provided by NASA and Michigan Technological University. According to the website, \"Each day a different image or photograph of our universe is featured, along with a brief explanation written by a professional astronomer.\" The photograph does not necessarily correspond to a celestial event on the exact day that it is displayed, and images are sometimes repeated");
+    }
+    @FXML
+    void ShowEPODInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/EPOD/epod.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/EPOD/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(200);
+        SiteLogo.setFitHeight(146);
+
+        SiteInfo.setText("The USRA standard locomotives and railroad cars were designed by the United States Railroad Administration, the nationalized rail system of the United States during World War I. 1,856 steam locomotives and over 100,000 railroad cars were built to these designs during the USRA's tenure");
+    }
+    @FXML
+    void ShowNESDISInfo() {
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NESDIS/nesdis.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NESDIS/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(200);
+        SiteLogo.setFitHeight(200);
+
+        SiteInfo.setText("The National Environmental Satellite, Data, and Information Service was created by the National Oceanic and Atmospheric Administration to operate and manage the United States environmental satellite programs, and manage the data gathered by the National Weather Service and other government agencies and departments.");
+    }
 
     @FXML
     void CheckUpdatesOnline() throws IOException, AWTException, InterruptedException {
@@ -365,20 +505,76 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void CheckSplashScreenChoice() throws IOException {
-        if (CheckSplashScreen.isSelected()){
-            String filePath = "//home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/SplashScreen.txt";
-            FileWriter fw = new FileWriter(filePath, false);
-            fw.write("1");
-            fw.close();
+    void RunAtStartupCheck() {
+        if (!RunStartupCheck.isSelected()) {
+            ChoicePage.setDisable(true);
+            ChoicePage.setValue("-None-");
+        }
+        else {
+            ChoicePage.setDisable(false);
+
+            ChoicePage.getItems().add("Unsplash");
+            ChoicePage.getItems().add("Bing");
+            ChoicePage.getItems().add("NASA");
+            ChoicePage.getItems().add("National Geographic");
+            ChoicePage.getItems().add("Wikimedia Common");
+            ChoicePage.getItems().add("EPOD-USRA");
+            ChoicePage.getItems().add("NESDIS-NOAA");
+            ChoicePage.getItems().add("Earth Observatory");
+            ChoicePage.getItems().add("Big Geek Daddy");
+            ChoicePage.getItems().add("APOD NASA");
+            ChoicePage.getItems().add("All - random choose");
+
+            ChoicePage.setValue("-None-");
+
+            MaxCapacityBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, page) -> {
+                System.out.println(page);
+            });
+        }
+    }
+
+    @FXML
+    void MaxCapacityClickChoice() {
+        if (!MaxCapacityClick.isSelected()){
+            MaxCapacityBox.setDisable(true);
+            String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt";
+
+            File file = new File(path);
+            try {
+                FileWriter fw = new FileWriter(file, false);
+                fw.write("none");
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         else{
-            String filePath = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/SplashScreen.txt";
-            FileWriter fw = new FileWriter(filePath, false);
-            fw.write("0");
-            fw.close();
-        }
+            MaxCapacityBox.setDisable(false);
 
+            MaxCapacityBox.getItems().add("100 MB");
+            MaxCapacityBox.getItems().add("200 MB");
+            MaxCapacityBox.getItems().add("500 MB");
+            MaxCapacityBox.getItems().add("1024 MB");
+            MaxCapacityBox.getItems().add("2048 MB");
+            MaxCapacityBox.getItems().add("4096 MB");
+
+            MaxCapacityBox.setValue("100 MB");
+
+            MaxCapacityBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, capacity) -> {
+                System.out.println(capacity);
+
+                String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt";
+
+                File file = new File(path);
+                try {
+                    FileWriter fw = new FileWriter(file, false);
+                    fw.write(capacity.replace(" MB", ""));
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 
     public static boolean CheckIsSplashScreen() {

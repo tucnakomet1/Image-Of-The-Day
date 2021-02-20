@@ -14,7 +14,7 @@
             <Font name="Droid Sans Fallback" size="53.0" />
          </font>
       </Text>
-      <Text fill="#c9c9c9" layoutX="445.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version 2021.1.0">
+      <Text fill="#c9c9c9" layoutX="445.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version 0.0.9 2021">
          <font>
             <Font size="15.0" />
          </font>

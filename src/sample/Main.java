@@ -6,15 +6,16 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.controlsfx.control.Notifications;
-
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -24,10 +25,13 @@ import java.util.Scanner;
 
 
 public class Main extends Application {
+    private static boolean RunSplashScreen;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        if (RunSplash()) {
+        System.out.println("-----------------------");
+        System.out.println(RunSplashScreen);
+        if (InternetConnection() && RunSplashScreen) {
             System.out.println("fuckfuckfuckfuck");
             double WEIGHT = 700;
             double HIGHT = new GetImgResolution().get_img_resolution("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/", 700);
@@ -65,26 +69,28 @@ public class Main extends Application {
         }
     }
 
-    public static boolean RunSplash() {
-        boolean RunSplash = true;
-        try {
-            File myObj = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/SplashScreen.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                System.out.println("splash screen" + data);
-                if (data.contains("0")) {
-                    RunSplash = false;
-                }
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+    public static boolean RunSplash() throws IOException {
+        boolean RunSplash = false;
+        boolean CheckedDate = CheckDate();
+
+        if (CheckedDate){
+            System.out.println("Checked");
+            Format myFormatObj = new SimpleDateFormat("yyyy/MM/dd");
+            String RealDate = myFormatObj.format(new Date());
+
+            File path = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/CheckDate.txt");
+            FileWriter writer = new FileWriter(path, false);
+            System.out.println("Checked");
+            writer.write(RealDate);
+            writer.close();
+            RunSplash = true;
         }
+        System.out.println(RunSplash);
         return RunSplash;
     }
 
     public static boolean RunAutoUpdate() {
-        boolean RunSplash = true;
+        boolean RunAuto = true;
         try {
             File myObj = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/AutoUpdates.txt");
             Scanner myReader = new Scanner(myObj);
@@ -92,13 +98,13 @@ public class Main extends Application {
                 String data = myReader.nextLine();
                 System.out.println("auto updates: " + data);
                 if (data.contains("0")) {
-                    RunSplash = false;
+                    RunAuto = false;
                 }
             }
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
         }
-        return RunSplash;
+        return RunAuto;
     }
 
     public static void CheckDownloadPath() throws FileNotFoundException {
@@ -134,10 +140,54 @@ public class Main extends Application {
         }
     }
 
+    private static boolean InternetConnection() {
+        try {
+            URL url = new URL("http://www.google.com");
+            URLConnection connection = url.openConnection();
+            connection.connect();
+            connection.getInputStream().close();
+            return true;
+        } catch (IOException e) {
+            new SendNotif().SendErrorAlert();
+            return false;
+        }
+    }
+
     public static Integer date_time(){
         Format myFormatObj = new SimpleDateFormat("yyyy");
         String formattedDate = myFormatObj.format(new Date());
         return Integer.valueOf(formattedDate);
+    }
+
+    public static Boolean CheckDate() throws FileNotFoundException {
+        boolean run = true;
+        String OldDate = null;
+
+        Format myFormatObj = new SimpleDateFormat("yyyy/MM/dd");
+        String RealDate = myFormatObj.format(new Date());
+        System.out.println(RealDate);
+
+        String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/CheckDate.txt";
+        File myObj = new File(path);
+        Scanner reader = new Scanner(myObj);
+
+        int num = 0;
+        while (reader.hasNextLine()) {
+            String data = reader.nextLine();
+            if (num == 0) {
+                OldDate = data;
+            }
+            num++;
+        }
+
+        System.out.println(OldDate);
+
+        if (RealDate.equals(OldDate)) {
+            run = false;
+            System.out.println("No splash screen!");
+        }
+        System.out.println("Boolean run is: " + run);
+        return run;
     }
 
 
@@ -152,6 +202,7 @@ public class Main extends Application {
                     dir.delete();
 
             check_free();
+            System.out.println("Checked free");
 
             int year = date_time();
             int old_year = year - 1;
@@ -164,8 +215,10 @@ public class Main extends Application {
 
             System.out.println("URL: " + SplashScreenImg);
             System.out.println("Author: " + SplashScreenAuthor);
-        }
 
+            RunSplashScreen = true;
+
+        }
 
         launch(args);
     }

@@ -1,5 +1,7 @@
 package download;
 
+import Settings.SendNotif;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -59,9 +61,16 @@ public class DownloadImg {
             System.out.println("DONE");
             System.out.println("Downloaded in: " + output);
         } catch (IOException e) {
+            System.out.println("Ahoj, to se nepovedlo");
+            System.out.println(String.valueOf(e));
             e.printStackTrace();
             if (resize) {
-                new AddJson("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/error.png", "unknown", site, "100x300");
+                new AddJson("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/error.png", "unknown", site, "100x300");
+            }
+            else {
+                System.out.println("Ahoj, to se nepovedlo");
+                System.out.println(String.valueOf(e));
+                new SendNotif().SendDownloadErrorAlert(e);
             }
         }
     }

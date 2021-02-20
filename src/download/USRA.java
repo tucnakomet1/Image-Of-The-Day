@@ -1,5 +1,6 @@
 package download;
 
+import Settings.SendNotif;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,7 +11,7 @@ public class USRA {
 
     public USRA(boolean resize, String path) throws IOException {
         String img_url = get_url();
-        String author = get_author();
+        String author = get_author(img_url);
         String site = "EPOD-USRA";
 
         new DownloadImg(img_url, author, site, resize, path);
@@ -42,7 +43,7 @@ public class USRA {
         return img_url;
     }
 
-    public static String get_author() {
+    public static String get_author(String img_url) {
         String author_name = null;
         Document doc = null;
         String URL = "https://epod.usra.edu/blog/";
@@ -66,13 +67,14 @@ public class USRA {
                     author_name = author_names[0].replace("Photographer: ", "");
                     if (CheckLett(author_name) > 40) {
                         System.out.println(CheckLett(author_name));
-                        throw new Exception("An Error Occurred!");
+                        throw new Exception("An Error Occurred!\nFailed to download " + img_url);
                     } else {
                         System.out.println(author_name);
                     }
                 }
             }catch (Exception e){
                 e.printStackTrace();
+                System.out.println("Failed to download " + img_url);
                 author_name = "unknown";
                 System.out.println(author_name);
             }
