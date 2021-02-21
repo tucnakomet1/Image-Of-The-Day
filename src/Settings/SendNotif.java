@@ -49,4 +49,18 @@ public class SendNotif {
         alert.show();
         System.out.println("Alerted");
     }
+
+    public void MaxCapacity() {
+        System.out.println("Alerting");
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Downloading Image Error");
+        alert.setHeaderText("Can not download selected image.");
+        alert.setContentText("In your directory is not enaught space!\nTry to change max capacity of the folder.");
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("../sample/css.css").toExternalForm());
+        dialogPane.getStyleClass().add("alertDialog");
+        alert.show();
+        System.out.println("Alerted");
+    }
 }

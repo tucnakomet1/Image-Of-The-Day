@@ -23,16 +23,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 public class MainIoTdPage implements Initializable {
 
     public int number;
+    public int WelcomeRunNum = 0;
 
     @FXML
     private AnchorPane MainPagePane;
@@ -223,31 +228,31 @@ public class MainIoTdPage implements Initializable {
             case ("Unsplash"):
                 new OpenUrl("https://source.unsplash.com/collection/%1/3840x2160/daily");
                 break;
-            case("Big Geek Daddy"):
+            case ("Big Geek Daddy"):
                 new OpenUrl("https://biggeekdad.com/photo-of-the-day/");
                 break;
-            case("National Geographic"):
+            case ("National Geographic"):
                 new OpenUrl("https://www.nationalgeographic.co.uk/photo-of-day");
                 break;
-            case("APOD NASA"):
+            case ("APOD NASA"):
                 new OpenUrl("https://apod.nasa.gov/apod/astropix.html");
                 break;
-            case("Wikimedia Common"):
+            case ("Wikimedia Common"):
                 new OpenUrl("https://commons.wikimedia.org/wiki/Main_Page");
                 break;
-            case("EPOD-USRA"):
+            case ("EPOD-USRA"):
                 new OpenUrl("https://epod.usra.edu/blog/");
                 break;
-            case("NASA"):
+            case ("NASA"):
                 new OpenUrl("https://www.nasa.gov/multimedia/imagegallery/iotd.html");
                 break;
-            case("Bing"):
+            case ("Bing"):
                 new OpenUrl("https://www.bing.com/");
                 break;
-            case("NESDIS-NOAA"):
+            case ("NESDIS-NOAA"):
                 new OpenUrl("https://www.nesdis.noaa.gov/satellites-image-of-the-day");
                 break;
-            case("Earth Observatory"):
+            case ("Earth Observatory"):
                 new OpenUrl("https://earthobservatory.nasa.gov/topic/image-of-the-day");
                 break;
             default:
@@ -263,72 +268,133 @@ public class MainIoTdPage implements Initializable {
             case ("Unsplash"):
                 new SetWallpaper();
                 break;
-            case("Big Geek Daddy"):
+            case ("Big Geek Daddy"):
                 break;
-            case("National Geographic"):
+            case ("National Geographic"):
                 break;
-            case("APOD NASA"):
+            case ("APOD NASA"):
                 break;
-            case("Wikimedia Common"):
+            case ("Wikimedia Common"):
                 break;
-            case("EPOD-USRA"):
+            case ("EPOD-USRA"):
                 break;
-            case("NASA"):
+            case ("NASA"):
                 break;
-            case("Bing"):
+            case ("Bing"):
                 break;
-            case("NESDIS-NOAA"):
+            case ("NESDIS-NOAA"):
                 break;
-            case("Earth Observatory"):
+            case ("Earth Observatory"):
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + site);
         }
     }
+
     @FXML
     void DownloadButtGo(ActionEvent event) throws IOException {
-        String site = GetSiteName(number);
-        System.out.println("Downloading: " + site);
-        String path = findPath();
-        System.out.println(path);
+        if (CheckDirSize()) {
+            String site = GetSiteName(number);
+            System.out.println("Downloading: " + site);
+            String path = findPath();
+            System.out.println(path);
 
-        switch (site) {
-            case ("Unsplash"):
-                new UnsplashDownload(false, path);
-                break;
-            case("Big Geek Daddy"):
-                new BigGeekDaddyDownload(false, path);
-                break;
-            case("National Geographic"):
-                new NationGeoDownload(false, path);
-                break;
-            case("APOD NASA"):
-                new ApodNASADownload(false, path);
-                break;
-            case("Wikimedia Common"):
-                new WikimediaDownload(false, path);
-                break;
-            case("EPOD-USRA"):
-                new USRA(false, path);
-                break;
-            case("NASA"):
-                new NASADownload(false, path);
-                break;
-            case("Bing"):
-                new BingDownload(false, path);
-                break;
-            case("NESDIS-NOAA"):
-                new NOAADownload(false, path);
-                break;
-            case("Earth Observatory"):
-                new EarthObservDownload(false, path);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + site);
+            switch (site) {
+                case ("Unsplash"):
+                    new UnsplashDownload(false, path);
+                    break;
+                case ("Big Geek Daddy"):
+                    new BigGeekDaddyDownload(false, path);
+                    break;
+                case ("National Geographic"):
+                    new NationGeoDownload(false, path);
+                    break;
+                case ("APOD NASA"):
+                    new ApodNASADownload(false, path);
+                    break;
+                case ("Wikimedia Common"):
+                    new WikimediaDownload(false, path);
+                    break;
+                case ("EPOD-USRA"):
+                    new USRA(false, path);
+                    break;
+                case ("NASA"):
+                    new NASADownload(false, path);
+                    break;
+                case ("Bing"):
+                    new BingDownload(false, path);
+                    break;
+                case ("NESDIS-NOAA"):
+                    new NOAADownload(false, path);
+                    break;
+                case ("Earth Observatory"):
+                    new EarthObservDownload(false, path);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + site);
+            }
+            new SendNotif().SendInfoAlert(site, path);
         }
-        new SendNotif().SendInfoAlert(site, path);
+        else{
+            new SendNotif().MaxCapacity();
+        }
     }
 
+    private boolean CheckDirSize() throws FileNotFoundException {
+        boolean CanDownload = true;
+        long size = 0;
+        String path = findPath();
+        int maxSize = FindCapacity();
+        if (maxSize == 0){
+            CanDownload = true;
+        }
+        else {
+            try (Stream<Path> walk = Files.walk(Path.of(path))) {
+                size = walk.filter(Files::isRegularFile).mapToLong(p -> {
+                    try {
+                        return Files.size(p);
+                    } catch (IOException e) {
+                        System.out.printf("Failed to get size of " + p + " " + e);
+                        return 0L;
+                    }
+                })
+                        .sum();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            size = (int) (size / 1000000);
+            int TooMuch = (maxSize / 100) * 90;
+            System.out.print("Actual: " + size + "\tMax Size: " + maxSize + "\tMax calculated: " + TooMuch);
+            System.out.println("\n" + TooMuch);
+            System.out.println(size);
+            System.out.println(maxSize);
+
+            if (size >= TooMuch) {
+                System.out.println("Oh fuck, this is false!");
+                CanDownload = false;
+            }
+        }
+        return CanDownload;
+    }
+
+    private Integer FindCapacity() throws FileNotFoundException {
+        String size = null;
+        int maxSize = 0;
+        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt";
+        Scanner myReader = new Scanner(new File(dir));
+        int num = 0;
+        while (myReader.hasNextLine()) {
+            num++;
+            if (num == 1) {
+                size = myReader.nextLine();
+                System.out.println(size);
+            }
+        }
+        if (!size.equals("none")) {
+            maxSize = Integer.valueOf(size);
+        }
+        return maxSize;
+    }
     private String findPath() throws FileNotFoundException {
         String path = null;
         String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/DownloadPath.txt";
@@ -377,31 +443,6 @@ public class MainIoTdPage implements Initializable {
         if (OS.contains("Darwin")) {
             Runtime.getRuntime().exec("");
         }
-
-        /*
-        if (event.getSource() == downloadButt) {
-            try {
-                Parent root = null;
-                Stage primaryStage = new Stage();
-                try {
-                    root = FXMLLoader.load(getClass().getResource("Downloaded.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                primaryStage.setTitle("Image Of The Day - Downloaded");
-
-                assert root != null;
-                Scene scene = new Scene(root);
-                double maxW = 1280;
-                primaryStage.setMaxWidth(maxW);
-                primaryStage.setScene(scene);
-                primaryStage.show();
-                MainPagePane.getScene().getWindow().hide();
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }*/
     }
 
     @FXML
@@ -423,6 +464,8 @@ public class MainIoTdPage implements Initializable {
                 double maxW = 1280;
                 primaryStage.setMaxWidth(maxW);
                 primaryStage.setScene(scene);
+                Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+                primaryStage.getIcons().add(icon);
                 primaryStage.show();
                 MainPagePane.getScene().getWindow().hide();
 
@@ -497,6 +540,38 @@ public class MainIoTdPage implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            if (WelcomeRunNum == 0) {
+                boolean runWelcome = CheckWelcomeScreen();
+                System.out.println("Welcome: " + runWelcome);
+                if (runWelcome) {
+                    try {
+                        Parent root = null;
+                        Stage primaryStage = new Stage();
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("WelcomeScreen.fxml"));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        primaryStage.setTitle("Image Of The Day - Welcome Screen");
+
+                        assert root != null;
+                        Scene scene = new Scene(root);
+                        primaryStage.setMaxWidth(600);
+                        primaryStage.setMaxHeight(400);
+                        primaryStage.setScene(scene);
+                        Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+                        primaryStage.getIcons().add(icon);
+                        primaryStage.show();
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         String todaysDate = todaysDate();
         String imageUrl = getImgUrl();
         System.out.println(imageUrl);
@@ -505,6 +580,33 @@ public class MainIoTdPage implements Initializable {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean CheckWelcomeScreen() throws FileNotFoundException {
+        boolean RunWelcome = false;
+        int value = 0;
+
+        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/RunWelcomeScreen.txt";
+        Scanner myReader = new Scanner(new File(dir));
+        int Wnum = 0;
+        while (myReader.hasNextLine()) {
+            Wnum++;
+            if (Wnum == 1) {
+                String prevalue = myReader.nextLine();
+                System.out.println(prevalue);
+                try {
+                    value = Integer.valueOf(prevalue);
+                    System.out.println(value);
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if (value == 1){
+            RunWelcome = true;
+        }
+        WelcomeRunNum++;
+        return RunWelcome;
     }
 
     public void run_again(String imageUrl, String todaysDate) throws IOException, ParseException {

@@ -113,6 +113,19 @@ public class Settings implements Initializable {
 
         ChoiceBoxSetSource.setValue("None");
 
+        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Bing/bing.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(490);
+        SiteLogo.setFitHeight(255);
+
+        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Bing/logo.png"));
+        SiteLogo.setPreserveRatio(true);
+        SiteLogo.setFitWidth(167);
+        SiteLogo.setFitHeight(200);
+
+        SiteInfo.setText("Microsoft Bing is a web search engine owned and operated by Microsoft. The service has its origins in Microsoft's previous search engines: MSN Search, Windows Live Search and later Live Search. Bing provides a variety of search services, including web, video, image and map search products");
+
+
         try {
             textPathField.setText(GetDownloadPath());
         } catch (FileNotFoundException e) {
@@ -168,11 +181,37 @@ public class Settings implements Initializable {
         VersionLinkAb.setText("v" + ver);
         showVersion.setText("Installed Version: v" + ver);
 
-        boolean SplashChecked = CheckIsSplashScreen();
+        boolean MaxCapChecked = CheckIsMaxSize();
+        System.out.println("MaxCapChecked: " + MaxCapChecked);
+        if (MaxCapChecked) {
+            MaxCapacityClick.setSelected(true);
+            try {
+                MaxCapacityBox.setValue(FindCapacity() + "MB");
+                MaxCapacityBox.setDisable(false);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
         boolean UpdatesChecked = CheckIsAutoUpdate();
         if (UpdatesChecked){
             CheckAutoUpdates.setSelected(true);
         }
+    }
+
+    private String FindCapacity() throws FileNotFoundException {
+        String size = null;
+        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt";
+        Scanner myReader = new Scanner(new File(dir));
+        int num = 0;
+        while (myReader.hasNextLine()) {
+            num++;
+            if (num == 1) {
+                size = myReader.nextLine();
+                System.out.println(size);
+            }
+        }
+        assert size != "none";
+        return size;
     }
 
     private String GetDownloadPath() throws FileNotFoundException {
@@ -194,10 +233,6 @@ public class Settings implements Initializable {
 
     @FXML
     void aboutAction() {
-        About.setStyle("-fx-background-color: #8F8F8F");
-        Settings.setStyle("-fx-background-color: #444");
-        Wallpaper.setStyle("-fx-background-color: #444");
-        Pages.setStyle("-fx-background-color: #444");
         AboutPane.setVisible(true);
         settingsPane.setVisible(false);
         WallpaperPane.setVisible(false);
@@ -206,10 +241,6 @@ public class Settings implements Initializable {
 
     @FXML
     void settingsAction() {
-        About.setStyle("-fx-background-color: #444");
-        Settings.setStyle("-fx-background-color: #8F8F8F");
-        Wallpaper.setStyle("-fx-background-color: #444");
-        Pages.setStyle("-fx-background-color: #444");
         AboutPane.setVisible(false);
         settingsPane.setVisible(true);
         WallpaperPane.setVisible(false);
@@ -218,10 +249,6 @@ public class Settings implements Initializable {
 
     @FXML
     void wallAction() {
-        About.setStyle("-fx-background-color: #444");
-        Settings.setStyle("-fx-background-color: #444");
-        Wallpaper.setStyle("-fx-background-color: #8F8F8F");
-        Pages.setStyle("-fx-background-color: #444");
         AboutPane.setVisible(false);
         settingsPane.setVisible(false);
         WallpaperPane.setVisible(true);
@@ -230,10 +257,6 @@ public class Settings implements Initializable {
 
     @FXML
     void pagesAction() {
-        About.setStyle("-fx-background-color: #444");
-        Settings.setStyle("-fx-background-color: #444");
-        Wallpaper.setStyle("-fx-background-color: #444");
-        Pages.setStyle("-fx-background-color: #8F8F8F");
         AboutPane.setVisible(false);
         settingsPane.setVisible(false);
         WallpaperPane.setVisible(false);
@@ -258,6 +281,8 @@ public class Settings implements Initializable {
                 double maxW = 1280;
                 primaryStage.setMaxWidth(maxW);
                 primaryStage.setScene(scene);
+                Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+                primaryStage.getIcons().add(icon);
                 primaryStage.show();
                 WholeSettingsPane.getScene().getWindow().hide();
 
@@ -535,7 +560,7 @@ public class Settings implements Initializable {
 
     @FXML
     void MaxCapacityClickChoice() {
-        if (!MaxCapacityClick.isSelected()){
+        if (!MaxCapacityClick.isSelected()) {
             MaxCapacityBox.setDisable(true);
             String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt";
 
@@ -547,8 +572,7 @@ public class Settings implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else {
             MaxCapacityBox.setDisable(false);
 
             MaxCapacityBox.getItems().add("100 MB");
@@ -577,26 +601,31 @@ public class Settings implements Initializable {
         }
     }
 
-    public static boolean CheckIsSplashScreen() {
-        boolean RunSplash = true;
+    public static boolean CheckIsMaxSize() {
+        boolean selectMaxSize = false;
         try {
-            File myObj = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/SplashScreen.txt");
+            File myObj = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                System.out.println("splash screen" + data);
-                if (data.contains("0")) {
-                    RunSplash = false;
+                String size = myReader.nextLine();
+                System.out.println("Max Capacity: " + size);
+                if ((size.equals("100")) ||
+                        (size.equals("200")) ||
+                        (size.equals("500")) ||
+                        (size.equals("1024"))||
+                        (size.equals("2048")) ||
+                        (size.equals("4096"))) {
+                    selectMaxSize = true;
                 }
             }
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
         }
-        return RunSplash;
+        return selectMaxSize;
     }
 
     public static boolean CheckIsAutoUpdate() {
-        boolean RunSplash = true;
+        boolean check = true;
         try {
             File myObj = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/AutoUpdates.txt");
             Scanner myReader = new Scanner(myObj);
@@ -604,13 +633,13 @@ public class Settings implements Initializable {
                 String data = myReader.nextLine();
                 System.out.println("auto updates: " + data);
                 if (data.contains("0")) {
-                    RunSplash = false;
+                    check = false;
                 }
             }
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
         }
-        return RunSplash;
+        return check;
     }
 
 }

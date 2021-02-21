@@ -8,7 +8,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
+//import java.awt.Image;
+import javafx.scene.image.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -32,7 +37,6 @@ public class Main extends Application {
         System.out.println("-----------------------");
         System.out.println(RunSplashScreen);
         if (InternetConnection() && RunSplashScreen) {
-            System.out.println("fuckfuckfuckfuck");
             double WEIGHT = 700;
             double HIGHT = new GetImgResolution().get_img_resolution("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/", 700);
 
@@ -48,6 +52,7 @@ public class Main extends Application {
             Scene scene = new Scene(root, WEIGHT, HIGHT);
             primaryStage.setScene(scene);
             primaryStage.initStyle(StageStyle.UNDECORATED);
+
             primaryStage.show();
         }
         else {
@@ -65,6 +70,8 @@ public class Main extends Application {
             double maxW = 1282;
             primaryStage.setMaxWidth(maxW);
             primaryStage.setScene(scene);
+            Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+            primaryStage.getIcons().add(icon);
             primaryStage.show();
         }
     }

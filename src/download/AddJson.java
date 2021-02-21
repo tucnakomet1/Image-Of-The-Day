@@ -12,7 +12,7 @@ public class AddJson {
         
         if (resolution.equals("100x300")){
             author = "unknown";
-            name = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/error.png";
+            name = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/error.png";
         }
 
         if (site.equals("Unsplash")) {

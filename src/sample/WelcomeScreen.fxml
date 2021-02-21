@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AnchorWelcome" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #444;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.WelcomeScreen">
+   <children>
+      <ImageView fx:id="WelcomeImage" fitHeight="250.0" fitWidth="590.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+      <Label fx:id="WelcomeText" maxHeight="105.0" text="Label" textAlignment="CENTER" textFill="#e4e4e4" wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="35.0">
+         <font>
+            <Font name="Times New Roman Italic" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="next" mnemonicParsing="false" onAction="#GoNext" styleClass="ButtonWelcome" stylesheets="@css.css" text="Next" textFill="#e4e4e4" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
+      <Button fx:id="Back" mnemonicParsing="false" onAction="#GoBack" styleClass="ButtonWelcome" stylesheets="@css.css" text="Back" textFill="#e4e4e4" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="80.0" />
+      <CheckBox fx:id="NoAgain" mnemonicParsing="false" onAction="#NoAgainClick" style="-fx-background-color: #444;" text="Don't show this again!" textFill="#e4e4e4" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="7.0" />
+      <Label text="Image Of The Day" textFill="#e4e4e4" AnchorPane.leftAnchor="190.0">
+         <font>
+            <Font name="Times New Roman Bold" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

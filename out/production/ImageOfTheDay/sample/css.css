@@ -7,21 +7,48 @@
     -fx-background-color: #dad8d8;
 }
 
+.button_about {
+    -fx-background-color: #444;
+    -fx-text-fill: #dad8d8;
+}
+.button_about:hover {
+    -fx-text-fill: #444;
+    -fx-background-color: #dad8d8;
+}
+
+.button_wall {
+    -fx-background-color: #444;
+    -fx-text-fill: #dad8d8;
+}
+.button_wall:hover {
+    -fx-text-fill: #444;
+    -fx-background-color: #dad8d8;
+}
+
+.button_sites {
+    -fx-background-color: #444;
+    -fx-text-fill: #dad8d8;
+}
+.button_sites:hover {
+    -fx-text-fill: #444;
+    -fx-background-color: #dad8d8;
+}
+
+
 .settingsButt {
-    -fx-background-color: transparent;
+    -fx-background-color: #444;
 }
 .settingsButt:hover {
-    -fx-background-color: #9e9e9e;
+    -fx-background-color: #dad8d8;
 }
 
 .downloadButt {
-    -fx-background-color: transparent;
+    -fx-background-color: #444;
 }
 .downloadButt:hover {
-    -fx-background-color: #9e9e9e;
+    -fx-background-color: #dad8d8;
 }
-.buttonAboutSettWallPage:hover {
-}
+
 .backButt {
    -fx-background-color: transparent;
 }
@@ -75,4 +102,16 @@
  
  .alertDialog .button:hover{     
    -fx-background-color:#f1f1f1;
-  }
+}
+
+
+
+.ButtonWelcome {
+    -fx-background-color: #444;
+    -fx-text-fill: #e4e4e4;
+}
+
+.ButtonWelcome:hover {
+    -fx-background-color: #e4e4e4;
+    -fx-text-fill: #444;
+}

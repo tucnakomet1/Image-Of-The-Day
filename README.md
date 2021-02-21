@@ -19,7 +19,6 @@
 * <a href = "#sites">WEB PAGES</a><br/>
 * <a href = "#libraries">LIBRARIES</a><br/>
 * <a href = "#screen">SCREENSHOTS</a><br/>
-* <a href = "https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/USAGE.md">USAGE</a><br/>
 * <a href = "https://github.com/tucnakomet1/Image-Of-The-Day/releases">RELEASES</a><br/>
 * <a href = "#license">LICENSE</a><br/>
 * <a href = "#contact">CONTACT</a><br/>
@@ -28,12 +27,6 @@
 
 <h2 id="install">INSTALLATION</h2>
 
- * <a href = "#windows">Windows</a><br/>
- * <a href = "#linux">Linux</a><br/>
-     * <a href = "debian">Debian based</a><br/>
-     * <a href = "arch">Arch based</a><br/>
-     * <a href = "fedora">Fedora based</a><br/>
- * <a href = "tar">Tarball/ Source</a><br/>
 
 <h3 id="windows">Windows</h3>
 
