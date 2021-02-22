@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
+import sample.MainIoTdPage.*;
 
 import java.awt.*;
 import java.io.*;
@@ -36,7 +37,7 @@ public class Settings implements Initializable {
     private ImageView SiteImage, SiteLogo;
 
     @FXML
-    private Button About, Settings, Wallpaper, Pages, backButton;
+    private Button backButton;
 
     @FXML
     private Label showVersion, SiteInfo;
@@ -100,6 +101,7 @@ public class Settings implements Initializable {
             MacTaskBarImg.setFitWidth(370);
         }
 
+        ChoiceBoxSetSource.getItems().clear();
         ChoiceBoxSetSource.getItems().add("Unsplash");
         ChoiceBoxSetSource.getItems().add("Bing");
         ChoiceBoxSetSource.getItems().add("NASA");
@@ -180,6 +182,19 @@ public class Settings implements Initializable {
         }
         VersionLinkAb.setText("v" + ver);
         showVersion.setText("Installed Version: v" + ver);
+
+        String RunStartupChacked = CheckIsRunStartup();
+        System.out.println("Run: " + RunStartupChacked);
+        if (!RunStartupChacked.equals("none")) {
+            RunStartupCheck.setSelected(true);
+            ChoicePage.setDisable(false);
+            ChoicePage.setValue(RunStartupChacked);
+        }
+        else if (RunStartupChacked.equals("none")) {
+            RunStartupCheck.setSelected(false);
+            ChoicePage.setDisable(true);
+            ChoicePage.setValue("-None-");
+        }
 
         boolean MaxCapChecked = CheckIsMaxSize();
         System.out.println("MaxCapChecked: " + MaxCapChecked);
@@ -534,9 +549,19 @@ public class Settings implements Initializable {
         if (!RunStartupCheck.isSelected()) {
             ChoicePage.setDisable(true);
             ChoicePage.setValue("-None-");
+            File file = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/RunAtStartup.txt");
+            FileWriter fw = null;
+            try {
+                fw = new FileWriter(file);
+                fw.write("none");
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         else {
             ChoicePage.setDisable(false);
+            ChoicePage.getItems().clear();
 
             ChoicePage.getItems().add("Unsplash");
             ChoicePage.getItems().add("Bing");
@@ -552,7 +577,16 @@ public class Settings implements Initializable {
 
             ChoicePage.setValue("-None-");
 
-            MaxCapacityBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, page) -> {
+            ChoicePage.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, page) -> {
+                File file = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/RunAtStartup.txt");
+                FileWriter fw;
+                try {
+                    fw = new FileWriter(file);
+                    fw.write(page);
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 System.out.println(page);
             });
         }
@@ -574,6 +608,7 @@ public class Settings implements Initializable {
             }
         } else {
             MaxCapacityBox.setDisable(false);
+            MaxCapacityBox.getItems().clear();
 
             MaxCapacityBox.getItems().add("100 MB");
             MaxCapacityBox.getItems().add("200 MB");
@@ -582,7 +617,7 @@ public class Settings implements Initializable {
             MaxCapacityBox.getItems().add("2048 MB");
             MaxCapacityBox.getItems().add("4096 MB");
 
-            MaxCapacityBox.setValue("100 MB");
+            MaxCapacityBox.setValue("-None-");
 
             MaxCapacityBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, capacity) -> {
                 System.out.println(capacity);
@@ -624,6 +659,22 @@ public class Settings implements Initializable {
         return selectMaxSize;
     }
 
+    public static String CheckIsRunStartup() {
+        String runStartup = null;
+        try{
+            File file = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/RunAtStartup.txt");
+            Scanner reader = new Scanner(file);
+            while (reader.hasNextLine()) {
+                String run = reader.nextLine();
+                System.out.println("Run? " + run);
+                runStartup = run.toString();
+            }
+        }catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return runStartup;
+    }
+
     public static boolean CheckIsAutoUpdate() {
         boolean check = true;
         try {
@@ -641,5 +692,4 @@ public class Settings implements Initializable {
         }
         return check;
     }
-
 }

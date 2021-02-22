@@ -31,13 +31,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 public class MainIoTdPage implements Initializable {
 
     public int number;
-    public int WelcomeRunNum = 0;
+    public boolean WelcomeRunNum = true;
 
     @FXML
     private AnchorPane MainPagePane;
@@ -467,6 +466,7 @@ public class MainIoTdPage implements Initializable {
                 Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
                 primaryStage.getIcons().add(icon);
                 primaryStage.show();
+                WelcomeRunNum = false;
                 MainPagePane.getScene().getWindow().hide();
 
             } catch (Exception ex) {
@@ -541,7 +541,7 @@ public class MainIoTdPage implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            if (WelcomeRunNum == 0) {
+            if (WelcomeRunNum) {
                 boolean runWelcome = CheckWelcomeScreen();
                 System.out.println("Welcome: " + runWelcome);
                 if (runWelcome) {
@@ -605,7 +605,6 @@ public class MainIoTdPage implements Initializable {
         if (value == 1){
             RunWelcome = true;
         }
-        WelcomeRunNum++;
         return RunWelcome;
     }
 

@@ -1,7 +1,5 @@
 package Settings;
 
-import fr.jcgay.notification.Notifier;
-import fr.jcgay.notification.SendNotification;
 
 import java.awt.*;
 import java.io.IOException;

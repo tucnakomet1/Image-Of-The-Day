@@ -112,6 +112,8 @@ public class SplashScreen implements Initializable {
                         double maxW = 1280;
                         primaryStage.setMaxWidth(maxW);
                         primaryStage.setScene(scene);
+                        Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+                        primaryStage.getIcons().add(icon);
                         primaryStage.show();
                         splash_pane.getScene().getWindow().hide();
                     }

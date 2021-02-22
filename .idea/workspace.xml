@@ -5,53 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/WelcomeScreen.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/WelcomeScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/BrowserLauncher2_all_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/controlsfx_11_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/send_notification_0_16_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/webp_imageio_core_0_1_3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageOfTheDay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ImageOfTheDay.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON_data/author.json" beforeDir="false" afterPath="$PROJECT_DIR$/JSON_data/author.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON_data/img.json" beforeDir="false" afterPath="$PROJECT_DIR$/JSON_data/img.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON_data/resolution.json" beforeDir="false" afterPath="$PROJECT_DIR$/JSON_data/resolution.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USAGE.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/CheckDate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CheckDate.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/version.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/version.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/APODNASA-2021-02-20-02-45-50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/BigGeekDaddy-2021-02-20-02-45-48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/Bing-2021-02-20-02-46-7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/EPOD-USRA-2021-02-20-02-46-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/EarthObservatory-2021-02-20-02-46-15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/NASA-2021-02-20-02-46-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/NESDIS-NOAA-2021-02-20-02-46-9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/NationalGeographic-2021-02-20-02-45-48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/Unsplash-2021-02-20-02-45-39.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/WikimediaCommon-2021-02-20-02-45-57.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Splash/Joe-Raedle-2021-02-20-02-45-36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/RunWelcomeScreen.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/RunWelcomeScreen.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/APODNASA-2021-02-21-10-29-27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/BigGeekDaddy-2021-02-21-10-29-24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/Bing-2021-02-21-10-29-57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/EPOD-USRA-2021-02-21-10-29-37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/EarthObservatory-2021-02-21-10-30-6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/NASA-2021-02-21-10-29-38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/NESDIS-NOAA-2021-02-21-10-30-0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/NationalGeographic-2021-02-21-10-29-25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/Unsplash-2021-02-21-10-29-17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/WikimediaCommon-2021-02-21-10-29-34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Splash/Erin-Schaff--2021-02-21-10-29-14.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/Splash/author.txt" beforeDir="false" afterPath="$PROJECT_DIR$/images/Splash/author.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/SendNotif.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/SendNotif.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Downloaded.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Downloaded.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/ShowNotice.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/ShowNotice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/AddJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/AddJson.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/MainIoTdPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/MainIoTdPage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/css.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/MainPage.png" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/MainPage.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/MainPageImg.png" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/MainPageImg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings/SendNotif.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/SendNotif.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/download/AddJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/AddJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Downloaded.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Downloaded.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/ShowNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/ShowNotice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MainIoTdPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainIoTdPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Settings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/SplashScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SplashScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/css.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SplashScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -384,6 +371,22 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/Settings.java</url>
+          <line>185</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/sample/Settings.java</url>
+          <line>563</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

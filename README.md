@@ -20,6 +20,8 @@
 * <a href = "#libraries">LIBRARIES</a><br/>
 * <a href = "#screen">SCREENSHOTS</a><br/>
 * <a href = "https://github.com/tucnakomet1/Image-Of-The-Day/releases">RELEASES</a><br/>
+* <a href = "survey">SURVEY</a></br>
+* <a href = "#todo">TO-DO LIST</a><br/>
 * <a href = "#license">LICENSE</a><br/>
 * <a href = "#contact">CONTACT</a><br/>
 
@@ -127,7 +129,20 @@ Created with [Java openjdk-15.0.2](https://www.oracle.com/java/technologies/java
 
 ![settingswallpaper](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/SettingsWallpaper.png)
 
-![settingspages](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/SettingsPages.png)<br/><br/><br/>
+![settingspages](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/SettingsPages.png)<br/><br/><br/><br/><br/>
+
+<h2 id="survey"> SURVEY </h2>
+
+<p align="center" >Do you want to improve Image-Of-The-Day? Do you want to rate it? Or do you want to react for it?</p>
+<p align="center"><b>Fill out</b> this survey to help me <b>improve</b> this app!</p>
+
+[![survey](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/survey.png "Image-Of-The-Day survey!")](http://www.survey-maker.com/QJSZDCRK9)
+<h2 id="todo"> TO-DO LIST </h2>
+
+- [ ] Mac OS support
+- [ ] Add white theme
+
+<br/><br/><br/>
 
 <h2 id="license"> LICENSE </h2>
 
