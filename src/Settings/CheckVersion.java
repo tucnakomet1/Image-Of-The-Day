@@ -13,7 +13,7 @@ public class CheckVersion {
     public CheckVersion() throws IOException, AWTException, InterruptedException {
     }
 
-    public static void Version() throws IOException, InterruptedException {
+    public static void Version() throws IOException {
         String VersionFile = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/version.txt";
         String VersionURL = "https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/controllers/version.txt";
 
@@ -22,17 +22,17 @@ public class CheckVersion {
 
         System.out.println("\n" + ReadFile + "\n" + ReadURL);
 
+        String send;
         if (ReadFile.equals(ReadURL)){
-            String sent = "Your version '" + ReadFile + "' is actual.";
-            new ShowNotice(sent, "Upgrade");
-            System.out.println(sent);
+            send = "Your version '" + ReadFile + "' is actual.";
+            new ShowAlert("Upgrade", send);
         }
         else{
-            String sent = "Your version '" + ReadFile + "' is old and can be upgraded with the version '" + ReadURL + "'.";
-            new ShowNotice(sent, "Image-Of-The-Day");
+            send = "Your version '" + ReadFile + "' is outdated and can be upgraded with the version '" + ReadURL + "'.";
+            new ShowAlert("Upgrade", send);
             new OpenUrl("https://github.com/tucnakomet1/Image-Of-The-Day/releases");
-            System.out.println(sent);
         }
+        System.out.println(send);
     }
 
     public static String ReadFileVersion(String version) throws FileNotFoundException {

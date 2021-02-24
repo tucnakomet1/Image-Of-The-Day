@@ -22,10 +22,11 @@ public class GetImgTheYear {
             e.printStackTrace();
         }
 
+        assert doc != null;
         Elements els = doc.select("img[src]");
-        ArrayList<String> img_urls = new ArrayList<String>();
-        ArrayList<String> author_name = new ArrayList<String>();
-        ArrayList<String> url_author = new ArrayList<String>();
+        ArrayList<String> img_urls = new ArrayList<>();
+        ArrayList<String> author_name = new ArrayList<>();
+        ArrayList<String> url_author = new ArrayList<>();
 
         for (Element el : els ) {
             String img_url = el.absUrl("src");

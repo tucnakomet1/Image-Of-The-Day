@@ -38,7 +38,6 @@ public class SplashScreen implements Initializable {
             Scanner sc = new Scanner(folder);
             while (sc.hasNextLine()) {
                 AuthorName = sc.nextLine();
-                return AuthorName;
             }
             sc.close();
         }

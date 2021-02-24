@@ -1,24 +1,17 @@
 package sample;
 
-import Settings.*;
+import Settings.CheckVersion;
+import Settings.SendNotif;
 import download.GetImgTheYear;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import javax.imageio.ImageIO;
 import java.awt.*;
-//import java.awt.Image;
-import javafx.scene.image.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.MalformedURLException;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
@@ -27,7 +20,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-
 
 public class Main extends Application {
     private static boolean RunSplashScreen;
@@ -53,7 +45,6 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.initStyle(StageStyle.UNDECORATED);
 
-            primaryStage.show();
         }
         else {
             Parent root = null;
@@ -72,8 +63,8 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
             primaryStage.getIcons().add(icon);
-            primaryStage.show();
         }
+        primaryStage.show();
     }
 
     public static boolean RunSplash() throws IOException {
@@ -112,26 +103,6 @@ public class Main extends Application {
             System.out.println("An error occurred.");
         }
         return RunAuto;
-    }
-
-    public static void CheckDownloadPath() throws FileNotFoundException {
-        String path = null;
-        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/DownloadPath.txt";
-        Scanner myReader = new Scanner(new File(dir));
-        int num = 0;
-        while (myReader.hasNextLine()) {
-            num++;
-            if (num == 1) {
-                path = myReader.nextLine();
-                System.out.println(path);
-            }
-        }
-        myReader.close();
-        File REAL_PATH = new File(path);
-        System.out.println(REAL_PATH + "\t" + path);
-        if (!Files.exists(REAL_PATH.toPath())) {
-            REAL_PATH.mkdir();
-        }
     }
 
     public static void check_free() throws IOException {
@@ -173,6 +144,12 @@ public class Main extends Application {
         Format myFormatObj = new SimpleDateFormat("yyyy/MM/dd");
         String RealDate = myFormatObj.format(new Date());
         System.out.println(RealDate);
+
+
+        /*Main m = new Main();
+        String res = m.getClass().getResource("../../controllers/CheckDate.txt").toExternalForm();
+        System.out.println(res);
+        File myObj = new File(String.valueOf(res));*/
 
         String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/CheckDate.txt";
         File myObj = new File(path);
@@ -226,7 +203,6 @@ public class Main extends Application {
             RunSplashScreen = true;
 
         }
-
         launch(args);
     }
 }

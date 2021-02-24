@@ -18,18 +18,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
-import sample.MainIoTdPage.*;
-
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Settings implements Initializable {
 
     @FXML
-    private AnchorPane WholeSettingsPane, AboutPane, settingsPane, WallpaperPane, PagesPane;
+    private AnchorPane WholeSettingsPane, AboutPane, WallpaperPane, PagesPane;
 
     @FXML
     private ImageView BackImg, LogoImg, imgBack, GitUmg, WallpaperBackgrounImage, monitor_img, BrowserImg, FolderImg, FileImg, TaskBarImg, TaskBarLinuxImg, MacTaskBarImg, GitReport;
@@ -46,13 +45,13 @@ public class Settings implements Initializable {
     private Hyperlink VersionLinkAb;
 
     @FXML
-    private CheckBox CheckAutoUpdates, MaxCapacityClick, RunStartupCheck;
+    private CheckBox CheckAutoUpdates, MaxCapacityClick;
 
     @FXML
     private TextField textPathField;
 
     @FXML
-    private ChoiceBox<String> ChoiceBoxSetSource, MaxCapacityBox, ChoicePage;
+    private ChoiceBox<String> ChoiceBoxSetSource, MaxCapacityBox;
 
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -183,19 +182,6 @@ public class Settings implements Initializable {
         VersionLinkAb.setText("v" + ver);
         showVersion.setText("Installed Version: v" + ver);
 
-        String RunStartupChacked = CheckIsRunStartup();
-        System.out.println("Run: " + RunStartupChacked);
-        if (!RunStartupChacked.equals("none")) {
-            RunStartupCheck.setSelected(true);
-            ChoicePage.setDisable(false);
-            ChoicePage.setValue(RunStartupChacked);
-        }
-        else if (RunStartupChacked.equals("none")) {
-            RunStartupCheck.setSelected(false);
-            ChoicePage.setDisable(true);
-            ChoicePage.setValue("-None-");
-        }
-
         boolean MaxCapChecked = CheckIsMaxSize();
         System.out.println("MaxCapChecked: " + MaxCapChecked);
         if (MaxCapChecked) {
@@ -225,7 +211,7 @@ public class Settings implements Initializable {
                 System.out.println(size);
             }
         }
-        assert size != "none";
+        assert !Objects.equals(size, "none");
         return size;
     }
 
@@ -249,15 +235,6 @@ public class Settings implements Initializable {
     @FXML
     void aboutAction() {
         AboutPane.setVisible(true);
-        settingsPane.setVisible(false);
-        WallpaperPane.setVisible(false);
-        PagesPane.setVisible(false);
-    }
-
-    @FXML
-    void settingsAction() {
-        AboutPane.setVisible(false);
-        settingsPane.setVisible(true);
         WallpaperPane.setVisible(false);
         PagesPane.setVisible(false);
     }
@@ -265,7 +242,6 @@ public class Settings implements Initializable {
     @FXML
     void wallAction() {
         AboutPane.setVisible(false);
-        settingsPane.setVisible(false);
         WallpaperPane.setVisible(true);
         PagesPane.setVisible(false);
     }
@@ -273,7 +249,6 @@ public class Settings implements Initializable {
     @FXML
     void pagesAction() {
         AboutPane.setVisible(false);
-        settingsPane.setVisible(false);
         WallpaperPane.setVisible(false);
         PagesPane.setVisible(true);
     }
@@ -545,54 +520,6 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void RunAtStartupCheck() {
-        if (!RunStartupCheck.isSelected()) {
-            ChoicePage.setDisable(true);
-            ChoicePage.setValue("-None-");
-            File file = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/RunAtStartup.txt");
-            FileWriter fw = null;
-            try {
-                fw = new FileWriter(file);
-                fw.write("none");
-                fw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-            ChoicePage.setDisable(false);
-            ChoicePage.getItems().clear();
-
-            ChoicePage.getItems().add("Unsplash");
-            ChoicePage.getItems().add("Bing");
-            ChoicePage.getItems().add("NASA");
-            ChoicePage.getItems().add("National Geographic");
-            ChoicePage.getItems().add("Wikimedia Common");
-            ChoicePage.getItems().add("EPOD-USRA");
-            ChoicePage.getItems().add("NESDIS-NOAA");
-            ChoicePage.getItems().add("Earth Observatory");
-            ChoicePage.getItems().add("Big Geek Daddy");
-            ChoicePage.getItems().add("APOD NASA");
-            ChoicePage.getItems().add("All - random choose");
-
-            ChoicePage.setValue("-None-");
-
-            ChoicePage.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, page) -> {
-                File file = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/RunAtStartup.txt");
-                FileWriter fw;
-                try {
-                    fw = new FileWriter(file);
-                    fw.write(page);
-                    fw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(page);
-            });
-        }
-    }
-
-    @FXML
     void MaxCapacityClickChoice() {
         if (!MaxCapacityClick.isSelected()) {
             MaxCapacityBox.setDisable(true);
@@ -657,22 +584,6 @@ public class Settings implements Initializable {
             System.out.println("An error occurred.");
         }
         return selectMaxSize;
-    }
-
-    public static String CheckIsRunStartup() {
-        String runStartup = null;
-        try{
-            File file = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/RunAtStartup.txt");
-            Scanner reader = new Scanner(file);
-            while (reader.hasNextLine()) {
-                String run = reader.nextLine();
-                System.out.println("Run? " + run);
-                runStartup = run.toString();
-            }
-        }catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return runStartup;
     }
 
     public static boolean CheckIsAutoUpdate() {

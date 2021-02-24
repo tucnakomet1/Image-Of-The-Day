@@ -5,40 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/BrowserLauncher2_all_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/controlsfx_11_0_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/send_notification_0_16_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/webp_imageio_core_0_1_3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageOfTheDay.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ImageOfTheDay.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON_data/author.json" beforeDir="false" afterPath="$PROJECT_DIR$/JSON_data/author.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON_data/img.json" beforeDir="false" afterPath="$PROJECT_DIR$/JSON_data/img.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JSON_data/resolution.json" beforeDir="false" afterPath="$PROJECT_DIR$/JSON_data/resolution.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AutoUpdates.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AutoUpdates.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/CheckDate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/CheckDate.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/RunWelcomeScreen.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/RunWelcomeScreen.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/APODNASA-2021-02-21-10-29-27.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/BigGeekDaddy-2021-02-21-10-29-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/Bing-2021-02-21-10-29-57.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/EPOD-USRA-2021-02-21-10-29-37.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/EarthObservatory-2021-02-21-10-30-6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/NASA-2021-02-21-10-29-38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/NESDIS-NOAA-2021-02-21-10-30-0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/NationalGeographic-2021-02-21-10-29-25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/Unsplash-2021-02-21-10-29-17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Day/WikimediaCommon-2021-02-21-10-29-34.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Splash/Erin-Schaff--2021-02-21-10-29-14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/RunAtStartup.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/APODNASA-2021-02-22-03-26-44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/BigGeekDaddy-2021-02-22-03-26-39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/Bing-2021-02-22-03-26-57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/EPOD-USRA-2021-02-22-03-26-51.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/EarthObservatory-2021-02-22-03-27-5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/NASA-2021-02-22-03-26-53.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/NESDIS-NOAA-2021-02-22-03-26-59.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/NationalGeographic-2021-02-22-03-26-42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/Unsplash-2021-02-22-03-26-31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Day/WikimediaCommon-2021-02-22-03-26-46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Splash/Meghan-Dhaliwal-2021-02-22-03-26-30.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/Splash/author.txt" beforeDir="false" afterPath="$PROJECT_DIR$/images/Splash/author.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/ShowNotice.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/ShowNotice.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/AddJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/AddJson.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/ChangeBackground.sh" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/ChangeBackground.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/CheckVersion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/CheckVersion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/OpenUrl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/OpenUrl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/SetWallpaper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/SetWallpaper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/Settings/ShowNotice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/DownloadImg.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/download/DownloadImg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/MainIoTdPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/MainIoTdPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/Settings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ImageOfTheDay/sample/SplashScreen$splashscreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settings/ShowNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/ShowNotice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/MainGif.gif" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/MainGif.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/ChangeBackground.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/ChangeBackground.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/CheckVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/CheckVersion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/OpenUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/OpenUrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/SendNotif.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/SendNotif.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/SetWallpaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/SetWallpaper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/ShowNotice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/ShowAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/DownloadImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/DownloadImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/GetImgTheYear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/GetImgTheYear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/download/USRA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/download/USRA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MainIoTdPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainIoTdPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Settings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Settings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SplashScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/WelcomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/WelcomeScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/css.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,41 +101,6 @@
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="27" selection-start="136" selection-end="136" vertical-scroll-proportion="0.17171717">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample.fxml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="45" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -139,6 +116,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -219,8 +204,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../send-notification-cli-0.16.0-binaries/repo/send-notification-0.16.0.jar" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="/opt/SceneBuilder/SceneBuilder" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -371,22 +356,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sample/Settings.java</url>
-          <line>185</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sample/Settings.java</url>
-          <line>563</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

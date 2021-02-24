@@ -1,3 +1,13 @@
+echo "Image-Of-The-Day"
+echo "Version v0.1.2-release"
+
+echo ""
+echo "GitHub: <https://github.com/tucnakomet1/Image-Of-The-Day>"
+echo ""
+
+
+
+
 touch $(xdg-user-dir DESKTOP)/img_of_the_day.desktop
 
 echo "[Desktop Entry]" >> $(xdg-user-dir DESKTOP)/img_of_the_day.desktop

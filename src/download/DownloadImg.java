@@ -6,8 +6,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -58,18 +58,20 @@ public class DownloadImg {
                 System.out.println("Adding JSON");
                 new AddJson(output, author, site, resolution);
             }
+            else {
+                File fl = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/WallpaperPath.txt");
+                FileWriter fw = new FileWriter(fl);
+                fw.write(output);
+                fw.close();
+            }
             System.out.println("DONE");
             System.out.println("Downloaded in: " + output);
         } catch (IOException e) {
-            System.out.println("Ahoj, to se nepovedlo");
-            System.out.println(String.valueOf(e));
             e.printStackTrace();
             if (resize) {
                 new AddJson("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/error.png", "unknown", site, "100x300");
             }
             else {
-                System.out.println("Ahoj, to se nepovedlo");
-                System.out.println(String.valueOf(e));
                 new SendNotif().SendDownloadErrorAlert(e);
             }
         }

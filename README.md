@@ -115,13 +115,10 @@ Created with [Java openjdk-15.0.2](https://www.oracle.com/java/technologies/java
 
 * Json-simple (1.1.1) - [download](https://gitlab.cs.washington.edu/cse332-16au/p1/blob/master/json-simple-1.1.1.jar)
 * Jsoup (1.13.1) - [download](https://jsoup.org/download)
-* webp-imageio-core (0.1.3) - [download](https://github.com/nintha/webp-imageio-core)
 
 <br/><br/><br/>
 
 <h2 id="screen">SCREENSHOTS</h2>
-
-![splashscreen](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/SplashScreen.png)
 
 ![mainpage](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainPage.png)
 
@@ -141,6 +138,9 @@ Created with [Java openjdk-15.0.2](https://www.oracle.com/java/technologies/java
 
 - [ ] Mac OS support
 - [ ] Add white theme
+- [ ] New languages
+- [ ] New pages ([Flickr](https://www.flickr.com/)) - please contact me if you know another one
+- [ ] Run at startup
 
 <br/><br/><br/>
 

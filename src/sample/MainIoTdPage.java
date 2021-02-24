@@ -1,6 +1,9 @@
 package sample;
 
-import Settings.*;
+import Settings.OpenUrl;
+import Settings.SendNotif;
+import Settings.SetWallpaper;
+import Settings.ShowAlert;
 import download.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -60,7 +62,7 @@ public class MainIoTdPage implements Initializable {
 
 
     @FXML
-    void OpenImageView1(MouseEvent event) {
+    void OpenImageView1() {
         number = 0;
         String Img = getJsonImg(number);
 
@@ -76,7 +78,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView2(MouseEvent event) {
+    void OpenImageView2() {
         number = 1;
         String Img = getJsonImg(number);
 
@@ -92,7 +94,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView3(MouseEvent event) {
+    void OpenImageView3() {
         number = 2;
         String Img = getJsonImg(number);
 
@@ -108,7 +110,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView4(MouseEvent event) {
+    void OpenImageView4() {
         number = 3;
         String Img = getJsonImg(number);
 
@@ -124,7 +126,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView5(MouseEvent event) {
+    void OpenImageView5() {
         number = 4;
         String Img = getJsonImg(number);
 
@@ -140,7 +142,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView6(MouseEvent event) {
+    void OpenImageView6() {
         number = 5;
         String Img = getJsonImg(number);
 
@@ -156,7 +158,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView7(MouseEvent event) {
+    void OpenImageView7() {
         number = 6;
         String Img = getJsonImg(number);
 
@@ -172,7 +174,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView8(MouseEvent event) {
+    void OpenImageView8() {
         number = 7;
         String Img = getJsonImg(number);
 
@@ -188,7 +190,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView9(MouseEvent event) {
+    void OpenImageView9() {
         number = 8;
         String Img = getJsonImg(number);
 
@@ -204,7 +206,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView10(MouseEvent event) {
+    void OpenImageView10() {
         number = 9;
         String Img = getJsonImg(number);
 
@@ -220,78 +222,76 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void SearchButtGo(ActionEvent event) {
+    void SearchButtGo() {
         String site = GetSiteName(number);
         System.out.println("Searching for: " + site);
         switch (site) {
-            case ("Unsplash"):
-                new OpenUrl("https://source.unsplash.com/collection/%1/3840x2160/daily");
-                break;
-            case ("Big Geek Daddy"):
-                new OpenUrl("https://biggeekdad.com/photo-of-the-day/");
-                break;
-            case ("National Geographic"):
-                new OpenUrl("https://www.nationalgeographic.co.uk/photo-of-day");
-                break;
-            case ("APOD NASA"):
-                new OpenUrl("https://apod.nasa.gov/apod/astropix.html");
-                break;
-            case ("Wikimedia Common"):
-                new OpenUrl("https://commons.wikimedia.org/wiki/Main_Page");
-                break;
-            case ("EPOD-USRA"):
-                new OpenUrl("https://epod.usra.edu/blog/");
-                break;
-            case ("NASA"):
-                new OpenUrl("https://www.nasa.gov/multimedia/imagegallery/iotd.html");
-                break;
-            case ("Bing"):
-                new OpenUrl("https://www.bing.com/");
-                break;
-            case ("NESDIS-NOAA"):
-                new OpenUrl("https://www.nesdis.noaa.gov/satellites-image-of-the-day");
-                break;
-            case ("Earth Observatory"):
-                new OpenUrl("https://earthobservatory.nasa.gov/topic/image-of-the-day");
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + site);
+            case ("Unsplash") -> new OpenUrl("https://source.unsplash.com/collection/%1/3840x2160/daily");
+            case ("Big Geek Daddy") -> new OpenUrl("https://biggeekdad.com/photo-of-the-day/");
+            case ("National Geographic") -> new OpenUrl("https://www.nationalgeographic.co.uk/photo-of-day");
+            case ("APOD NASA") -> new OpenUrl("https://apod.nasa.gov/apod/astropix.html");
+            case ("Wikimedia Common") -> new OpenUrl("https://commons.wikimedia.org/wiki/Main_Page");
+            case ("EPOD-USRA") -> new OpenUrl("https://epod.usra.edu/blog/");
+            case ("NASA") -> new OpenUrl("https://www.nasa.gov/multimedia/imagegallery/iotd.html");
+            case ("Bing") -> new OpenUrl("https://www.bing.com/");
+            case ("NESDIS-NOAA") -> new OpenUrl("https://www.nesdis.noaa.gov/satellites-image-of-the-day");
+            case ("Earth Observatory") -> new OpenUrl("https://earthobservatory.nasa.gov/topic/image-of-the-day");
+            default -> throw new IllegalStateException("Unexpected value: " + site);
         }
     }
 
     @FXML
-    void SetButtGo(ActionEvent event) throws IOException, InterruptedException {
+    void SetButtGo() throws IOException {
         String site = GetSiteName(number);
         System.out.println("Set image: " + site);
+        String path = findPath();
         switch (site) {
-            case ("Unsplash"):
+            case ("Unsplash") -> {
+                new UnsplashDownload(false, path);
                 new SetWallpaper();
-                break;
-            case ("Big Geek Daddy"):
-                break;
-            case ("National Geographic"):
-                break;
-            case ("APOD NASA"):
-                break;
-            case ("Wikimedia Common"):
-                break;
-            case ("EPOD-USRA"):
-                break;
-            case ("NASA"):
-                break;
-            case ("Bing"):
-                break;
-            case ("NESDIS-NOAA"):
-                break;
-            case ("Earth Observatory"):
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + site);
+            }
+            case ("Big Geek Daddy") -> {
+                new BigGeekDaddyDownload(false, path);
+                new SetWallpaper();
+            }
+            case ("National Geographic") -> {
+                new NationGeoDownload(false, path);
+                new SetWallpaper();
+            }
+            case ("APOD NASA") -> {
+                new ApodNASADownload(false, path);
+                new SetWallpaper();
+            }
+            case ("Wikimedia Common") -> {
+                new WikimediaDownload(false, path);
+                new SetWallpaper();
+            }
+            case ("EPOD-USRA") -> {
+                new USRA(false, path);
+                new SetWallpaper();
+            }
+            case ("NASA") -> {
+                new SetWallpaper();
+                new NASADownload(false, path);
+            }
+            case ("Bing") -> {
+                new SetWallpaper();
+                new BingDownload(false, path);
+            }
+            case ("NESDIS-NOAA") -> {
+                new NOAADownload(false, path);
+                new SetWallpaper();
+            }
+            case ("Earth Observatory") -> {
+                new EarthObservDownload(false, path);
+                new SetWallpaper();
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + site);
         }
     }
 
     @FXML
-    void DownloadButtGo(ActionEvent event) throws IOException {
+    void DownloadButtGo() throws IOException {
         if (CheckDirSize()) {
             String site = GetSiteName(number);
             System.out.println("Downloading: " + site);
@@ -299,38 +299,47 @@ public class MainIoTdPage implements Initializable {
             System.out.println(path);
 
             switch (site) {
-                case ("Unsplash"):
+                case ("Unsplash") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new UnsplashDownload(false, path);
-                    break;
-                case ("Big Geek Daddy"):
+                }
+                case ("Big Geek Daddy") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new BigGeekDaddyDownload(false, path);
-                    break;
-                case ("National Geographic"):
+                }
+                case ("National Geographic") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new NationGeoDownload(false, path);
-                    break;
-                case ("APOD NASA"):
+                }
+                case ("APOD NASA") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new ApodNASADownload(false, path);
-                    break;
-                case ("Wikimedia Common"):
+                }
+                case ("Wikimedia Common") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new WikimediaDownload(false, path);
-                    break;
-                case ("EPOD-USRA"):
+                }
+                case ("EPOD-USRA") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new USRA(false, path);
-                    break;
-                case ("NASA"):
+                }
+                case ("NASA") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new NASADownload(false, path);
-                    break;
-                case ("Bing"):
+                }
+                case ("Bing") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new BingDownload(false, path);
-                    break;
-                case ("NESDIS-NOAA"):
+                }
+                case ("NESDIS-NOAA") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new NOAADownload(false, path);
-                    break;
-                case ("Earth Observatory"):
+                }
+                case ("Earth Observatory") -> {
+                    new ShowAlert("Downloading", "Image will be saved in " + path);
                     new EarthObservDownload(false, path);
-                    break;
-                default:
-                    throw new IllegalStateException("Unexpected value: " + site);
+                }
+                default -> throw new IllegalStateException("Unexpected value: " + site);
             }
             new SendNotif().SendInfoAlert(site, path);
         }
@@ -345,7 +354,6 @@ public class MainIoTdPage implements Initializable {
         String path = findPath();
         int maxSize = FindCapacity();
         if (maxSize == 0){
-            CanDownload = true;
         }
         else {
             try (Stream<Path> walk = Files.walk(Path.of(path))) {
@@ -353,7 +361,7 @@ public class MainIoTdPage implements Initializable {
                     try {
                         return Files.size(p);
                     } catch (IOException e) {
-                        System.out.printf("Failed to get size of " + p + " " + e);
+                        System.out.print("Failed to get size of " + p + " " + e);
                         return 0L;
                     }
                 })
@@ -389,8 +397,9 @@ public class MainIoTdPage implements Initializable {
                 System.out.println(size);
             }
         }
+        assert size != null;
         if (!size.equals("none")) {
-            maxSize = Integer.valueOf(size);
+            maxSize = Integer.parseInt(size);
         }
         return maxSize;
     }
@@ -411,7 +420,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void CloseAnchorPane(MouseEvent event) {
+    void CloseAnchorPane() {
         BlurPane.setVisible(false);
         View1.setVisible(false);
         View2.setVisible(false);
@@ -430,17 +439,37 @@ public class MainIoTdPage implements Initializable {
 
 
     @FXML
-    void downloadButt(ActionEvent event) throws IOException {
+    void downloadButt() throws IOException {
         String OS = System.getProperty("os.name");
         String ImgsPath = findPath();
         if (OS.contains("Windows")) {
             Runtime.getRuntime().exec("explorer " + ImgsPath);
         }
         else if (OS.contains("Linux")) {
-            Runtime.getRuntime().exec("xdg-open " + ImgsPath);
+            try {
+                Runtime.getRuntime().exec("xdg-open " + ImgsPath);
+            }catch (Exception e){
+                try {
+                    Runtime.getRuntime().exec("gnome-open " + ImgsPath);
+                }catch (Exception e1) {
+                    try {
+                        Runtime.getRuntime().exec("kde-open " + ImgsPath);
+                    }catch (Exception e2){
+                        try {
+                            Runtime.getRuntime().exec("nautilus " + ImgsPath);
+                        }catch (Exception e3){
+                            System.out.println("Failed to open " + ImgsPath);
+                            e.printStackTrace();
+                            e1.printStackTrace();
+                            e2.printStackTrace();
+                            e3.printStackTrace();
+                        }
+                    }
+                }
+            }
         }
         if (OS.contains("Darwin")) {
-            Runtime.getRuntime().exec("");
+            Runtime.getRuntime().exec("open" + ImgsPath);
         }
     }
 
@@ -516,9 +545,7 @@ public class MainIoTdPage implements Initializable {
         try {
             Img = new ReadJson().GetElement(site, new FileReader(ImgPathJSON));
             System.out.println(Img);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         return Img;
@@ -528,15 +555,13 @@ public class MainIoTdPage implements Initializable {
         ArrayList<String> PrefResolList = null;
         try {
             PrefResolList = ResolPref.get_pref_resolution();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         System.out.println(PrefResolList);
 
-        String site = PrefResolList.get(num);
-        return site;
+        assert PrefResolList != null;
+        return PrefResolList.get(num);
     }
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -595,7 +620,7 @@ public class MainIoTdPage implements Initializable {
                 String prevalue = myReader.nextLine();
                 System.out.println(prevalue);
                 try {
-                    value = Integer.valueOf(prevalue);
+                    value = Integer.parseInt(prevalue);
                     System.out.println(value);
                 }catch (Exception e) {
                     e.printStackTrace();

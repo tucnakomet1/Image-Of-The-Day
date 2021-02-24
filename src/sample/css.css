@@ -1,12 +1,3 @@
-.button_settings {
-    -fx-background-color: #444;
-    -fx-text-fill: #dad8d8;
-}
-.button_settings:hover {
-    -fx-text-fill: #444;
-    -fx-background-color: #dad8d8;
-}
-
 .button_about {
     -fx-background-color: #444;
     -fx-text-fill: #dad8d8;
