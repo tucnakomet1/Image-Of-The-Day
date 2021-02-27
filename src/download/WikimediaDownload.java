@@ -15,6 +15,8 @@ public class WikimediaDownload {
         String author = get_author(http_url);
         String site = "Wikimedia Common";
 
+        System.out.println("img: " + img_url + "\nurl: " + site +  "author: " + author);
+
         new DownloadImg(img_url, author, site, resize, path);
     }
 
@@ -64,7 +66,6 @@ public class WikimediaDownload {
                 ImgNum++;
                 if (ImgNum == 1) {
                     img_url = el2.absUrl("href");
-                    System.out.println("url img: " + img_url);
                 }
             }
         }
@@ -91,7 +92,6 @@ public class WikimediaDownload {
                 AuthNum++;
                 if (AuthNum == 1) {
                     author_name = el.text();
-                    System.out.println(author_name);
                 }
             }
         }

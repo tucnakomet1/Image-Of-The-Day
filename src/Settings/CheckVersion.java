@@ -2,6 +2,7 @@ package Settings;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import sample.Main;
 
 import java.awt.*;
 import java.io.File;
@@ -10,17 +11,18 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class CheckVersion {
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
+
     public CheckVersion() throws IOException, AWTException, InterruptedException {
     }
 
     public static void Version() throws IOException {
-        String VersionFile = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/version.txt";
+        String VersionFile = (cls.getResource("/controllers/version.txt")).getPath();
         String VersionURL = "https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/controllers/version.txt";
 
         String ReadFile = ReadFileVersion(VersionFile);
         String ReadURL =  ReadUrlVersion(VersionURL);
-
-        System.out.println("\n" + ReadFile + "\n" + ReadURL);
 
         String send;
         if (ReadFile.equals(ReadURL)){
@@ -54,7 +56,6 @@ public class CheckVersion {
         try {
             doc = Jsoup.connect(version).get();
             String preversion = doc.text();
-            System.out.println(version);
 
             if (preversion.contains("version")){
                 version = preversion.replace("version ", "");

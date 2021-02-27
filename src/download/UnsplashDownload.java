@@ -9,6 +9,8 @@ public class UnsplashDownload {
         String author = "Unsplash";
         String site = "Unsplash";
 
+        System.out.println("img: " + img_url + "\nurl: " + site +  "author: " + author);
+
         new DownloadImg(img_url, author, site, resize, path);
     }
 }

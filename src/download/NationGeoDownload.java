@@ -13,6 +13,8 @@ public class NationGeoDownload {
         String author = get_author();
         String site = "National Geographic";
 
+        System.out.println("img: " + img_url + "\nurl: " + site +  "author: " + author);
+
         new DownloadImg(img_url, author, site, resize, path);
     }
 
@@ -36,8 +38,6 @@ public class NationGeoDownload {
                 String NotImg_url = el.absUrl("src");
                 String[] newIMG = NotImg_url.replace("?w=", "llll").split("llll");
                 img_url = newIMG[0];
-
-                System.out.println("url img: " + img_url);
             }
         }
         return img_url;
@@ -65,13 +65,6 @@ public class NationGeoDownload {
                 author_name = toSplit[0];
             }
         }
-
-        try {
-            System.out.println(author_name);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
         return author_name;
     }
 }

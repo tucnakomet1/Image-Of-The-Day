@@ -15,6 +15,8 @@ public class BingDownload {
         String http_url = splitted_urls[1];
         String author = get_author(http_url);
 
+        System.out.println("img: " + img_url + "\nurl: " + http_url +  "author: " + author);
+
         String site = "Bing";
 
         new DownloadImg(img_url, author, site, resize, path);
@@ -42,7 +44,6 @@ public class BingDownload {
 
                 if (httpNum == 1) {
                     http_url = el.absUrl("href");
-                    System.out.println(http_url);
                 }
             }
         }
@@ -62,7 +63,6 @@ public class BingDownload {
                 ImgNum++;
                 if (ImgNum == 2) {
                     img_url = el2.absUrl("src");
-                    System.out.println("url img: " + img_url);
                 }
             }
         }
@@ -89,7 +89,6 @@ public class BingDownload {
             if (AuthNum <= 30) {
                 String[] almostDone = el.text().replace(" © ", "/").split("/");
                 author_name = almostDone[1];
-                System.out.println(author_name);
             }
         }
 

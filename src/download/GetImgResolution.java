@@ -25,7 +25,6 @@ public class GetImgResolution {
                 assert pathnames != null;
                 for (String file_name : pathnames) {
                     String my_imp = Img + file_name;
-                    System.out.println(my_imp);
                     if (my_imp.contains(".png")) {
                         BufferedImage bimg = ImageIO.read(new File(my_imp));
                         width = bimg.getWidth();

@@ -1,5 +1,7 @@
 package download;
 
+import sample.Main;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -14,13 +16,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class download_img {
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
+
     public download_img(String img_urls, String author) {
         try{
             Format myFormatObj = new SimpleDateFormat("yyyy-MM-dd-hh-mm-s");
             String formattedDate = myFormatObj.format(new Date());
 
             InputStream in = new URL(img_urls).openStream();
-            String name_of_img = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/"+author+"-"+formattedDate+".jpg";
+            String name_of_img = (cls.getResource("/images/Splash/").getPath() +author+"-"+formattedDate+".jpg");
 
             Files.copy(in, Paths.get(name_of_img));
 
@@ -42,24 +47,8 @@ public class download_img {
             ImageIO.write(result, "png", output);
 
             Files.delete(input.toPath());
-
-            //copy_img(name.replace(".jpg", ".png"));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-    }
-
-    public void copy_img(String name){
-        File old_path = new File(name);
-        File new_path = new File(name.replace("/Splash", ""));
-
-        try {
-            Files.copy(old_path.toPath(), new_path.toPath());
-        } catch (Exception ex ) {
-            ex.printStackTrace();
-        }
-
     }
 }

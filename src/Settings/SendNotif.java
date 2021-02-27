@@ -7,7 +7,6 @@ public class SendNotif {
     public SendNotif(){
     }
     public void SendInfoAlert(String site, String path) {
-        System.out.println("Alerting");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Downloading was successful!");
         alert.setHeaderText(null);
@@ -21,7 +20,6 @@ public class SendNotif {
     }
 
     public void SendErrorAlert() {
-        System.out.println("Alerting");
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Internet Connection Error");
         alert.setHeaderText("No Internet Connection");
@@ -35,7 +33,6 @@ public class SendNotif {
     }
 
     public void SendDownloadErrorAlert(Exception e) {
-        System.out.println("Alerting");
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Downloading Image Error");
         alert.setHeaderText("Failed to download image.");
@@ -49,7 +46,6 @@ public class SendNotif {
     }
 
     public void MaxCapacity() {
-        System.out.println("Alerting");
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Downloading Image Error");
         alert.setHeaderText("Can not download selected image.");

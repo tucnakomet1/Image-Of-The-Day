@@ -4,13 +4,18 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import sample.Main;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class GetImgTheYear {
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
+
     public GetImgTheYear(){
     }
 
@@ -43,16 +48,16 @@ public class GetImgTheYear {
                 img_urls.add(img_url);
             }
         }
-
         int rand = (int)(Math.random() * img_urls.size());
 
         String author = author_name.get(rand);
         url_author.add(img_urls.get(rand)+"?quality=10");
         url_author.add(author);
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/author.txt"));
-        writer.write(author);
-        writer.close();
+        File fl = new File((cls.getResource("/images/Splash/author.txt")).getPath());
+        FileWriter fw = new FileWriter(fl, false);
+        fw.write(author);
+        fw.close();
 
         new download_img(url_author.get(0), url_author.get(1).replace(" ", "-"));
 

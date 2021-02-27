@@ -1,6 +1,7 @@
 package download;
 
 import Settings.SendNotif;
+import sample.Main;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,6 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DownloadImg {
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
+
     public DownloadImg(String img_url, String author, String site, boolean resize, String path) throws IOException {
         try {
             int WIDTH, HEIGHT;
@@ -43,7 +47,6 @@ public class DownloadImg {
             }
 
             String resolution = WIDTH + "x" + HEIGHT;
-            System.out.println();
 
             BufferedImage resized = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
             Graphics2D gd = resized.createGraphics();
@@ -52,24 +55,22 @@ public class DownloadImg {
 
             ImageIO.write(resized, "png", new File(output));
 
-            System.out.println(resolution);
+            System.out.println("resolution: " + resolution);
 
             if (resize) {
-                System.out.println("Adding JSON");
                 new AddJson(output, author, site, resolution);
             }
             else {
-                File fl = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/WallpaperPath.txt");
+                File fl = new File((cls.getResource("/controllers/WallpaperPath.txt").getPath()));
                 FileWriter fw = new FileWriter(fl);
                 fw.write(output);
                 fw.close();
             }
             System.out.println("DONE");
-            System.out.println("Downloaded in: " + output);
         } catch (IOException e) {
             e.printStackTrace();
             if (resize) {
-                new AddJson("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/error.png", "unknown", site, "100x300");
+                new AddJson((cls.getResource("/images/MainPage/error.png").getPath()), "unknown", site, "100x300");
             }
             else {
                 new SendNotif().SendDownloadErrorAlert(e);

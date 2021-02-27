@@ -13,6 +13,8 @@ public class NASADownload {
         String author = "NASA";
         String site = "NASA";
 
+        System.out.println("img: " + img_url + "\nurl: " + site +  "author: " + author);
+
         new DownloadImg(img_url, author, site, resize, path);
     }
 

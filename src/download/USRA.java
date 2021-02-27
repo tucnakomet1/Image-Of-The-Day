@@ -13,6 +13,8 @@ public class USRA {
         String author = get_author(img_url);
         String site = "EPOD-USRA";
 
+        System.out.println("img: " + img_url + "\nurl: " + site +  "author: " + author);
+
         new DownloadImg(img_url, author, site, resize, path);
     }
 
@@ -35,7 +37,6 @@ public class USRA {
                 httpNum++;
                 if (httpNum == 1) {
                     img_url = el.absUrl("href");
-                    System.out.println(img_url);
                 }
             }
         }
@@ -65,17 +66,13 @@ public class USRA {
 
                     author_name = author_names[0].replace("Photographer: ", "");
                     if (CheckLett(author_name) > 40) {
-                        System.out.println(CheckLett(author_name));
                         throw new Exception("An Error Occurred!\nFailed to download " + img_url);
-                    } else {
-                        System.out.println(author_name);
                     }
                 }
             }catch (Exception e){
                 e.printStackTrace();
                 System.out.println("Failed to download " + img_url);
                 author_name = "unknown";
-                System.out.println(author_name);
             }
         }
         return author_name;

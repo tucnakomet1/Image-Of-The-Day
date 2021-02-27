@@ -4,6 +4,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,24 +22,29 @@ public class BigGeekDaddyDownload {
 
     public static String get_url() {
         String URL = "https://biggeekdad.com/photo-of-the-day/";
-        Document doc = null;
+        Document doc;
         String img_url = null;
 
         try {
             doc = Jsoup.connect(URL).get();
+            assert doc != null;
+            Elements els = doc.select("img[src]");
+
+            for (Element el : els ) {
+                String NotImg_url = el.absUrl("src");
+                try {
+                    String[] newIMG = NotImg_url.replaceAll("-[0-9]{3}", "::").split("::");
+                    String[] ImgFormat = newIMG[1].replace(".", ":").split(":");
+                    img_url = newIMG[0] + "." + ImgFormat[1];
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    img_url = NotImg_url;
+                }
+
+                System.out.println("url img: " + img_url);
+            }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        assert doc != null;
-        Elements els = doc.select("img[src]");
-
-        for (Element el : els ) {
-            String NotImg_url = el.absUrl("src");
-            String[] newIMG = NotImg_url.replaceAll("-[0-9]{3}", "::").split("::");
-            String[] ImgFormat = newIMG[1].replace(".", ":").split(":");
-            img_url = newIMG[0] + "." + ImgFormat[1];
-            System.out.println("\nurl img: " + img_url);
         }
         return img_url;
     }
@@ -48,7 +55,7 @@ public class BigGeekDaddyDownload {
         Document doc = null;
         String URL = "https://biggeekdad.com/photo-of-the-day/";
 
-        System.out.println(URL);
+        System.out.println("url: " + URL);
 
         try {
             doc = Jsoup.connect(URL).get();
@@ -67,7 +74,7 @@ public class BigGeekDaddyDownload {
             int author_indx = fucking_article.indexOf("Photo");
             author_name = fucking_article.get(author_indx + 2) + " " + fucking_article.get(author_indx + 3);
 
-            System.out.println(author_name);
+            System.out.println("author: " + author_name);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

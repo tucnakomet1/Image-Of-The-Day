@@ -1,18 +1,23 @@
 package download;
 
+import sample.Main;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class AddJson {
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
+
     public AddJson(String name, String author, String site, String resolution) throws IOException {
-        File fileAu = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/JSON_data/author.json");
-        File fileIMG = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/JSON_data/img.json");
-        File fileRes = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/JSON_data/resolution.json");
+        File fileAu = new File((cls.getResource("/JSON_data/author.json")).getPath());
+        File fileIMG = new File((cls.getResource("/JSON_data/img.json")).getPath());
+        File fileRes = new File((cls.getResource("/JSON_data/resolution.json")).getPath());
         
         if (resolution.equals("100x300")){
             author = "unknown";
-            name = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/error.png";
+            name = (cls.getResource("/images/MainPage/error.png")).getPath();
         }
 
         if (site.equals("Unsplash")) {

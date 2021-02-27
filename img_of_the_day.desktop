@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=0.0.1
-GenericName=Image-Of-The-Day
-Name=Image-Of-The-Day
-Type=Application
-Categories=Application;System;Utility;Settings
-Exec=
-Icon=/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png
-Terminal=false

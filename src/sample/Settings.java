@@ -26,6 +26,8 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Settings implements Initializable {
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
 
     @FXML
     private AnchorPane WholeSettingsPane, AboutPane, WallpaperPane, PagesPane;
@@ -56,46 +58,45 @@ public class Settings implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         String OS = System.getProperty("os.name");
-        monitor_img.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/monitor.png"));
+        monitor_img.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/monitor.png")).getPath()));
         monitor_img.setPreserveRatio(true);
         monitor_img.setFitWidth(530);
 
-        BrowserImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/brave.png"));
+        BrowserImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/brave.png")).getPath()));
         BrowserImg.setPreserveRatio(true);
         BrowserImg.setFitWidth(50);
 
         System.out.println(OS);
-        //OS = "Windows";
         if (OS.contains("Linux")){
-            FolderImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Linux/LinuxFolder.png"));
+            FolderImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Linux/LinuxFolder.png")).getPath()));
             FolderImg.setPreserveRatio(true);
             FolderImg.setFitWidth(25);
-            FileImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Linux/LinuxFile.png"));
+            FileImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Linux/LinuxFile.png")).getPath()));
             FileImg.setPreserveRatio(true);
             FileImg.setFitWidth(25);
-            TaskBarLinuxImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Linux/LinuxTaskBar.png"));
+            TaskBarLinuxImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Linux/LinuxTaskBar.png")).getPath()));
             TaskBarLinuxImg.setPreserveRatio(true);
             TaskBarLinuxImg.setFitWidth(40);
         }
         else if (OS.contains("Windows")){
-            FolderImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Windows/WindowsFolder.png"));
+            FolderImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Windows/WindowsFolder.png")).getPath()));
             FolderImg.setPreserveRatio(true);
             FolderImg.setFitWidth(25);
-            FileImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Windows/WindowsFile.png"));
+            FileImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Windows/WindowsFile.png")).getPath()));
             FileImg.setPreserveRatio(true);
             FileImg.setFitWidth(25);
-            TaskBarImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Windows/WindowsTaskBar.png"));
+            TaskBarImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Windows/WindowsTaskBar.png")).getPath()));
             TaskBarImg.setPreserveRatio(true);
             TaskBarImg.setFitWidth(470);
         }
         else if (OS.contains("Mac")){
-            FolderImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/MacOs/MacFolder.png"));
+            FolderImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/MacOs/MacFolder.png")).getPath()));
             FolderImg.setPreserveRatio(true);
             FolderImg.setFitWidth(25);
-            FileImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/MacOs/MacFile.png"));
+            FileImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/MacOs/MacFile.png")).getPath()));
             FileImg.setPreserveRatio(true);
             FileImg.setFitWidth(25);
-            MacTaskBarImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/MacOs/MacTaskBar.png"));
+            MacTaskBarImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/MacOs/MacTaskBar.png")).getPath()));
             MacTaskBarImg.setPreserveRatio(true);
             MacTaskBarImg.setFitWidth(370);
         }
@@ -114,18 +115,17 @@ public class Settings implements Initializable {
 
         ChoiceBoxSetSource.setValue("None");
 
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Bing/bing.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/Bing/bing.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Bing/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/Bing/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(167);
         SiteLogo.setFitHeight(200);
 
         SiteInfo.setText("Microsoft Bing is a web search engine owned and operated by Microsoft. The service has its origins in Microsoft's previous search engines: MSN Search, Windows Live Search and later Live Search. Bing provides a variety of search services, including web, video, image and map search products");
-
 
         try {
             textPathField.setText(GetDownloadPath());
@@ -136,7 +136,7 @@ public class Settings implements Initializable {
         ChoiceBoxSetSource.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             System.out.println(newValue);
 
-            String ImgPathJSON = "/home/tucna/Dokumenty/Java/ImageOfTheDay/JSON_data/img.json";
+            String ImgPathJSON = (cls.getResource("/JSON_data/img.json")).getPath();
 
             String img = null;
             try {
@@ -152,30 +152,30 @@ public class Settings implements Initializable {
         });
 
 
-        BackImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/background_image.png"));
+        BackImg.setImage(new Image("file://" + (cls.getResource("/images/MainPage/background_image.png")).getPath()));
         BackImg.setPreserveRatio(false);
         BackImg.setFitWidth(1280);
 
-        LogoImg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png"));
+        LogoImg.setImage(new Image("file://" + (cls.getResource("/images/Logo/logo.png")).getPath()));
         LogoImg.setPreserveRatio(true);
         LogoImg.setFitWidth(175);
 
-        imgBack.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Settings/back.png"));
+        imgBack.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Settings/back.png")).getPath()));
         imgBack.setPreserveRatio(true);
         imgBack.setFitWidth(40);
         imgBack.setFitHeight(40);
 
-        GitUmg.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Settings/git.png"));
+        GitUmg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Settings/git.png")).getPath()));
         GitUmg.setPreserveRatio(true);
         GitUmg.setFitWidth(75);
 
-        GitReport.setImage(new Image("file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/Settings/report.png"));
+        GitReport.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Settings/report.png")).getPath()));
         GitReport.setPreserveRatio(true);
         GitReport.setFitWidth(40);
 
         String ver = null;
         try {
-            ver = new CheckVersion().ReadFileVersion("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/version.txt");
+            ver = new CheckVersion().ReadFileVersion((cls.getResource("/controllers/version.txt")).getPath());
         } catch (AWTException | InterruptedException | IOException e) {
             e.printStackTrace();
         }
@@ -201,14 +201,13 @@ public class Settings implements Initializable {
 
     private String FindCapacity() throws FileNotFoundException {
         String size = null;
-        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt";
+        String dir = (cls.getResource("/controllers/MaxCapacity.txt")).getPath();
         Scanner myReader = new Scanner(new File(dir));
         int num = 0;
         while (myReader.hasNextLine()) {
             num++;
             if (num == 1) {
                 size = myReader.nextLine();
-                System.out.println(size);
             }
         }
         assert !Objects.equals(size, "none");
@@ -217,14 +216,13 @@ public class Settings implements Initializable {
 
     private String GetDownloadPath() throws FileNotFoundException {
         String path = null;
-        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/DownloadPath.txt";
+        String dir = (cls.getResource("/controllers/DownloadPath.txt")).getPath();
         Scanner myReader = new Scanner(new File(dir));
         int num = 0;
         while (myReader.hasNextLine()) {
             num++;
             if (num == 1) {
                 path = myReader.nextLine();
-                System.out.println(path);
             }
         }
         myReader.close();
@@ -271,7 +269,7 @@ public class Settings implements Initializable {
                 double maxW = 1280;
                 primaryStage.setMaxWidth(maxW);
                 primaryStage.setScene(scene);
-                Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+                Image icon = new Image("file://" + (cls.getResource("/images/Logo/logo.png").getPath()));
                 primaryStage.getIcons().add(icon);
                 primaryStage.show();
                 WholeSettingsPane.getScene().getWindow().hide();
@@ -338,12 +336,12 @@ public class Settings implements Initializable {
 
     @FXML
     void ShowBingInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Bing/bing.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/Bing/bing.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Bing/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/Bing/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(167);
         SiteLogo.setFitHeight(200);
@@ -352,12 +350,12 @@ public class Settings implements Initializable {
     }
     @FXML
     void ShowNasaInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NASA/nasa.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/NASA/nasa.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NASA/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/NASA/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(150);
@@ -366,12 +364,12 @@ public class Settings implements Initializable {
     }
     @FXML
     void ShowUnsplashInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Unsplash/unsplash.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/Unsplash/unsplash.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Unsplash/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/Unsplash/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(200);
@@ -380,12 +378,12 @@ public class Settings implements Initializable {
     }
     @FXML
     void ShowNgInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NG/ng.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/NG/ng.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NG/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/NG/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(150);
@@ -394,12 +392,12 @@ public class Settings implements Initializable {
     }
     @FXML
     void ShowWikiInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Wiki/wiki.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/Wiki/wiki.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/Wiki/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/Wiki/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(152);
         SiteLogo.setFitHeight(200);
@@ -408,12 +406,12 @@ public class Settings implements Initializable {
     }
     @FXML
     void ShowBGDInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/BGD/bgd.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/BGD/bgd.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/BGD/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/BGD/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(200);
@@ -422,12 +420,12 @@ public class Settings implements Initializable {
     }
     @FXML
     void ShowEOInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/EO/eo.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/EO/eo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/EO/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/EO/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(104);
@@ -436,12 +434,12 @@ public class Settings implements Initializable {
     }
     @FXML
     void ShowAPODInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/APOD/apod.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/APOD/apod.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/APOD/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/APOD/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(200);
@@ -450,12 +448,12 @@ public class Settings implements Initializable {
     }
     @FXML
     void ShowEPODInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/EPOD/epod.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/EPOD/epod.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/EPOD/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/EPOD/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(146);
@@ -464,12 +462,12 @@ public class Settings implements Initializable {
     }
     @FXML
     void ShowNESDISInfo() {
-        SiteImage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NESDIS/nesdis.png"));
+        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/NESDIS/nesdis.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/sites/NESDIS/logo.png"));
+        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/NESDIS/logo.png")).getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(200);
@@ -495,7 +493,8 @@ public class Settings implements Initializable {
             textPathField.clear();
             textPathField.setText(SelectedPath);
 
-            File FilePath = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/DownloadPath.txt");
+            URL FlPth = cls.getResource("/controllers/DownloadPath.txt");
+            File FilePath = new File(FlPth.getPath());
             FileWriter fWriter = new FileWriter(FilePath, false);
             fWriter.write(SelectedPath + "/");
             fWriter.close();
@@ -505,27 +504,26 @@ public class Settings implements Initializable {
     @FXML
     void CheckAutoUpdatesChoice() throws IOException {
         if (CheckAutoUpdates.isSelected()){
-            String filePath = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/AutoUpdates.txt";
-            FileWriter fw = new FileWriter(filePath, false);
+            URL filePath = cls.getResource("/controllers/AutoUpdates.txt");
+            FileWriter fw = new FileWriter(filePath.getPath(), false);
             fw.write("1");
             fw.close();
         }
         else{
-            String filePath = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/AutoUpdates.txt";
+            String filePath = (cls.getResource("/controllers/AutoUpdates.txt")).getPath();
             FileWriter fw = new FileWriter(filePath, false);
             fw.write("0");
             fw.close();
         }
-
     }
 
     @FXML
     void MaxCapacityClickChoice() {
         if (!MaxCapacityClick.isSelected()) {
             MaxCapacityBox.setDisable(true);
-            String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt";
-
+            String path = (cls.getResource("/controllers/MaxCapacity.txt")).getPath();
             File file = new File(path);
+
             try {
                 FileWriter fw = new FileWriter(file, false);
                 fw.write("none");
@@ -549,9 +547,9 @@ public class Settings implements Initializable {
             MaxCapacityBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, capacity) -> {
                 System.out.println(capacity);
 
-                String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt";
-
+                String path = (cls.getResource("/controllers/MaxCapacity.txt")).getPath();
                 File file = new File(path);
+
                 try {
                     FileWriter fw = new FileWriter(file, false);
                     fw.write(capacity.replace(" MB", ""));
@@ -566,7 +564,8 @@ public class Settings implements Initializable {
     public static boolean CheckIsMaxSize() {
         boolean selectMaxSize = false;
         try {
-            File myObj = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt");
+            URL mobj = cls.getResource("/controllers/MaxCapacity.txt");
+            File myObj = new File(mobj.getPath());
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String size = myReader.nextLine();
@@ -589,7 +588,8 @@ public class Settings implements Initializable {
     public static boolean CheckIsAutoUpdate() {
         boolean check = true;
         try {
-            File myObj = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/AutoUpdates.txt");
+            URL mobj = cls.getResource("/controllers/AutoUpdates.txt");
+            File myObj = new File(mobj.getPath());
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();

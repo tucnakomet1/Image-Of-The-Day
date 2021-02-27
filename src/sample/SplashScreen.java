@@ -20,6 +20,8 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class SplashScreen implements Initializable {
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
 
     @FXML
     private AnchorPane splash_pane;
@@ -33,7 +35,7 @@ public class SplashScreen implements Initializable {
     public static String getAuthor() {
         String AuthorName = null;
         try{
-            String basic_path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/author.txt";
+            String basic_path = (cls.getResource("/images/Splash/author.txt")).getPath();
             File folder = new File(basic_path);
             Scanner sc = new Scanner(folder);
             while (sc.hasNextLine()) {
@@ -54,7 +56,7 @@ public class SplashScreen implements Initializable {
 
         String[] pathnames;
 
-        String basic_path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/";
+        String basic_path = (cls.getResource("/images/Splash/")).getPath();
         File file = new File(basic_path);
         pathnames = file.list();
 
@@ -82,7 +84,7 @@ public class SplashScreen implements Initializable {
         @Override
         public void run() {
             try {
-                String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Day/";
+                String path = (cls.getResource("/images/Day/")).getPath();
 
                 new UnsplashDownload(true, path);
                 new BigGeekDaddyDownload(true, path);
@@ -111,7 +113,7 @@ public class SplashScreen implements Initializable {
                         double maxW = 1280;
                         primaryStage.setMaxWidth(maxW);
                         primaryStage.setScene(scene);
-                        Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+                        Image icon = new Image("file://" + (cls.getResource("/images/Logo/logo.png")).getPath());
                         primaryStage.getIcons().add(icon);
                         primaryStage.show();
                         splash_pane.getScene().getWindow().hide();

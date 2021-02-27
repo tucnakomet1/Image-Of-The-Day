@@ -15,6 +15,8 @@ public class NOAADownload {
         String author = "NESDIS-NOAA";
         String site = "NESDIS-NOAA";
 
+        System.out.println("img: " + img_url + "\nurl: " + site +  "author: " + author);
+
         new DownloadImg(img_url, author, site, resize, path);
     }
 
@@ -49,7 +51,6 @@ public class NOAADownload {
                     httpNum++;
                     if (httpNum == 1) {
                         http_url = el.absUrl("href");
-                        System.out.println(http_url);
                     }
                 }
             }
@@ -74,7 +75,6 @@ public class NOAADownload {
                     ImgNum++;
                     if (ImgNum == 1) {
                         img_url = el2.absUrl("src");
-                        System.out.println("url img: " + img_url);
                     }
                 }
             }

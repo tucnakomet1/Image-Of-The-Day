@@ -18,7 +18,7 @@ public class ApodNASADownload {
 
     public static String get_url() {
         String URL = "https://apod.nasa.gov/apod/astropix.html";
-        System.out.println(URL);
+        System.out.println("url: " + URL);
         Document doc = null;
         String img_url = null;
 
@@ -73,7 +73,7 @@ public class ApodNASADownload {
 
 
             try {
-                System.out.println(author_name);
+                System.out.println("author: " + author_name);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

@@ -4,11 +4,15 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class ResolPref {
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
+
     public ResolPref() {}
 
     public static ArrayList<String> get_pref_resolution() throws IOException, ParseException {
@@ -23,7 +27,8 @@ public class ResolPref {
         ArrayList<String> NOTHING = new ArrayList<>();
 
         for (String site : sites){
-            String sitex =  ReadJson.GetElement(site, new FileReader("/home/tucna/Dokumenty/Java/ImageOfTheDay/JSON_data/resolution.json"));
+            URL sitUrl = cls.getResource("/JSON_data/resolution.json");
+            String sitex =  ReadJson.GetElement(site, new FileReader(sitUrl.getPath()));
             String[] splitted = sitex.split("x");
             int WIDTH = Integer.parseInt(splitted[0]);
             int HEIGHT = Integer.parseInt(splitted[1]);
@@ -52,15 +57,6 @@ public class ResolPref {
                 }
             }
         }
-
-        System.out.println("TOP: " + TOP);
-        System.out.println("OK_PREF_W: " + OK_PREF_W);
-        System.out.println("OK_PREF_H: " + OK_PREF_H);
-        System.out.println("OK: " + OK);
-        System.out.println("SQUARE: " + SQUARE);
-        System.out.println("TALL: " + TALL + "\n\n");
-        System.out.println("NOTHING: " + NOTHING + "\n\n");
-
 
         ArrayList<Integer> res_val = new ArrayList<>();
         ArrayList<Integer> new_res_val = new ArrayList<>();

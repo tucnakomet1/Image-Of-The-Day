@@ -36,6 +36,8 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class MainIoTdPage implements Initializable {
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
 
     public int number;
     public boolean WelcomeRunNum = true;
@@ -224,7 +226,7 @@ public class MainIoTdPage implements Initializable {
     @FXML
     void SearchButtGo() {
         String site = GetSiteName(number);
-        System.out.println("Searching for: " + site);
+        System.out.println("Opening: " + site);
         switch (site) {
             case ("Unsplash") -> new OpenUrl("https://source.unsplash.com/collection/%1/3840x2160/daily");
             case ("Big Geek Daddy") -> new OpenUrl("https://biggeekdad.com/photo-of-the-day/");
@@ -243,7 +245,7 @@ public class MainIoTdPage implements Initializable {
     @FXML
     void SetButtGo() throws IOException {
         String site = GetSiteName(number);
-        System.out.println("Set image: " + site);
+        System.out.println("Setting: " + site);
         String path = findPath();
         switch (site) {
             case ("Unsplash") -> {
@@ -294,9 +296,8 @@ public class MainIoTdPage implements Initializable {
     void DownloadButtGo() throws IOException {
         if (CheckDirSize()) {
             String site = GetSiteName(number);
-            System.out.println("Downloading: " + site);
             String path = findPath();
-            System.out.println(path);
+            System.out.println("Downloading: " + site + " to: " + path);
 
             switch (site) {
                 case ("Unsplash") -> {
@@ -372,12 +373,8 @@ public class MainIoTdPage implements Initializable {
             size = (int) (size / 1000000);
             int TooMuch = (maxSize / 100) * 90;
             System.out.print("Actual: " + size + "\tMax Size: " + maxSize + "\tMax calculated: " + TooMuch);
-            System.out.println("\n" + TooMuch);
-            System.out.println(size);
-            System.out.println(maxSize);
 
             if (size >= TooMuch) {
-                System.out.println("Oh fuck, this is false!");
                 CanDownload = false;
             }
         }
@@ -387,14 +384,13 @@ public class MainIoTdPage implements Initializable {
     private Integer FindCapacity() throws FileNotFoundException {
         String size = null;
         int maxSize = 0;
-        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/MaxCapacity.txt";
-        Scanner myReader = new Scanner(new File(dir));
+        URL dir = cls.getResource("/controllers/MaxCapacity.txt");
+        Scanner myReader = new Scanner(new File(dir.getPath()));
         int num = 0;
         while (myReader.hasNextLine()) {
             num++;
             if (num == 1) {
                 size = myReader.nextLine();
-                System.out.println(size);
             }
         }
         assert size != null;
@@ -405,14 +401,13 @@ public class MainIoTdPage implements Initializable {
     }
     private String findPath() throws FileNotFoundException {
         String path = null;
-        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/DownloadPath.txt";
-        Scanner myReader = new Scanner(new File(dir));
+        URL dir = cls.getResource("/controllers/DownloadPath.txt");
+        Scanner myReader = new Scanner(new File(dir.getPath()));
         int num = 0;
         while (myReader.hasNextLine()) {
             num++;
             if (num == 1) {
                 path = myReader.nextLine();
-                System.out.println(path);
             }
         }
         myReader.close();
@@ -492,7 +487,7 @@ public class MainIoTdPage implements Initializable {
                 double maxW = 1280;
                 primaryStage.setMaxWidth(maxW);
                 primaryStage.setScene(scene);
-                Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+                Image icon = new Image("file://" + (cls.getResource("/images/Logo/logo.png")).getPath());
                 primaryStage.getIcons().add(icon);
                 primaryStage.show();
                 WelcomeRunNum = false;
@@ -520,31 +515,27 @@ public class MainIoTdPage implements Initializable {
         String imgUrl = null;
         String[] names;
 
-        String basicUrl = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/";
-        File file_path = new File(basicUrl);
+        URL basicUrl = cls.getResource("/images/Splash/");
+        File file_path = new File(basicUrl.getPath());
         names = file_path.list();
 
         assert names != null;
         for (String file_name : names) {
             if (file_name.contains(".png")) {
-                //imgUrl = "file:" + basicUrl + file_name;
-                imgUrl = "file:" + "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/background_image.png";
-                System.out.println(imgUrl);
+                URL imgPth = cls.getResource("/images/MainPage/background_image.png");
+                imgUrl = "file://" + imgPth.getPath();
             }
         }
-
         return imgUrl;
     }
 
     public String getJsonImg(int num) {
         String site = GetSiteName(num);
-        System.out.println(num);
         System.out.println(site);
-        String ImgPathJSON = "/home/tucna/Dokumenty/Java/ImageOfTheDay/JSON_data/img.json";
+        URL ImgPathJSON = cls.getResource("/JSON_data/img.json");
         String Img = null;
         try {
-            Img = new ReadJson().GetElement(site, new FileReader(ImgPathJSON));
-            System.out.println(Img);
+            Img = new ReadJson().GetElement(site, new FileReader(ImgPathJSON.getPath()));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -558,7 +549,6 @@ public class MainIoTdPage implements Initializable {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        System.out.println(PrefResolList);
 
         assert PrefResolList != null;
         return PrefResolList.get(num);
@@ -585,7 +575,7 @@ public class MainIoTdPage implements Initializable {
                         primaryStage.setMaxWidth(600);
                         primaryStage.setMaxHeight(400);
                         primaryStage.setScene(scene);
-                        Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+                        Image icon = new Image("file://" + (cls.getResource("/images/Logo/logo.png")).getPath());
                         primaryStage.getIcons().add(icon);
                         primaryStage.show();
 
@@ -599,7 +589,6 @@ public class MainIoTdPage implements Initializable {
         }
         String todaysDate = todaysDate();
         String imageUrl = getImgUrl();
-        System.out.println(imageUrl);
         try {
             run_again(imageUrl, todaysDate);
         } catch (IOException | ParseException e) {
@@ -610,18 +599,15 @@ public class MainIoTdPage implements Initializable {
     private boolean CheckWelcomeScreen() throws FileNotFoundException {
         boolean RunWelcome = false;
         int value = 0;
-
-        String dir = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/RunWelcomeScreen.txt";
-        Scanner myReader = new Scanner(new File(dir));
+        URL dir = cls.getResource("/controllers/RunWelcomeScreen.txt");
+        Scanner myReader = new Scanner(new File(dir.getPath()));
         int Wnum = 0;
         while (myReader.hasNextLine()) {
             Wnum++;
             if (Wnum == 1) {
                 String prevalue = myReader.nextLine();
-                System.out.println(prevalue);
                 try {
                     value = Integer.parseInt(prevalue);
-                    System.out.println(value);
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -635,7 +621,6 @@ public class MainIoTdPage implements Initializable {
 
     public void run_again(String imageUrl, String todaysDate) throws IOException, ParseException {
         ArrayList<String> PrefResolList = ResolPref.get_pref_resolution();
-        System.out.println(PrefResolList);
 
         String site1 = PrefResolList.get(0);
         String site2 = PrefResolList.get(1);
@@ -647,7 +632,6 @@ public class MainIoTdPage implements Initializable {
         String site8 = PrefResolList.get(7);
         String site9 = PrefResolList.get(8);
         String site10 = PrefResolList.get(9);
-        System.out.println(site1 + ", " + site2 + ", " + site3 + ", " + site4 + ", " + site5 + ", " + site6 + ", " + site7 + ", " + site8 + ", " + site9 + ", " + site10);
 
         if (site1.equals("100x300")){
             site1 = "580x386";
@@ -670,9 +654,8 @@ public class MainIoTdPage implements Initializable {
         }if (site10.equals("100x300")){
             site10 = "580x386";
         }
-        System.out.println(site1 + ", " + site2 + ", " + site3 + ", " + site4 + ", " + site5 + ", " + site6 + ", " + site7 + ", " + site8 + ", " + site9 + ", " + site10);
-        String AuthorPathJSON = "/home/tucna/Dokumenty/Java/ImageOfTheDay/JSON_data/author.json";
-        String ImgPathJSON = "/home/tucna/Dokumenty/Java/ImageOfTheDay/JSON_data/img.json";
+        String AuthorPathJSON = (cls.getResource("/JSON_data/author.json")).getPath();
+        String ImgPathJSON = (cls.getResource("/JSON_data/img.json")).getPath();
 
         String Author1 = new ReadJson().GetElement(site1, new FileReader(AuthorPathJSON));
         String Author2 = new ReadJson().GetElement(site2, new FileReader(AuthorPathJSON));
@@ -696,15 +679,15 @@ public class MainIoTdPage implements Initializable {
         String Img9 = new ReadJson().GetElement(site9, new FileReader(ImgPathJSON));
         String Img10 = new ReadJson().GetElement(site10, new FileReader(ImgPathJSON));
 
-        imgDownloadButton.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/ImageInfo/download.png"));
+        imgDownloadButton.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/ImageInfo/download.png")).getPath()));
         imgDownloadButton.setPreserveRatio(true);
         imgDownloadButton.setFitWidth(37);
         imgDownloadButton.setFitHeight(34);
-        imgOpenPage.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/ImageInfo/search.png"));
+        imgOpenPage.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/ImageInfo/search.png")).getPath()));
         imgOpenPage.setPreserveRatio(true);
         imgOpenPage.setFitWidth(30);
         imgOpenPage.setFitHeight(30);
-        imgSetWall.setImage(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/PNG_Sources/ImageInfo/image.png"));
+        imgSetWall.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/ImageInfo/image.png")).getPath()));
         imgSetWall.setPreserveRatio(true);
         imgSetWall.setFitWidth(42);
         imgSetWall.setFitHeight(33);
@@ -749,12 +732,12 @@ public class MainIoTdPage implements Initializable {
         DateLabel.setText(todaysDate);
         System.out.println(site1 + ", " + site2 + ", " + site3 + ", " + site4 + ", " + site5 + ", " + site6 + ", " + site7 + ", " + site8 + ", " + site9 + ", " + site10);
 
-        ImageView SettButtonImg = new ImageView(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/sett.png"));
+        ImageView SettButtonImg = new ImageView(new Image("file://" + (cls.getResource("/images/MainPage/sett.png")).getPath()));
         SettButtonImg.setFitWidth(21);
         SettButtonImg.setFitHeight(21);
         settingsButt.setGraphic(SettButtonImg);
 
-        ImageView DownButtonImg = new ImageView(new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/MainPage/down.png"));
+        ImageView DownButtonImg = new ImageView(new Image("file://" + (cls.getResource("/images/MainPage/down.png")).getPath()));
         DownButtonImg.setFitWidth(21);
         DownButtonImg.setFitHeight(21);
         downloadButt.setGraphic(DownButtonImg);

@@ -23,14 +23,16 @@ import java.util.Scanner;
 
 public class Main extends Application {
     private static boolean RunSplashScreen;
+    static Main mn = new Main();
+    static Class cls = mn.getClass();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println("-----------------------");
-        System.out.println(RunSplashScreen);
         if (InternetConnection() && RunSplashScreen) {
+            System.out.println(">>>>>>>> Splash Screen <<<<<<<<<");
+            URL hght = cls.getResource("/images/Splash/");
             double WEIGHT = 700;
-            double HIGHT = new GetImgResolution().get_img_resolution("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/", 700);
+            double HIGHT = new GetImgResolution().get_img_resolution(hght.getPath(), 700);
 
             Parent root = null;
             try {
@@ -44,9 +46,9 @@ public class Main extends Application {
             Scene scene = new Scene(root, WEIGHT, HIGHT);
             primaryStage.setScene(scene);
             primaryStage.initStyle(StageStyle.UNDECORATED);
-
         }
         else {
+            System.out.println(">>>>>>>> Main Page <<<<<<<<<");
             Parent root = null;
             primaryStage = new Stage();
             try {
@@ -61,7 +63,8 @@ public class Main extends Application {
             double maxW = 1282;
             primaryStage.setMaxWidth(maxW);
             primaryStage.setScene(scene);
-            Image icon = new Image("file:/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Logo/logo.png");
+            URL icn = cls.getResource("/images/Logo/logo.png");
+            Image icon = new Image("file://"+icn.getPath());
             primaryStage.getIcons().add(icon);
         }
         primaryStage.show();
@@ -72,13 +75,12 @@ public class Main extends Application {
         boolean CheckedDate = CheckDate();
 
         if (CheckedDate){
-            System.out.println("Checked");
             Format myFormatObj = new SimpleDateFormat("yyyy/MM/dd");
             String RealDate = myFormatObj.format(new Date());
 
-            File path = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/CheckDate.txt");
+            URL pth = cls.getResource("/controllers/CheckDate.txt");
+            File path = new File(pth.getPath());
             FileWriter writer = new FileWriter(path, false);
-            System.out.println("Checked");
             writer.write(RealDate);
             writer.close();
             RunSplash = true;
@@ -87,34 +89,33 @@ public class Main extends Application {
         return RunSplash;
     }
 
-    public static boolean RunAutoUpdate() {
+    public static boolean RunAutoUpdate() throws FileNotFoundException {
         boolean RunAuto = true;
-        try {
-            File myObj = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/AutoUpdates.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                System.out.println("auto updates: " + data);
-                if (data.contains("0")) {
-                    RunAuto = false;
-                }
+        URL url = cls.getResource("/controllers/AutoUpdates.txt");
+        File myObj = new File(url.getPath());
+        Scanner myReader = new Scanner(myObj);
+        while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();
+            System.out.println("auto updates: " + data);
+            if (data.contains("0")) {
+                RunAuto = false;
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
         }
         return RunAuto;
     }
 
     public static void check_free() throws IOException {
         String[] pathname;
-        String directory = "/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Splash/";
-        File path = new File(directory);
+        URL directory = cls.getResource("/images/Splash/");
+        File path = new File(directory.getPath());
         pathname = path.list();
 
         assert pathname != null;
         for (String fileName : pathname){
-            File file_to_remove = new File(directory + fileName);
-            Files.delete(file_to_remove.toPath());
+            if (!fileName.equals("author.txt")) {
+                File file_to_remove = new File(directory.getPath() + fileName);
+                Files.delete(file_to_remove.toPath());
+            }
         }
     }
 
@@ -145,14 +146,8 @@ public class Main extends Application {
         String RealDate = myFormatObj.format(new Date());
         System.out.println(RealDate);
 
-
-        /*Main m = new Main();
-        String res = m.getClass().getResource("../../controllers/CheckDate.txt").toExternalForm();
-        System.out.println(res);
-        File myObj = new File(String.valueOf(res));*/
-
-        String path = "/home/tucna/Dokumenty/Java/ImageOfTheDay/controllers/CheckDate.txt";
-        File myObj = new File(path);
+        URL path = cls.getResource("/controllers/CheckDate.txt");
+        File myObj = new File(path.getPath());
         Scanner reader = new Scanner(myObj);
 
         int num = 0;
@@ -164,13 +159,10 @@ public class Main extends Application {
             num++;
         }
 
-        System.out.println(OldDate);
-
         if (RealDate.equals(OldDate)) {
             run = false;
-            System.out.println("No splash screen!");
         }
-        System.out.println("Boolean run is: " + run);
+        System.out.println("Splash screen: " + run);
         return run;
     }
 
@@ -180,13 +172,13 @@ public class Main extends Application {
             new CheckVersion().Version();
         }
         if (RunSplash()) {
-            File path = new File("/home/tucna/Dokumenty/Java/ImageOfTheDay/images/Day/");
+            URL url = cls.getResource("/images/Day/");
+            File path = new File(url.getPath());
             for (File dir: path.listFiles())
                 if (!dir.isDirectory())
                     dir.delete();
 
             check_free();
-            System.out.println("Checked free");
 
             int year = date_time();
             int old_year = year - 1;

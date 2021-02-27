@@ -13,13 +13,14 @@ public class EarthObservDownload {
         String author = "Earth Observatory";
         String site = "Earth Observatory";
 
+        System.out.println("img: " + img_url + "\nurl: " + site +  "author: " + author);
+
         new DownloadImg(img_url, author, site, resize, path);
     }
 
 
     public static String get_url() {
         String URL = "https://earthobservatory.nasa.gov/topic/image-of-the-day";
-        System.out.println(URL);
         Document doc = null;
         Document doc2 = null;
         String http_url = null;
@@ -40,7 +41,6 @@ public class EarthObservDownload {
 
                 if (httpNum == 1) {
                     http_url = el.absUrl("href");
-                    System.out.println(http_url);
                 }
             }
         }
@@ -58,15 +58,14 @@ public class EarthObservDownload {
             int ImgNum = 0;
             for (Element el2 : els2) {
                 if ((el2.absUrl("href").contains("jpg")) || (el2.absUrl("href").contains("gif")) || (el2.absUrl("href").contains("png"))) {
-                    System.out.println(el2.absUrl("href"));
                     ImgNum++;
                     if (ImgNum == 1) {
                         img_url = el2.absUrl("href");
-                        System.out.println("url img: " + img_url);
                     }
                 }
             }
-        } finally {
+        } catch (Exception e) {
+            e.printStackTrace();
             assert doc2 != null;
             Elements els2 = doc2.select("img[src]");
 
@@ -80,7 +79,6 @@ public class EarthObservDownload {
                     ImgNum++;
                     if (ImgNum == 1) {
                         img_url = el2.absUrl("src");
-                        System.out.println("url img: " + img_url);
                     }
                 }
             }
