@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/ImageOfTheDay_jar</output-path>
     <root id="archive" name="ImageOfTheDay.jar">
       <element id="module-output" name="ImageOfTheDay" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../jsoup-1.13.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/src.zip" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/javafx-swt.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/javafx.web.jar" path-in-jar="/" />
@@ -13,6 +12,7 @@
       <element id="extracted-dir" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/javafx.swing.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/javafx.controls.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../jsoup-1.13.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../json-simple-1.1.1.jar" path-in-jar="/" />
     </root>
   </artifact>

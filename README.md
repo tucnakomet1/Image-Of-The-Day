@@ -43,27 +43,23 @@ Download newest [release](https://github.com/tucnakomet1/Image-Of-The-Day/releas
 You can download *.deb* package using latest [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) site or using this installation script:
 
 ```bash
-cd $(xdg-user-dir DOWNLOAD) # navigate you to your 'Downloads' folder
-version=$(curl https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/controllers/version.txt?token=ANH373DML6YIYETAPBYP6Y3AFUC3E | tr -s "version " "v") # get latest version
-echo $version
+cd $(xdg-user-dir DOWNLOAD) # navigate to 'Downloads' folder
+version=$(curl https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/src/controllers/version.txt | tr -s "version " "v") # get latest version name
 wget https://github.com/tucnakomet1/Image-Of-The-Day/releases/download/$version/image-of-the-day-$version.deb # download the package
 sudo dpkg -i image-of-the-day-$version.deb # unpack and install the package
 ```
 
-<h4 id="arch">Arch based</h4>
-
-You can download *.* package using [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) site or using this installation script:
-
-```bash
-
-```
 
 <h4 id="fedora">Fedora based</h4>
 
 You can download *.* package using [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) site or using this installation script:
 
 ```bash
-
+cd $(xdg-user-dir DOWNLOAD) # navigate to 'Downloads' folder
+version=$(curl https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/src/controllers/version.txt | tr -s "version " "v") # get latest version name
+wget https://github.com/tucnakomet1/Image-Of-The-Day/releases/download/$version/image-of-the-day-$version.rpm # download the package
+sudo dnf install image-of-the-day-$version.rpm # unpack and install the package
+sudo rm image-of-the-day-$version.rpm # remove installed packge
 ```
 
 
@@ -72,10 +68,9 @@ You can download *.* package using [release](https://github.com/tucnakomet1/Imag
 <h3 id="tar">Tarball/ Source</h3>
 
 Download the latest tar [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases)
-Use any file manager or run command to extract:
-`tar -xvzf Image-Of-The-Day*.tar.gz`
-Go to the folder and run installation scripts
-```bash
+Use any file manager or run command to extract package. Then go to the folder and run installation scripts:
+```bash 
+tar -xvzf Image-Of-The-Day*.tar.gz
 cd Image-Of-The-Day
 sudo chmod +x install.sh
 ./install.sh

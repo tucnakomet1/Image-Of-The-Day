@@ -1,1 +1,1 @@
-/home/tucna/Desktop/Images/
+~/.images/

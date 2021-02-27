@@ -1,0 +1,5 @@
+Manifest-Version: 0.1.3
+Main-Class: sample.launcher
+Name: Image-Of-The-Day
+Created-By: Karel Velička
+
