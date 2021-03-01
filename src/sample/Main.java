@@ -14,6 +14,7 @@ import java.awt.*;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -36,7 +37,7 @@ public class Main extends Application {
 
             Parent root = null;
             try {
-                root = FXMLLoader.load(getClass().getResource("SplashScreen.fxml"));
+                root = FXMLLoader.load(cls.getResource("SplashScreen.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -52,7 +53,7 @@ public class Main extends Application {
             Parent root = null;
             primaryStage = new Stage();
             try {
-                root = FXMLLoader.load(getClass().getResource("MainIoTdPage.fxml"));
+                root = FXMLLoader.load(cls.getResource("MainIoTdPage.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -89,17 +90,21 @@ public class Main extends Application {
         return RunSplash;
     }
 
-    public static boolean RunAutoUpdate() throws FileNotFoundException {
+    public static boolean RunAutoUpdate() {
         boolean RunAuto = true;
-        URL url = cls.getResource("/controllers/AutoUpdates.txt");
-        File myObj = new File(url.getPath());
-        Scanner myReader = new Scanner(myObj);
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-            System.out.println("auto updates: " + data);
-            if (data.contains("0")) {
-                RunAuto = false;
+        String data = null;
+
+        try {
+            InputStream in = Main.class.getResourceAsStream("/controllers/AutoUpdates.txt");
+            Scanner reader = new Scanner(in, StandardCharsets.UTF_8);
+
+            while (reader.hasNextLine()) {
+                data = reader.nextLine();
             }
+        } catch(Exception e) { System.out.println(e); }
+
+        if (data.contains("0")) {
+            RunAuto = false;
         }
         return RunAuto;
     }
@@ -138,26 +143,23 @@ public class Main extends Application {
         return Integer.valueOf(formattedDate);
     }
 
-    public static Boolean CheckDate() throws FileNotFoundException {
+    public static Boolean CheckDate() {
         boolean run = true;
-        String OldDate = null;
+        String OldDate = "";
 
         Format myFormatObj = new SimpleDateFormat("yyyy/MM/dd");
         String RealDate = myFormatObj.format(new Date());
         System.out.println(RealDate);
 
-        URL path = cls.getResource("/controllers/CheckDate.txt");
-        File myObj = new File(path.getPath());
-        Scanner reader = new Scanner(myObj);
-
-        int num = 0;
-        while (reader.hasNextLine()) {
-            String data = reader.nextLine();
-            if (num == 0) {
-                OldDate = data;
+        try {
+            InputStream in = Main.class.getResourceAsStream("/controllers/CheckDate.txt");
+            Scanner reader = new Scanner(in, StandardCharsets.UTF_8);
+            while (reader.hasNextLine()) {
+                OldDate = reader.nextLine();
             }
-            num++;
-        }
+        } catch(Exception e) { System.out.println(e); }
+
+        System.out.println(OldDate);
 
         if (RealDate.equals(OldDate)) {
             run = false;
@@ -172,11 +174,15 @@ public class Main extends Application {
             new CheckVersion().Version();
         }
         if (RunSplash()) {
-            URL url = cls.getResource("/images/Day/");
-            File path = new File(url.getPath());
-            for (File dir: path.listFiles())
-                if (!dir.isDirectory())
-                    dir.delete();
+            try {
+                URL url = cls.getResource("/images/Day/");
+                File path = new File(url.getPath());
+                for (File dir : path.listFiles())
+                    if (!dir.isDirectory())
+                        dir.delete();
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
 
             check_free();
 

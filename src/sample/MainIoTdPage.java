@@ -20,10 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -503,7 +500,7 @@ public class MainIoTdPage implements Initializable {
         String date = null;
 
         try{
-            Format format_date = new SimpleDateFormat("dd/MM/yyyy");
+            Format format_date = new SimpleDateFormat("yyyy/MM/dd");
             date = format_date.format(new Date());
         } catch (Exception e) {
             e.printStackTrace();
@@ -588,7 +585,9 @@ public class MainIoTdPage implements Initializable {
             e.printStackTrace();
         }
         String todaysDate = todaysDate();
+        System.out.println(todaysDate);
         String imageUrl = getImgUrl();
+        System.out.println(imageUrl);
         try {
             run_again(imageUrl, todaysDate);
         } catch (IOException | ParseException e) {
@@ -599,21 +598,24 @@ public class MainIoTdPage implements Initializable {
     private boolean CheckWelcomeScreen() throws FileNotFoundException {
         boolean RunWelcome = false;
         int value = 0;
-        URL dir = cls.getResource("/controllers/RunWelcomeScreen.txt");
-        Scanner myReader = new Scanner(new File(dir.getPath()));
-        int Wnum = 0;
-        while (myReader.hasNextLine()) {
-            Wnum++;
-            if (Wnum == 1) {
-                String prevalue = myReader.nextLine();
-                try {
-                    value = Integer.parseInt(prevalue);
-                }catch (Exception e) {
-                    e.printStackTrace();
-                }
+
+        String dValue = "";
+        try {
+            InputStream i = Main.class.getResourceAsStream("/controllers/RunWelcomeScreen.txt");
+            BufferedReader r = new BufferedReader(new InputStreamReader(i));
+
+            String dt;
+            while((dt = r.readLine()) != null) {
+                dValue = dValue + dt;
+                value = Integer.parseInt(dValue);
             }
+            i.close();
+        } catch(Exception e) {
+            System.out.println(e);
         }
-        if (value == 1){
+        System.out.println(value);
+
+        if (value == 1) {
             RunWelcome = true;
         }
         return RunWelcome;

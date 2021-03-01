@@ -1,6 +1,6 @@
 <h1 align="center">Image Of The Day</h1>
 
-<a href="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo.png"><img src="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo_75x75.png" alt="info"  style="max-width:10%;" align="left" hspace="10"></a>Image-Of-The-Day is a JavaFX project that allows you to see, download or set image as a wallpaper from [NASA](https://www.nasa.gov/), [Bing](https://bing.com/), [National Geographic](https://www.nationalgeographic.co.uk/), [etc.](#resources) in a friendly graphical interface. Software can be installed on any Windows and Linux device. This project is mainly used for self-improvement in Java and to understand the JavaFX library. Any idea for upgrade is welcome.
+<a href="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo.png"><img src="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/src/images/Logo/logo_75x75.png" alt="info"  style="max-width:10%;" align="left" hspace="10"></a>Image-Of-The-Day is a JavaFX project that allows you to see, download or set image as a wallpaper from [NASA](https://www.nasa.gov/), [Bing](https://bing.com/), [National Geographic](https://www.nationalgeographic.co.uk/), [etc.](#resources) in a friendly graphical interface. Software can be installed on any Windows and Linux device. This project is mainly used for self-improvement in Java and to understand the JavaFX library. Any idea for upgrade is welcome.
 <h2></h2>
 
 ![maingif](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainGif.gif)
@@ -13,7 +13,6 @@
   * <a href = "#windows">Windows</a><br/>
   * <a href = "#linux">Linux</a><br/>
   	* <a href = "#debian">Debian based</a><br/>
-  	* <a href = "#arch">Arch based</a><br/>
   	* <a href = "#fedora">Fedora based</a><br/>
   * <a href = "#tar">Tarball/ Source</a><br/>
 * <a href = "#sites">WEB PAGES</a><br/>
@@ -32,7 +31,7 @@
 
 <h3 id="windows">Windows</h3>
 
-Download newest [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) and choose your preferred installation format ( **.exe** *(preinstalled)* / **.msi**)
+Coming really soon (`.exe` and `msi`)
 
 <br/>
 
@@ -40,27 +39,13 @@ Download newest [release](https://github.com/tucnakomet1/Image-Of-The-Day/releas
 
 <h4 id="debian">Debian based</h4>
 
-You can download *.deb* package using latest [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) site or using this installation script:
-
-```bash
-cd $(xdg-user-dir DOWNLOAD) # navigate to 'Downloads' folder
-version=$(curl https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/src/controllers/version.txt | tr -s "version " "v") # get latest version name
-wget https://github.com/tucnakomet1/Image-Of-The-Day/releases/download/$version/image-of-the-day-$version.deb # download the package
-sudo dpkg -i image-of-the-day-$version.deb # unpack and install the package
-```
+Coming really soon (`.deb`)
 
 
 <h4 id="fedora">Fedora based</h4>
 
-You can download *.* package using [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) site or using this installation script:
 
-```bash
-cd $(xdg-user-dir DOWNLOAD) # navigate to 'Downloads' folder
-version=$(curl https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/src/controllers/version.txt | tr -s "version " "v") # get latest version name
-wget https://github.com/tucnakomet1/Image-Of-The-Day/releases/download/$version/image-of-the-day-$version.rpm # download the package
-sudo dnf install image-of-the-day-$version.rpm # unpack and install the package
-sudo rm image-of-the-day-$version.rpm # remove installed packge
-```
+Coming really soon (`.rpm`)
 
 
 <br/>
@@ -68,22 +53,17 @@ sudo rm image-of-the-day-$version.rpm # remove installed packge
 <h3 id="tar">Tarball/ Source</h3>
 
 Download the latest tar [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases)
-Use any file manager or run command to extract package. Then go to the folder and run installation scripts:
+Use any file manager or run command to extract package:
+
 ```bash 
+### Tarball ###
 tar -xvzf Image-Of-The-Day*.tar.gz
-cd Image-Of-The-Day
-sudo chmod +x install.sh
-./install.sh
-```
 
+### Zip ###
+unzip Image-Of-The-Day*.zip
 
-Download and install from source code:
-
-```bash 
+### Git ###
 git clone https://github.com/tucnakomet1/Image-Of-The-Day.git
-cd Image-Of-The-Day
-sudo chmod +x install.sh
-./install.sh
 ```
 <br/>
 
@@ -131,10 +111,11 @@ Created with [Java openjdk-15.0.2](https://www.oracle.com/java/technologies/java
 [![survey](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/survey.png "Image-Of-The-Day survey!")](http://www.survey-maker.com/QJSZDCRK9)
 <h2 id="todo"> TO-DO LIST </h2>
 
+- [ ] Add `.jar`, `.deb`, `.rpm`, `.exe`, `.msi`, `.AppImage`
 - [ ] Mac OS support
 - [ ] Add white theme
 - [ ] New languages
-- [ ] New pages ([Flickr](https://www.flickr.com/)) - please contact me if you know another one
+- [ ] New pages ([Flickr](https://www.flickr.com/), and more)
 - [ ] Run at startup
 
 <br/><br/><br/>
