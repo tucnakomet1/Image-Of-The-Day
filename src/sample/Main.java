@@ -19,28 +19,32 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 
 public class Main extends Application {
     private static boolean RunSplashScreen;
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");//new MyPth().MyAppPath();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         if (InternetConnection() && RunSplashScreen) {
             System.out.println(">>>>>>>> Splash Screen <<<<<<<<<");
-            URL hght = cls.getResource("/images/Splash/");
+
+            URL hght = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Splash/");
             double WEIGHT = 700;
-            double HIGHT = new GetImgResolution().get_img_resolution(hght.getPath(), 700);
+            new GetImgResolution();
+            double HIGHT = GetImgResolution.get_img_resolution(hght.getPath(), 700);
 
             Parent root = null;
             try {
-                root = FXMLLoader.load(getClass().getResource("SplashScreen.fxml"));
+                URL pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/sample/SplashScreen.fxml");
+                root = FXMLLoader.load(pth);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             primaryStage.setTitle("Image Of The Day");
+            URL icn = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Logo/logo.png");
+            Image icon = new Image("file://"+icn.getPath());
+            primaryStage.getIcons().add(icon);
 
             assert root != null;
             Scene scene = new Scene(root, WEIGHT, HIGHT);
@@ -52,18 +56,19 @@ public class Main extends Application {
             Parent root = null;
             primaryStage = new Stage();
             try {
-                root = FXMLLoader.load(getClass().getResource("MainIoTdPage.fxml"));
+                System.out.println(MyPath);
+                URL pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/sample/MainIoTdPage.fxml");
+                root = FXMLLoader.load(pth);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             primaryStage.setTitle("Image Of The Day");
-
             assert root != null;
             Scene scene = new Scene(root);
             double maxW = 1282;
             primaryStage.setMaxWidth(maxW);
             primaryStage.setScene(scene);
-            URL icn = cls.getResource("/images/Logo/logo.png");
+            URL icn = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Logo/logo.png");
             Image icon = new Image("file://"+icn.getPath());
             primaryStage.getIcons().add(icon);
         }
@@ -78,35 +83,36 @@ public class Main extends Application {
             Format myFormatObj = new SimpleDateFormat("yyyy/MM/dd");
             String RealDate = myFormatObj.format(new Date());
 
-            URL pth = cls.getResource("/controllers/CheckDate.txt");
+            URL pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/CheckDate.txt");
+            System.out.println(pth);
+
             File path = new File(pth.getPath());
-            FileWriter writer = new FileWriter(path, false);
-            writer.write(RealDate);
-            writer.close();
+            new WriteFile(path, RealDate, false);
+
             RunSplash = true;
         }
         System.out.println(RunSplash);
         return RunSplash;
     }
 
-    public static boolean RunAutoUpdate() throws FileNotFoundException {
+    public static boolean RunAutoUpdate() {
         boolean RunAuto = true;
-        URL url = cls.getResource("/controllers/AutoUpdates.txt");
-        File myObj = new File(url.getPath());
-        Scanner myReader = new Scanner(myObj);
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-            System.out.println("auto updates: " + data);
-            if (data.contains("0")) {
-                RunAuto = false;
-            }
+        int data = 0;
+
+        try {
+            String path = MyPath + "/out/production/ImageOfTheDay/controllers/AutoUpdates.txt";
+            data = new ReadFile().ReadTheIntFile(path);
+        } catch(Exception e) { System.out.println(e); }
+
+        if (data == 0) {
+            RunAuto = false;
         }
         return RunAuto;
     }
 
     public static void check_free() throws IOException {
         String[] pathname;
-        URL directory = cls.getResource("/images/Splash/");
+        URL directory = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Splash/");
         File path = new File(directory.getPath());
         pathname = path.list();
 
@@ -138,26 +144,20 @@ public class Main extends Application {
         return Integer.valueOf(formattedDate);
     }
 
-    public static Boolean CheckDate() throws FileNotFoundException {
+    public static Boolean CheckDate() {
         boolean run = true;
-        String OldDate = null;
+        String OldDate = "";
 
         Format myFormatObj = new SimpleDateFormat("yyyy/MM/dd");
         String RealDate = myFormatObj.format(new Date());
         System.out.println(RealDate);
 
-        URL path = cls.getResource("/controllers/CheckDate.txt");
-        File myObj = new File(path.getPath());
-        Scanner reader = new Scanner(myObj);
+        try {
+            String path = MyPath + "/out/production/ImageOfTheDay/controllers/CheckDate.txt";
+            OldDate = new ReadFile().ReadTheStringFile(path);
+        } catch(Exception e) { System.out.println(e); }
 
-        int num = 0;
-        while (reader.hasNextLine()) {
-            String data = reader.nextLine();
-            if (num == 0) {
-                OldDate = data;
-            }
-            num++;
-        }
+        System.out.println(OldDate);
 
         if (RealDate.equals(OldDate)) {
             run = false;
@@ -168,15 +168,22 @@ public class Main extends Application {
 
 
     public static void main(String[] args) throws IOException, AWTException, InterruptedException {
+        System.out.println(MyPath);
         if (RunAutoUpdate()){
-            new CheckVersion().Version();
+            new CheckVersion();
+            CheckVersion.Version();
         }
         if (RunSplash()) {
-            URL url = cls.getResource("/images/Day/");
-            File path = new File(url.getPath());
-            for (File dir: path.listFiles())
-                if (!dir.isDirectory())
-                    dir.delete();
+            try {
+                URL url = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Day/");
+                System.out.println(url);
+                File path = new File(url.getPath());
+                for (File dir : path.listFiles())
+                    if (!dir.isDirectory())
+                        dir.delete();
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
 
             check_free();
 

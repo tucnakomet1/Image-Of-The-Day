@@ -17,17 +17,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import org.json.simple.parser.ParseException;
 import java.awt.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class Settings implements Initializable {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");
 
     @FXML
     private AnchorPane WholeSettingsPane, AboutPane, WallpaperPane, PagesPane;
@@ -58,174 +59,167 @@ public class Settings implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         String OS = System.getProperty("os.name");
-        monitor_img.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/monitor.png")).getPath()));
-        monitor_img.setPreserveRatio(true);
-        monitor_img.setFitWidth(530);
-
-        BrowserImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/brave.png")).getPath()));
-        BrowserImg.setPreserveRatio(true);
-        BrowserImg.setFitWidth(50);
-
-        System.out.println(OS);
-        if (OS.contains("Linux")){
-            FolderImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Linux/LinuxFolder.png")).getPath()));
-            FolderImg.setPreserveRatio(true);
-            FolderImg.setFitWidth(25);
-            FileImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Linux/LinuxFile.png")).getPath()));
-            FileImg.setPreserveRatio(true);
-            FileImg.setFitWidth(25);
-            TaskBarLinuxImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Linux/LinuxTaskBar.png")).getPath()));
-            TaskBarLinuxImg.setPreserveRatio(true);
-            TaskBarLinuxImg.setFitWidth(40);
-        }
-        else if (OS.contains("Windows")){
-            FolderImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Windows/WindowsFolder.png")).getPath()));
-            FolderImg.setPreserveRatio(true);
-            FolderImg.setFitWidth(25);
-            FileImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Windows/WindowsFile.png")).getPath()));
-            FileImg.setPreserveRatio(true);
-            FileImg.setFitWidth(25);
-            TaskBarImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Windows/WindowsTaskBar.png")).getPath()));
-            TaskBarImg.setPreserveRatio(true);
-            TaskBarImg.setFitWidth(470);
-        }
-        else if (OS.contains("Mac")){
-            FolderImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/MacOs/MacFolder.png")).getPath()));
-            FolderImg.setPreserveRatio(true);
-            FolderImg.setFitWidth(25);
-            FileImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/MacOs/MacFile.png")).getPath()));
-            FileImg.setPreserveRatio(true);
-            FileImg.setFitWidth(25);
-            MacTaskBarImg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/MacOs/MacTaskBar.png")).getPath()));
-            MacTaskBarImg.setPreserveRatio(true);
-            MacTaskBarImg.setFitWidth(370);
-        }
-
-        ChoiceBoxSetSource.getItems().clear();
-        ChoiceBoxSetSource.getItems().add("Unsplash");
-        ChoiceBoxSetSource.getItems().add("Bing");
-        ChoiceBoxSetSource.getItems().add("NASA");
-        ChoiceBoxSetSource.getItems().add("National Geographic");
-        ChoiceBoxSetSource.getItems().add("Wikimedia Common");
-        ChoiceBoxSetSource.getItems().add("EPOD-USRA");
-        ChoiceBoxSetSource.getItems().add("NESDIS-NOAA");
-        ChoiceBoxSetSource.getItems().add("Earth Observatory");
-        ChoiceBoxSetSource.getItems().add("Big Geek Daddy");
-        ChoiceBoxSetSource.getItems().add("APOD NASA");
-
-        ChoiceBoxSetSource.setValue("None");
-
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/Bing/bing.png")).getPath()));
-        SiteLogo.setPreserveRatio(true);
-        SiteLogo.setFitWidth(490);
-        SiteLogo.setFitHeight(255);
-
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/Bing/logo.png")).getPath()));
-        SiteLogo.setPreserveRatio(true);
-        SiteLogo.setFitWidth(167);
-        SiteLogo.setFitHeight(200);
-
-        SiteInfo.setText("Microsoft Bing is a web search engine owned and operated by Microsoft. The service has its origins in Microsoft's previous search engines: MSN Search, Windows Live Search and later Live Search. Bing provides a variety of search services, including web, video, image and map search products");
-
         try {
-            textPathField.setText(GetDownloadPath());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+            monitor_img.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/monitor.png").getPath()));
 
-        ChoiceBoxSetSource.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
-            System.out.println(newValue);
+            monitor_img.setPreserveRatio(true);
+            monitor_img.setFitWidth(530);
 
-            String ImgPathJSON = (cls.getResource("/JSON_data/img.json")).getPath();
+            BrowserImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/brave.png").getPath()));
+            BrowserImg.setPreserveRatio(true);
+            BrowserImg.setFitWidth(50);
 
-            String img = null;
-            try {
-                img = new ReadJson().GetElement(newValue, new FileReader(ImgPathJSON));
-            } catch (IOException | ParseException e) {
-                e.printStackTrace();
+            System.out.println(OS);
+            if (OS.contains("Linux")){
+                FolderImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/Linux/LinuxFolder.png").getPath()));
+                FolderImg.setPreserveRatio(true);
+                FolderImg.setFitWidth(25);
+                FileImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/Linux/LinuxFile.png").getPath()));
+                FileImg.setPreserveRatio(true);
+                FileImg.setFitWidth(25);
+                TaskBarLinuxImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/Linux/LinuxTaskBar.png").getPath()));
+                TaskBarLinuxImg.setPreserveRatio(true);
+                TaskBarLinuxImg.setFitWidth(40);
+            }
+            else if (OS.contains("Windows")){
+                FolderImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/Windows/WindowsFolder.png").getPath()));
+                FolderImg.setPreserveRatio(true);
+                FolderImg.setFitWidth(25);
+                FileImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/Windows/WindowsFile.png").getPath()));
+                FileImg.setPreserveRatio(true);
+                FileImg.setFitWidth(25);
+                TaskBarImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/Windows/WindowsTaskBar.png").getPath()));
+                TaskBarImg.setPreserveRatio(true);
+                TaskBarImg.setFitWidth(470);
+            }
+            else if (OS.contains("Mac")){
+                FolderImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/MacOs/MacFolder.png").getPath()));
+                FolderImg.setPreserveRatio(true);
+                FolderImg.setFitWidth(25);
+                FileImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/MacOs/MacFile.png").getPath()));
+                FileImg.setPreserveRatio(true);
+                FileImg.setFitWidth(25);
+                MacTaskBarImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/MacOs/MacTaskBar.png").getPath()));
+                MacTaskBarImg.setPreserveRatio(true);
+                MacTaskBarImg.setFitWidth(370);
             }
 
-            WallpaperBackgrounImage.setImage(new Image("file:" + img));
-            WallpaperBackgrounImage.setPreserveRatio(false);
-            WallpaperBackgrounImage.setFitWidth(500);
-            WallpaperBackgrounImage.setFitHeight(282);
-        });
+            ChoiceBoxSetSource.getItems().clear();
+            ChoiceBoxSetSource.getItems().add("Unsplash");
+            ChoiceBoxSetSource.getItems().add("Bing");
+            ChoiceBoxSetSource.getItems().add("NASA");
+            ChoiceBoxSetSource.getItems().add("National Geographic");
+            ChoiceBoxSetSource.getItems().add("Wikimedia Common");
+            ChoiceBoxSetSource.getItems().add("EPOD-USRA");
+            ChoiceBoxSetSource.getItems().add("NESDIS-NOAA");
+            ChoiceBoxSetSource.getItems().add("Earth Observatory");
+            ChoiceBoxSetSource.getItems().add("Big Geek Daddy");
+            ChoiceBoxSetSource.getItems().add("APOD NASA");
 
+            ChoiceBoxSetSource.setValue("None");
 
-        BackImg.setImage(new Image("file://" + (cls.getResource("/images/MainPage/background_image.png")).getPath()));
-        BackImg.setPreserveRatio(false);
-        BackImg.setFitWidth(1280);
+            SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/Bing/bing.png").getPath()));
+            SiteLogo.setPreserveRatio(true);
+            SiteLogo.setFitWidth(490);
+            SiteLogo.setFitHeight(255);
 
-        LogoImg.setImage(new Image("file://" + (cls.getResource("/images/Logo/logo.png")).getPath()));
-        LogoImg.setPreserveRatio(true);
-        LogoImg.setFitWidth(175);
+            SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/Bing/logo.png").getPath()));
+            SiteLogo.setPreserveRatio(true);
+            SiteLogo.setFitWidth(167);
+            SiteLogo.setFitHeight(200);
 
-        imgBack.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Settings/back.png")).getPath()));
-        imgBack.setPreserveRatio(true);
-        imgBack.setFitWidth(40);
-        imgBack.setFitHeight(40);
+            SiteInfo.setText("Microsoft Bing is a web search engine owned and operated by Microsoft. The service has its origins in Microsoft's previous search engines: MSN Search, Windows Live Search and later Live Search. Bing provides a variety of search services, including web, video, image and map search products");
 
-        GitUmg.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Settings/git.png")).getPath()));
-        GitUmg.setPreserveRatio(true);
-        GitUmg.setFitWidth(75);
-
-        GitReport.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/Settings/report.png")).getPath()));
-        GitReport.setPreserveRatio(true);
-        GitReport.setFitWidth(40);
-
-        String ver = null;
-        try {
-            ver = new CheckVersion().ReadFileVersion((cls.getResource("/controllers/version.txt")).getPath());
-        } catch (AWTException | InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
-        VersionLinkAb.setText("v" + ver);
-        showVersion.setText("Installed Version: v" + ver);
-
-        boolean MaxCapChecked = CheckIsMaxSize();
-        System.out.println("MaxCapChecked: " + MaxCapChecked);
-        if (MaxCapChecked) {
-            MaxCapacityClick.setSelected(true);
             try {
-                MaxCapacityBox.setValue(FindCapacity() + "MB");
-                MaxCapacityBox.setDisable(false);
+                textPathField.setText(GetDownloadPath());
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        }
-        boolean UpdatesChecked = CheckIsAutoUpdate();
-        if (UpdatesChecked){
-            CheckAutoUpdates.setSelected(true);
+
+            ChoiceBoxSetSource.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+                System.out.println(newValue);
+
+                String ImgPathJSON;
+                String img = null;
+                try {
+                    ImgPathJSON = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/JSON_data/img.json").getPath();
+                    new ReadJson();
+                    img = ReadJson.GetElement(newValue, new FileReader(ImgPathJSON));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                WallpaperBackgrounImage.setImage(new Image("file:" + img));
+                WallpaperBackgrounImage.setPreserveRatio(false);
+                WallpaperBackgrounImage.setFitWidth(500);
+                WallpaperBackgrounImage.setFitHeight(282);
+            });
+
+
+            BackImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/MainPage/background_image.png").getPath()));
+            BackImg.setPreserveRatio(false);
+            BackImg.setFitWidth(1280);
+
+            LogoImg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Logo/logo.png").getPath()));
+            LogoImg.setPreserveRatio(true);
+            LogoImg.setFitWidth(175);
+
+            imgBack.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/Settings/back.png").getPath()));
+            imgBack.setPreserveRatio(true);
+            imgBack.setFitWidth(40);
+            imgBack.setFitHeight(40);
+
+            GitUmg.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/Settings/git.png").getPath()));
+            GitUmg.setPreserveRatio(true);
+            GitUmg.setFitWidth(75);
+
+            GitReport.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/Settings/report.png").getPath()));
+            GitReport.setPreserveRatio(true);
+            GitReport.setFitWidth(40);
+
+            String ver = null;
+            try {
+                new CheckVersion();
+                ver = CheckVersion.ReadFileVersion(new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/version.txt").getPath());
+            } catch (AWTException | InterruptedException | IOException e) {
+                e.printStackTrace();
+            }
+            VersionLinkAb.setText("v" + ver);
+            showVersion.setText("Installed Version: v" + ver);
+
+            boolean MaxCapChecked = CheckIsMaxSize();
+            System.out.println("MaxCapChecked: " + MaxCapChecked);
+            if (MaxCapChecked) {
+                MaxCapacityClick.setSelected(true);
+                try {
+                    MaxCapacityBox.setValue(FindCapacity() + "MB");
+                    MaxCapacityBox.setDisable(false);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            boolean UpdatesChecked = CheckIsAutoUpdate();
+            if (UpdatesChecked){
+                CheckAutoUpdates.setSelected(true);
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
     }
 
-    private String FindCapacity() throws FileNotFoundException {
-        String size = null;
-        String dir = (cls.getResource("/controllers/MaxCapacity.txt")).getPath();
-        Scanner myReader = new Scanner(new File(dir));
-        int num = 0;
-        while (myReader.hasNextLine()) {
-            num++;
-            if (num == 1) {
-                size = myReader.nextLine();
-            }
-        }
+    private String FindCapacity() throws FileNotFoundException, MalformedURLException {
+        String size;
+        String dir = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/MaxCapacity.txt").getPath();
+        size = new ReadFile().ReadTheStringFile(dir);
+
         assert !Objects.equals(size, "none");
         return size;
     }
 
-    private String GetDownloadPath() throws FileNotFoundException {
-        String path = null;
-        String dir = (cls.getResource("/controllers/DownloadPath.txt")).getPath();
-        Scanner myReader = new Scanner(new File(dir));
-        int num = 0;
-        while (myReader.hasNextLine()) {
-            num++;
-            if (num == 1) {
-                path = myReader.nextLine();
-            }
-        }
-        myReader.close();
+    private String GetDownloadPath() throws FileNotFoundException, MalformedURLException {
+        String path;
+        String dir = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/DownloadPath.txt").getPath();
+        path = new ReadFile().ReadTheStringFile(dir);
 
         return path;
     }
@@ -258,7 +252,8 @@ public class Settings implements Initializable {
                 Parent root = null;
                 Stage primaryStage = new Stage();
                 try {
-                    root = FXMLLoader.load(getClass().getResource("MainIoTdPage.fxml"));
+                    URL pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/sample/MainIoTdPage.fxml");
+                    root = FXMLLoader.load(pth);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -269,7 +264,7 @@ public class Settings implements Initializable {
                 double maxW = 1280;
                 primaryStage.setMaxWidth(maxW);
                 primaryStage.setScene(scene);
-                Image icon = new Image("file://" + (cls.getResource("/images/Logo/logo.png").getPath()));
+                Image icon = new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Logo/logo.png").getPath());
                 primaryStage.getIcons().add(icon);
                 primaryStage.show();
                 WholeSettingsPane.getScene().getWindow().hide();
@@ -335,13 +330,13 @@ public class Settings implements Initializable {
     void NESDISOpen() { new OpenUrl("https://www.nesdis.noaa.gov/"); }
 
     @FXML
-    void ShowBingInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/Bing/bing.png")).getPath()));
+    void ShowBingInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/Bing/bing.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/Bing/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/Bing/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(167);
         SiteLogo.setFitHeight(200);
@@ -349,13 +344,13 @@ public class Settings implements Initializable {
         SiteInfo.setText("Microsoft Bing is a web search engine owned and operated by Microsoft. The service has its origins in Microsoft's previous search engines: MSN Search, Windows Live Search and later Live Search. Bing provides a variety of search services, including web, video, image and map search products");
     }
     @FXML
-    void ShowNasaInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/NASA/nasa.png")).getPath()));
+    void ShowNasaInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/NASA/nasa.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/NASA/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/NASA/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(150);
@@ -363,13 +358,13 @@ public class Settings implements Initializable {
         SiteInfo.setText("The National Aeronautics and Space Administration is an independent agency of the U.S. federal government responsible for the civilian space program, as well as aeronautics and space research. NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics.");
     }
     @FXML
-    void ShowUnsplashInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/Unsplash/unsplash.png")).getPath()));
+    void ShowUnsplashInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/Unsplash/unsplash.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/Unsplash/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/Unsplash/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(200);
@@ -377,13 +372,13 @@ public class Settings implements Initializable {
         SiteInfo.setText("Unsplash is a website dedicated to sharing stock photography under the Unsplash license. The website claims over 207,000 contributing photographers and generates more than 17 billion photo impressions per month on their growing library of over 2 million photos");
     }
     @FXML
-    void ShowNgInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/NG/ng.png")).getPath()));
+    void ShowNgInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/NG/ng.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/NG/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/NG/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(150);
@@ -391,13 +386,13 @@ public class Settings implements Initializable {
         SiteInfo.setText("National Geographic is the long-lived official monthly magazine of the National Geographic Society. It is one of the most widely read magazines of all time.");
     }
     @FXML
-    void ShowWikiInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/Wiki/wiki.png")).getPath()));
+    void ShowWikiInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/Wiki/wiki.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/Wiki/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/Wiki/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(152);
         SiteLogo.setFitHeight(200);
@@ -405,13 +400,13 @@ public class Settings implements Initializable {
         SiteInfo.setText("Wikimedia Commons is an online repository of free-use images, sounds, other media, and JSON files. It is a project of the Wikimedia Foundation. Files from Wikimedia Commons can be used across all Wikimedia projects in all languages, including Wikipedia, Wiktionary, Wikibooks, Wikivoyage, Wikispecies, Wikisource, and Wikinews, or downloaded for offsite use.");
     }
     @FXML
-    void ShowBGDInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/BGD/bgd.png")).getPath()));
+    void ShowBGDInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/BGD/bgd.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/BGD/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/BGD/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(200);
@@ -419,13 +414,13 @@ public class Settings implements Initializable {
         SiteInfo.setText("I like to share videos that I find funny, interesting, cool, or otherwise entertaining as well as some computer information I think people might find helpful. I have a very diverse set of interests and a sense of humor.");
     }
     @FXML
-    void ShowEOInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/EO/eo.png")).getPath()));
+    void ShowEOInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/EO/eo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/EO/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/EO/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(104);
@@ -433,13 +428,13 @@ public class Settings implements Initializable {
         SiteInfo.setText("NASA Earth Observatory is an online publishing outlet for NASA which was created in 1999. It is the principal source of satellite imagery and other scientific information pertaining to the climate and the environment which are being provided by NASA for consumption by the general public.");
     }
     @FXML
-    void ShowAPODInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/APOD/apod.png")).getPath()));
+    void ShowAPODInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/APOD/apod.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/APOD/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/APOD/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(200);
@@ -447,13 +442,13 @@ public class Settings implements Initializable {
         SiteInfo.setText("Astronomy Picture of the Day is a website provided by NASA and Michigan Technological University. According to the website, \"Each day a different image or photograph of our universe is featured, along with a brief explanation written by a professional astronomer.\" The photograph does not necessarily correspond to a celestial event on the exact day that it is displayed, and images are sometimes repeated");
     }
     @FXML
-    void ShowEPODInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/EPOD/epod.png")).getPath()));
+    void ShowEPODInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/EPOD/epod.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/EPOD/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/EPOD/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(146);
@@ -461,13 +456,13 @@ public class Settings implements Initializable {
         SiteInfo.setText("The USRA standard locomotives and railroad cars were designed by the United States Railroad Administration, the nationalized rail system of the United States during World War I. 1,856 steam locomotives and over 100,000 railroad cars were built to these designs during the USRA's tenure");
     }
     @FXML
-    void ShowNESDISInfo() {
-        SiteImage.setImage(new Image("file://" + (cls.getResource("/images/sites/NESDIS/nesdis.png")).getPath()));
+    void ShowNESDISInfo() throws MalformedURLException {
+        SiteImage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/NESDIS/nesdis.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(490);
         SiteLogo.setFitHeight(255);
 
-        SiteLogo.setImage(new Image("file://" + (cls.getResource("/images/sites/NESDIS/logo.png")).getPath()));
+        SiteLogo.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/sites/NESDIS/logo.png").getPath()));
         SiteLogo.setPreserveRatio(true);
         SiteLogo.setFitWidth(200);
         SiteLogo.setFitHeight(200);
@@ -477,7 +472,8 @@ public class Settings implements Initializable {
 
     @FXML
     void CheckUpdatesOnline() throws IOException, AWTException, InterruptedException {
-        new CheckVersion().Version();
+        new CheckVersion();
+        CheckVersion.Version();
     }
 
     @FXML
@@ -493,44 +489,30 @@ public class Settings implements Initializable {
             textPathField.clear();
             textPathField.setText(SelectedPath);
 
-            URL FlPth = cls.getResource("/controllers/DownloadPath.txt");
-            File FilePath = new File(FlPth.getPath());
-            FileWriter fWriter = new FileWriter(FilePath, false);
-            fWriter.write(SelectedPath + "/");
-            fWriter.close();
+            File fl = new File(new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/DownloadPath.txt").getPath());
+            new WriteFile(fl, SelectedPath + "/", false);
         }
     }
 
     @FXML
     void CheckAutoUpdatesChoice() throws IOException {
         if (CheckAutoUpdates.isSelected()){
-            URL filePath = cls.getResource("/controllers/AutoUpdates.txt");
-            FileWriter fw = new FileWriter(filePath.getPath(), false);
-            fw.write("1");
-            fw.close();
+            File fl = new File(new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/AutoUpdates.txt").getPath());
+            new WriteFile(fl, "1", false);
         }
         else{
-            String filePath = (cls.getResource("/controllers/AutoUpdates.txt")).getPath();
-            FileWriter fw = new FileWriter(filePath, false);
-            fw.write("0");
-            fw.close();
+            File fl = new File(new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/AutoUpdates.txt").getPath());
+            new WriteFile(fl, "0", false);
         }
     }
 
     @FXML
-    void MaxCapacityClickChoice() {
+    void MaxCapacityClickChoice() throws MalformedURLException {
         if (!MaxCapacityClick.isSelected()) {
             MaxCapacityBox.setDisable(true);
-            String path = (cls.getResource("/controllers/MaxCapacity.txt")).getPath();
-            File file = new File(path);
 
-            try {
-                FileWriter fw = new FileWriter(file, false);
-                fw.write("none");
-                fw.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            File fl = new File(new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/MaxCapacity.txt").getPath());
+            new WriteFile(fl, "none", false);
         } else {
             MaxCapacityBox.setDisable(false);
             MaxCapacityBox.getItems().clear();
@@ -547,14 +529,10 @@ public class Settings implements Initializable {
             MaxCapacityBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, capacity) -> {
                 System.out.println(capacity);
 
-                String path = (cls.getResource("/controllers/MaxCapacity.txt")).getPath();
-                File file = new File(path);
-
                 try {
-                    FileWriter fw = new FileWriter(file, false);
-                    fw.write(capacity.replace(" MB", ""));
-                    fw.close();
-                } catch (IOException e) {
+                    File fl = new File(new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/MaxCapacity.txt").getPath());
+                    new WriteFile(fl, capacity.replace(" MB", ""), false);
+                } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
             });
@@ -564,23 +542,15 @@ public class Settings implements Initializable {
     public static boolean CheckIsMaxSize() {
         boolean selectMaxSize = false;
         try {
-            URL mobj = cls.getResource("/controllers/MaxCapacity.txt");
-            File myObj = new File(mobj.getPath());
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String size = myReader.nextLine();
-                System.out.println("Max Capacity: " + size);
-                if ((size.equals("100")) ||
-                        (size.equals("200")) ||
-                        (size.equals("500")) ||
-                        (size.equals("1024"))||
-                        (size.equals("2048")) ||
-                        (size.equals("4096"))) {
-                    selectMaxSize = true;
-                }
+            String path = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/MaxCapacity.txt").getPath();
+            String size = new ReadFile().ReadTheStringFile(path);
+
+            System.out.println("Max Capacity: " + size);
+            if ((size.equals("100")) || (size.equals("200")) || (size.equals("500")) || (size.equals("1024"))|| (size.equals("2048")) || (size.equals("4096"))) {
+                selectMaxSize = true;
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
         return selectMaxSize;
     }
@@ -588,18 +558,14 @@ public class Settings implements Initializable {
     public static boolean CheckIsAutoUpdate() {
         boolean check = true;
         try {
-            URL mobj = cls.getResource("/controllers/AutoUpdates.txt");
-            File myObj = new File(mobj.getPath());
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                System.out.println("auto updates: " + data);
-                if (data.contains("0")) {
-                    check = false;
-                }
+            String path = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/AutoUpdates.txt").getPath();
+            int data = new ReadFile().ReadTheIntFile(path);
+            System.out.println("auto updates: " + data);
+            if (data == 0) {
+                check = false;
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
         return check;
     }

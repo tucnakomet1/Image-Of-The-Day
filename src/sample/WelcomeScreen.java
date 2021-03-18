@@ -9,21 +9,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class WelcomeScreen implements Initializable {
-
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
-
+    public static String MyPath = System.getProperty("user.dir");
     public int num = 0;
 
-    public Image WelcomeImg1 = new Image("file://" + (cls.getResource("/images/Welcome/WelcomeImg1.png")).getPath());
-    public Image WelcomeImg2 = new Image("file://" + (cls.getResource("/images/Welcome/WelcomeImg2.png")).getPath());
-    public Image WelcomeImg3 = new Image("file://" + (cls.getResource("/images/Welcome/WelcomeImg3.png")).getPath());
+    public Image WelcomeImg1 = new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Welcome/WelcomeImg1.png").getPath());
+    public Image WelcomeImg2 = new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Welcome/WelcomeImg2.png").getPath());
+    public Image WelcomeImg3 = new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Welcome/WelcomeImg3.png").getPath());
     public String WelcomeTxt1 = "Image-Of-The-Day is a JavaFX project that allows you to see, download or set image as a wallpaper from NASA, Bing, National Geographic, etc. in a friendly graphical interface.";
     public String WelcomeTxt2 = "You can open given web page, you can download your chosen image and you can set it as your wallpaper! In the right corner there is an icon to open directory with downloaded images.";
     public String WelcomeTxt3 = "In the left corner there is an settings icon. You can choose your download location, you can look at wallpaper preview, you can see information about web pages, report bugs and more! ";
@@ -38,6 +35,9 @@ public class WelcomeScreen implements Initializable {
     private Button next, Back;
     @FXML
     private CheckBox NoAgain;
+
+    public WelcomeScreen() throws MalformedURLException {
+    }
 
     @FXML
     void GoBack() {
@@ -82,12 +82,8 @@ public class WelcomeScreen implements Initializable {
         if (NoAgain.isSelected()){
             System.out.println("Don't show this again!");
 
-            URL path = cls.getResource("/controllers/RunWelcomeScreen.txt");
-            System.out.println(path.getPath());
-            File file = new File(path.getPath());
-            FileWriter fw = new FileWriter(file);
-            fw.write("0");
-            fw.close();
+            File file = new File(new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/RunWelcomeScreen.txt").getPath());
+            new WriteFile(file, "0", false);
         }
     }
 

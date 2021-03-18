@@ -16,8 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class download_img {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");
 
     public download_img(String img_urls, String author) {
         try{
@@ -25,7 +24,7 @@ public class download_img {
             String formattedDate = myFormatObj.format(new Date());
 
             InputStream in = new URL(img_urls).openStream();
-            String name_of_img = (cls.getResource("/images/Splash/").getPath() +author+"-"+formattedDate+".jpg");
+            String name_of_img = (new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Splash/").getPath() +author+"-"+formattedDate+".jpg");
 
             Files.copy(in, Paths.get(name_of_img));
 

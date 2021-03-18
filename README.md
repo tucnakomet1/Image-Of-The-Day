@@ -1,21 +1,19 @@
 <h1 align="center">Image Of The Day</h1>
 
-<a href="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo.png"><img src="https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/images/Logo/logo_75x75.png" alt="info"  style="max-width:10%;" align="left" hspace="10"></a>Image-Of-The-Day is a JavaFX project that allows you to see, download or set image as a wallpaper from [NASA](https://www.nasa.gov/), [Bing](https://bing.com/), [National Geographic](https://www.nationalgeographic.co.uk/), [etc.](#resources) in a friendly graphical interface. Software can be installed on any Windows and Linux device. This project is mainly used for self-improvement in Java and to understand the JavaFX library. Any idea for upgrade is welcome.
+<img title="" src="https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/src/images/Logo/logo_75x75.png" alt="info" style="max-width:10%;" align="left">Image-Of-The-Day is a JavaFX project that allows you to see, download or set image as a wallpaper from [NASA](https://www.nasa.gov/), [Bing](https://bing.com/), [National Geographic](https://www.nationalgeographic.co.uk/), [etc.](#resources) in a friendly graphical interface. Software can be installed on any Windows and Linux device. This project is mainly used for self-improvement in Java and to understand the JavaFX library. Any idea for upgrade is welcome.
+
 <h2></h2>
 
-![maingif](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainGif.gif)
-
+![maingif](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainGif.gif?raw=true)
 
 <h2>Table of contents</h2>
 
-
 * <a href="#install">INSTALLATION</a><br/>
-  * <a href = "#windows">Windows</a><br/>
-  * <a href = "#linux">Linux</a><br/>
-  	* <a href = "#debian">Debian based</a><br/>
-  	* <a href = "#arch">Arch based</a><br/>
-  	* <a href = "#fedora">Fedora based</a><br/>
-  * <a href = "#tar">Tarball/ Source</a><br/>
+	* <a href = "#windows">Windows</a><br/>
+	* <a href = "#linux">Linux</a><br/>
+		* <a href = "#debian">Debian based</a><br/>
+		* <a href = "#tar">Tarball</a><br/>
+  * <a href = "#source">Download Source</a><br/>
 * <a href = "#sites">WEB PAGES</a><br/>
 * <a href = "#libraries">LIBRARIES</a><br/>
 * <a href = "#screen">SCREENSHOTS</a><br/>
@@ -29,10 +27,11 @@
 
 <h2 id="install">INSTALLATION</h2>
 
-
 <h3 id="windows">Windows</h3>
 
-Download newest [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) and choose your preferred installation format ( **.exe** *(preinstalled)* / **.msi**)
+Coming really soon (`.exe` and `msi`)
+
+
 
 <br/>
 
@@ -40,54 +39,30 @@ Download newest [release](https://github.com/tucnakomet1/Image-Of-The-Day/releas
 
 <h4 id="debian">Debian based</h4>
 
-You can download *.deb* package using latest [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) site or using this installation script:
+Coming really soon (`.deb`)
 
-```bash
-cd $(xdg-user-dir DOWNLOAD) # navigate to 'Downloads' folder
-version=$(curl https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/src/controllers/version.txt | tr -s "version " "v") # get latest version name
-wget https://github.com/tucnakomet1/Image-Of-The-Day/releases/download/$version/image-of-the-day-$version.deb # download the package
-sudo dpkg -i image-of-the-day-$version.deb # unpack and install the package
-```
-
-
-<h4 id="fedora">Fedora based</h4>
-
-You can download *.* package using [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases) site or using this installation script:
-
-```bash
-cd $(xdg-user-dir DOWNLOAD) # navigate to 'Downloads' folder
-version=$(curl https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/src/controllers/version.txt | tr -s "version " "v") # get latest version name
-wget https://github.com/tucnakomet1/Image-Of-The-Day/releases/download/$version/image-of-the-day-$version.rpm # download the package
-sudo dnf install image-of-the-day-$version.rpm # unpack and install the package
-sudo rm image-of-the-day-$version.rpm # remove installed packge
-```
-
-
-<br/>
-
-<h3 id="tar">Tarball/ Source</h3>
-
+<h4 id="tar">Tarball</h4>
 Download the latest tar [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases)
 Use any file manager or run command to extract package. Then go to the folder and run installation scripts:
-```bash 
+
+```bash
 tar -xvzf Image-Of-The-Day*.tar.gz
-cd Image-Of-The-Day
+cd Image-Of-The-Day*
+
 sudo chmod +x install.sh
 ./install.sh
 ```
 
 
-Download and install from source code:
+<h3 id="source">Source</h3>
 
-```bash 
+Download from source code:
+
+```bash
 git clone https://github.com/tucnakomet1/Image-Of-The-Day.git
-cd Image-Of-The-Day
-sudo chmod +x install.sh
-./install.sh
 ```
-<br/>
 
-<br/><br/><br/>
+<br/><br/><br/><br/>
 
 <h2 id="sites">WEB PAGES</h2>
 
@@ -106,7 +81,7 @@ sudo chmod +x install.sh
 
 <h2 id="libraries">LIBRARIES</h2>
 
-Created with [Java openjdk-15.0.2](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html) and [JavaFX javafx-sdk-15.0.1](https://gluonhq.com/products/javafx/)
+Created with [Java openjdk-15.0.2](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html) and [JavaFX javafx-sdk-15.0.1](https://gluonhq.com/products/javafx/) using IDE [IntelliJ IDEA](https://www.jetbrains.com/idea/).
 
 * Json-simple (1.1.1) - [download](https://gitlab.cs.washington.edu/cse332-16au/p1/blob/master/json-simple-1.1.1.jar)
 * Jsoup (1.13.1) - [download](https://jsoup.org/download)
@@ -115,26 +90,28 @@ Created with [Java openjdk-15.0.2](https://www.oracle.com/java/technologies/java
 
 <h2 id="screen">SCREENSHOTS</h2>
 
-![mainpage](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainPage.png)
+![mainpage](https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/screenshots/MainPage.png)
 
-![mainpageimg](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/MainPageImg.png)
+![mainpageimg](https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/screenshots/MainPageImg.png)
 
-![settingswallpaper](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/SettingsWallpaper.png)
+![settingswallpaper](https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/screenshots/SettingsWallpaper.png)
 
-![settingspages](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/SettingsPages.png)<br/><br/><br/><br/><br/>
+![settingspages](https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/screenshots/SettingsPages.png)<br/><br/><br/><br/><br/>
 
 <h2 id="survey"> SURVEY </h2>
 
 <p align="center" >Do you want to improve Image-Of-The-Day? Do you want to rate it? Or do you want to react for it?</p>
 <p align="center"><b>Fill out</b> this survey to help me <b>improve</b> this app!</p>
 
-[![survey](https://github.com/tucnakomet1/Image-Of-The-Day/blob/master/screenshots/survey.png "Image-Of-The-Day survey!")](http://www.survey-maker.com/QJSZDCRK9)
+[![survey](https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/screenshots/survey.png "Image-Of-The-Day survey!")](http://www.survey-maker.com/QJSZDCRK9)
+
 <h2 id="todo"> TO-DO LIST </h2>
 
+- [ ] Add ~~.jar~~, ~~.deb~~, .rpm, .exe, .msi, .AppImage
 - [ ] Mac OS support
 - [ ] Add white theme
 - [ ] New languages
-- [ ] New pages ([Flickr](https://www.flickr.com/)) - please contact me if you know another one
+- [ ] New pages ([Flickr](https://www.flickr.com/), and more)
 - [ ] Run at startup
 
 <br/><br/><br/>
@@ -175,4 +152,3 @@ You can contact me via my gmail address <a href="mailto:tucnakomet@gmail.com">tu
  <br/>
 
 If you like my project you can look at my [profile](https://github.com/tucnakomet1) or straight visit my next project [who-is-on-my-wifi](https://github.com/tucnakomet1/Python-Who-Is-On-My-WiFi).
-

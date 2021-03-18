@@ -1,7 +1,6 @@
 package sample;
 
 import org.json.simple.parser.ParseException;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -10,8 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class ResolPref {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");
 
     public ResolPref() {}
 
@@ -27,7 +25,7 @@ public class ResolPref {
         ArrayList<String> NOTHING = new ArrayList<>();
 
         for (String site : sites){
-            URL sitUrl = cls.getResource("/JSON_data/resolution.json");
+            URL sitUrl = new URL("file:" + MyPath + "/out/production/ImageOfTheDay//JSON_data/resolution.json");
             String sitex =  ReadJson.GetElement(site, new FileReader(sitUrl.getPath()));
             String[] splitted = sitex.split("x");
             int WIDTH = Integer.parseInt(splitted[0]);
@@ -42,7 +40,7 @@ public class ResolPref {
             else if (sitex.equals("100x300")){
                 NOTHING.add(site);
             }
-            else if ((WIDTH < HEIGHT) && !sitex.equals("100x300")){
+            else if ((WIDTH < HEIGHT)){
                 TALL.add(site);
             }
             else {

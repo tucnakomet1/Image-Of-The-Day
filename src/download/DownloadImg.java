@@ -1,13 +1,11 @@
 package download;
 
 import Settings.SendNotif;
-import sample.Main;
-
+import sample.WriteFile;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.Format;
@@ -15,8 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DownloadImg {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");
 
     public DownloadImg(String img_url, String author, String site, boolean resize, String path) throws IOException {
         try {
@@ -61,16 +58,16 @@ public class DownloadImg {
                 new AddJson(output, author, site, resolution);
             }
             else {
-                File fl = new File((cls.getResource("/controllers/WallpaperPath.txt").getPath()));
-                FileWriter fw = new FileWriter(fl);
-                fw.write(output);
-                fw.close();
+                URL pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/WallpaperPath.txt");
+                File fl = new File(pth.getPath());
+                new WriteFile(fl, output, false);
             }
             System.out.println("DONE");
         } catch (IOException e) {
             e.printStackTrace();
             if (resize) {
-                new AddJson((cls.getResource("/images/MainPage/error.png").getPath()), "unknown", site, "100x300");
+                URL pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/MainPage/error.png");
+                new AddJson(pth.getPath(), "unknown", site, "100x300");
             }
             else {
                 new SendNotif().SendDownloadErrorAlert(e);

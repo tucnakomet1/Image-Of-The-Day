@@ -1,17 +1,16 @@
 package Settings;
 
-import sample.Main;
-
 import java.awt.*;
 import java.io.IOException;
 import java.awt.TrayIcon.MessageType;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class ShowAlert {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");
 
-    public ShowAlert(String title, String send) {
-        String imgPath = (cls.getResource("/images/Logo/logo.png")).getPath();
+    public ShowAlert(String title, String send) throws MalformedURLException {
+        String imgPath = (new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Logo/logo.png")).getPath();
         String[] LinuxNotifyCmd = {"notify-send", "'Image-Of-The-Day - " + title + "'", "'" + send + "'", "-u", "normal", "-t", "6000", "-i", imgPath};
         String[] MacNotifyCmd = {"osascript", "-e", "'display notification \"Image-Of-The-Day - " + send + "\"  with title \"" + title + "\"'"};
 

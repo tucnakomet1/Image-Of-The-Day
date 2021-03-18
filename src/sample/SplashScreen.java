@@ -13,15 +13,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class SplashScreen implements Initializable {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");
 
     @FXML
     private AnchorPane splash_pane;
@@ -35,15 +33,10 @@ public class SplashScreen implements Initializable {
     public static String getAuthor() {
         String AuthorName = null;
         try{
-            String basic_path = (cls.getResource("/images/Splash/author.txt")).getPath();
-            File folder = new File(basic_path);
-            Scanner sc = new Scanner(folder);
-            while (sc.hasNextLine()) {
-                AuthorName = sc.nextLine();
-            }
-            sc.close();
+            String path = MyPath + "/out/production/ImageOfTheDay/images/Splash/author.txt";
+            AuthorName = new ReadFile().ReadTheStringFile(path);
         }
-        catch (FileNotFoundException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
         return AuthorName;
@@ -56,7 +49,7 @@ public class SplashScreen implements Initializable {
 
         String[] pathnames;
 
-        String basic_path = (cls.getResource("/images/Splash/")).getPath();
+        String basic_path = MyPath + "/out/production/ImageOfTheDay/images/Splash/";
         File file = new File(basic_path);
         pathnames = file.list();
 
@@ -84,7 +77,10 @@ public class SplashScreen implements Initializable {
         @Override
         public void run() {
             try {
-                String path = (cls.getResource("/images/Day/")).getPath();
+                System.out.println(">>>>>>>> DAY <<<<<<<<<<");
+
+                String path = MyPath + "/out/production/ImageOfTheDay/images/Day/";
+                System.out.println("FINITO");
 
                 new UnsplashDownload(true, path);
                 new BigGeekDaddyDownload(true, path);
@@ -97,27 +93,31 @@ public class SplashScreen implements Initializable {
                 new NOAADownload(true, path);
                 new EarthObservDownload(true, path);
 
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Parent root2 = null;
-                        Stage primaryStage = new Stage();
-                        try {
-                            root2 = FXMLLoader.load(getClass().getResource("MainIoTdPage.fxml"));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        primaryStage.setTitle("Image Of The Day");
-                        assert root2 != null;
-                        Scene scene = new Scene(root2);
-                        double maxW = 1280;
-                        primaryStage.setMaxWidth(maxW);
-                        primaryStage.setScene(scene);
-                        Image icon = new Image("file://" + (cls.getResource("/images/Logo/logo.png")).getPath());
-                        primaryStage.getIcons().add(icon);
-                        primaryStage.show();
-                        splash_pane.getScene().getWindow().hide();
+                Platform.runLater(() -> {
+                    Parent root2 = null;
+                    Stage primaryStage = new Stage();
+                    try {
+                        URL pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/sample/MainIoTdPage.fxml");
+                        root2 = FXMLLoader.load(pth);
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
+                    primaryStage.setTitle("Image Of The Day");
+                    assert root2 != null;
+                    Scene scene = new Scene(root2);
+                    double maxW = 1280;
+                    primaryStage.setMaxWidth(maxW);
+                    primaryStage.setScene(scene);
+                    URL icn = null;
+                    try {
+                        icn = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Logo/logo.png");
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    Image icon = new Image("file://"+icn.getPath());
+                    primaryStage.getIcons().add(icon);
+                    primaryStage.show();
+                    splash_pane.getScene().getWindow().hide();
                 });
             } catch (IOException e) {
                 e.printStackTrace();

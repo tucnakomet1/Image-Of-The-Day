@@ -3,23 +3,24 @@ package Settings;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import sample.Main;
+import sample.ReadFile;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Scanner;
 
 public class CheckVersion {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");
 
     public CheckVersion() throws IOException, AWTException, InterruptedException {
     }
 
     public static void Version() throws IOException {
-        String VersionFile = (cls.getResource("/controllers/version.txt")).getPath();
-        String VersionURL = "https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/controllers/version.txt";
+        String VersionFile = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/version.txt").getPath();
+        String VersionURL = "https://raw.githubusercontent.com/tucnakomet1/Image-Of-The-Day/master/src/controllers/version.txt";
 
         String ReadFile = ReadFileVersion(VersionFile);
         String ReadURL =  ReadUrlVersion(VersionURL);
@@ -38,14 +39,10 @@ public class CheckVersion {
     }
 
     public static String ReadFileVersion(String version) throws FileNotFoundException {
+        String res = new ReadFile().ReadTheStringFile(version);
 
-        Scanner scanner = new Scanner(new File(version));
-
-        while (scanner.hasNextLine()){
-            String res = scanner.nextLine();
-            if (res.contains("version")){
-                version = res.replace("version ", "");
-            }
+        if (res.contains("version")){
+            version = res.replace("version ", "");
         }
         return version;
     }

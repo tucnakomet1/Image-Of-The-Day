@@ -19,11 +19,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,13 +32,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class MainIoTdPage implements Initializable {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
-
+    public static String MyPath = System.getProperty("user.dir");
     public int number;
     public boolean WelcomeRunNum = true;
 
@@ -64,7 +61,7 @@ public class MainIoTdPage implements Initializable {
 
 
     @FXML
-    void OpenImageView1() {
+    void OpenImageView1() throws MalformedURLException {
         number = 0;
         String Img = getJsonImg(number);
 
@@ -80,7 +77,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView2() {
+    void OpenImageView2() throws MalformedURLException {
         number = 1;
         String Img = getJsonImg(number);
 
@@ -96,7 +93,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView3() {
+    void OpenImageView3() throws MalformedURLException {
         number = 2;
         String Img = getJsonImg(number);
 
@@ -112,7 +109,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView4() {
+    void OpenImageView4() throws MalformedURLException {
         number = 3;
         String Img = getJsonImg(number);
 
@@ -128,7 +125,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView5() {
+    void OpenImageView5() throws MalformedURLException {
         number = 4;
         String Img = getJsonImg(number);
 
@@ -144,7 +141,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView6() {
+    void OpenImageView6() throws MalformedURLException {
         number = 5;
         String Img = getJsonImg(number);
 
@@ -160,7 +157,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView7() {
+    void OpenImageView7() throws MalformedURLException {
         number = 6;
         String Img = getJsonImg(number);
 
@@ -176,7 +173,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView8() {
+    void OpenImageView8() throws MalformedURLException {
         number = 7;
         String Img = getJsonImg(number);
 
@@ -192,7 +189,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView9() {
+    void OpenImageView9() throws MalformedURLException {
         number = 8;
         String Img = getJsonImg(number);
 
@@ -208,7 +205,7 @@ public class MainIoTdPage implements Initializable {
     }
 
     @FXML
-    void OpenImageView10() {
+    void OpenImageView10() throws MalformedURLException {
         number = 9;
         String Img = getJsonImg(number);
 
@@ -349,7 +346,7 @@ public class MainIoTdPage implements Initializable {
         }
     }
 
-    private boolean CheckDirSize() throws FileNotFoundException {
+    private boolean CheckDirSize() throws MalformedURLException {
         boolean CanDownload = true;
         long size = 0;
         String path = findPath();
@@ -381,36 +378,24 @@ public class MainIoTdPage implements Initializable {
         return CanDownload;
     }
 
-    private Integer FindCapacity() throws FileNotFoundException {
-        String size = null;
+    private Integer FindCapacity() throws MalformedURLException {
+        String size;
         int maxSize = 0;
-        URL dir = cls.getResource("/controllers/MaxCapacity.txt");
-        Scanner myReader = new Scanner(new File(dir.getPath()));
-        int num = 0;
-        while (myReader.hasNextLine()) {
-            num++;
-            if (num == 1) {
-                size = myReader.nextLine();
-            }
-        }
+        String dir = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/MaxCapacity.txt").getPath();
+        size = new ReadFile().ReadTheStringFile(dir);
+
         assert size != null;
         if (!size.equals("none")) {
             maxSize = Integer.parseInt(size);
         }
         return maxSize;
     }
-    private String findPath() throws FileNotFoundException {
-        String path = null;
-        URL dir = cls.getResource("/controllers/DownloadPath.txt");
-        Scanner myReader = new Scanner(new File(dir.getPath()));
-        int num = 0;
-        while (myReader.hasNextLine()) {
-            num++;
-            if (num == 1) {
-                path = myReader.nextLine();
-            }
-        }
-        myReader.close();
+    private String findPath() {
+        String path;
+
+        String mypth = MyPath + "/out/production/ImageOfTheDay/controllers/DownloadPath.txt";
+        path = new ReadFile().ReadTheStringFile(mypth);
+
         return path;
     }
 
@@ -476,7 +461,8 @@ public class MainIoTdPage implements Initializable {
                 Parent root = null;
                 Stage primaryStage = new Stage();
                 try {
-                    root = FXMLLoader.load(getClass().getResource("Settings.fxml"));
+                    URL pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/sample/Settings.fxml");
+                    root = FXMLLoader.load(pth);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -487,7 +473,8 @@ public class MainIoTdPage implements Initializable {
                 double maxW = 1280;
                 primaryStage.setMaxWidth(maxW);
                 primaryStage.setScene(scene);
-                Image icon = new Image("file://" + (cls.getResource("/images/Logo/logo.png")).getPath());
+                URL icn = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Logo/logo.png");
+                Image icon = new Image("file://" + icn.getPath());
                 primaryStage.getIcons().add(icon);
                 primaryStage.show();
                 WelcomeRunNum = false;
@@ -503,7 +490,7 @@ public class MainIoTdPage implements Initializable {
         String date = null;
 
         try{
-            Format format_date = new SimpleDateFormat("dd/MM/yyyy");
+            Format format_date = new SimpleDateFormat("yyyy/MM/dd");
             date = format_date.format(new Date());
         } catch (Exception e) {
             e.printStackTrace();
@@ -511,31 +498,32 @@ public class MainIoTdPage implements Initializable {
         return date;
     }
 
-    public static String getImgUrl() {
+    public static String getImgUrl() throws MalformedURLException {
         String imgUrl = null;
         String[] names;
 
-        URL basicUrl = cls.getResource("/images/Splash/");
+        URL basicUrl = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Splash/");
         File file_path = new File(basicUrl.getPath());
         names = file_path.list();
 
         assert names != null;
         for (String file_name : names) {
             if (file_name.contains(".png")) {
-                URL imgPth = cls.getResource("/images/MainPage/background_image.png");
+                URL imgPth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/MainPage/background_image.png");
                 imgUrl = "file://" + imgPth.getPath();
             }
         }
         return imgUrl;
     }
 
-    public String getJsonImg(int num) {
+    public String getJsonImg(int num) throws MalformedURLException {
         String site = GetSiteName(num);
         System.out.println(site);
-        URL ImgPathJSON = cls.getResource("/JSON_data/img.json");
+        URL ImgPathJSON = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/JSON_data/img.json");
         String Img = null;
         try {
-            Img = new ReadJson().GetElement(site, new FileReader(ImgPathJSON.getPath()));
+            new ReadJson();
+            Img = ReadJson.GetElement(site, new FileReader(ImgPathJSON.getPath()));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -564,7 +552,8 @@ public class MainIoTdPage implements Initializable {
                         Parent root = null;
                         Stage primaryStage = new Stage();
                         try {
-                            root = FXMLLoader.load(getClass().getResource("WelcomeScreen.fxml"));
+                            URL pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/sample/WelcomeScreen.fxml");
+                            root = FXMLLoader.load(pth);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -575,45 +564,39 @@ public class MainIoTdPage implements Initializable {
                         primaryStage.setMaxWidth(600);
                         primaryStage.setMaxHeight(400);
                         primaryStage.setScene(scene);
-                        Image icon = new Image("file://" + (cls.getResource("/images/Logo/logo.png")).getPath());
+                        URL icn = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Logo/logo.png");
+                        Image icon = new Image("file://" + icn.getPath());
                         primaryStage.getIcons().add(icon);
-                        primaryStage.show();
 
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | MalformedURLException e) {
             e.printStackTrace();
         }
-        String todaysDate = todaysDate();
-        String imageUrl = getImgUrl();
         try {
+            String todaysDate = todaysDate();
+            System.out.println(todaysDate);
+            String imageUrl = getImgUrl();
+            System.out.println(imageUrl);
             run_again(imageUrl, todaysDate);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
 
-    private boolean CheckWelcomeScreen() throws FileNotFoundException {
+    private boolean CheckWelcomeScreen() throws FileNotFoundException, MalformedURLException {
         boolean RunWelcome = false;
-        int value = 0;
-        URL dir = cls.getResource("/controllers/RunWelcomeScreen.txt");
-        Scanner myReader = new Scanner(new File(dir.getPath()));
-        int Wnum = 0;
-        while (myReader.hasNextLine()) {
-            Wnum++;
-            if (Wnum == 1) {
-                String prevalue = myReader.nextLine();
-                try {
-                    value = Integer.parseInt(prevalue);
-                }catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (value == 1){
+        int value;
+
+        String pth = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/RunWelcomeScreen.txt").getPath();
+        value = new ReadFile().ReadTheIntFile(pth);
+
+        System.out.println(value);
+
+        if (value == 1) {
             RunWelcome = true;
         }
         return RunWelcome;
@@ -654,40 +637,41 @@ public class MainIoTdPage implements Initializable {
         }if (site10.equals("100x300")){
             site10 = "580x386";
         }
-        String AuthorPathJSON = (cls.getResource("/JSON_data/author.json")).getPath();
-        String ImgPathJSON = (cls.getResource("/JSON_data/img.json")).getPath();
+        String AuthorPathJSON = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/JSON_data/author.json").getPath();
+        String ImgPathJSON = new URL("file:" + MyPath + "/out/production/ImageOfTheDay/JSON_data/img.json").getPath();
 
-        String Author1 = new ReadJson().GetElement(site1, new FileReader(AuthorPathJSON));
-        String Author2 = new ReadJson().GetElement(site2, new FileReader(AuthorPathJSON));
-        String Author3 = new ReadJson().GetElement(site3, new FileReader(AuthorPathJSON));
-        String Author4 = new ReadJson().GetElement(site4, new FileReader(AuthorPathJSON));
-        String Author5 = new ReadJson().GetElement(site5, new FileReader(AuthorPathJSON));
-        String Author6 = new ReadJson().GetElement(site6, new FileReader(AuthorPathJSON));
-        String Author7 = new ReadJson().GetElement(site7, new FileReader(AuthorPathJSON));
-        String Author8 = new ReadJson().GetElement(site8, new FileReader(AuthorPathJSON));
-        String Author9 = new ReadJson().GetElement(site9, new FileReader(AuthorPathJSON));
-        String Author10 = new ReadJson().GetElement(site10, new FileReader(AuthorPathJSON));
+        new ReadJson();
+        String Author1 = ReadJson.GetElement(site1, new FileReader(AuthorPathJSON));
+        String Author2 = ReadJson.GetElement(site2, new FileReader(AuthorPathJSON));
+        String Author3 = ReadJson.GetElement(site3, new FileReader(AuthorPathJSON));
+        String Author4 = ReadJson.GetElement(site4, new FileReader(AuthorPathJSON));
+        String Author5 = ReadJson.GetElement(site5, new FileReader(AuthorPathJSON));
+        String Author6 = ReadJson.GetElement(site6, new FileReader(AuthorPathJSON));
+        String Author7 = ReadJson.GetElement(site7, new FileReader(AuthorPathJSON));
+        String Author8 = ReadJson.GetElement(site8, new FileReader(AuthorPathJSON));
+        String Author9 = ReadJson.GetElement(site9, new FileReader(AuthorPathJSON));
+        String Author10 = ReadJson.GetElement(site10, new FileReader(AuthorPathJSON));
 
-        String Img1 = new ReadJson().GetElement(site1, new FileReader(ImgPathJSON));
-        String Img2 = new ReadJson().GetElement(site2, new FileReader(ImgPathJSON));
-        String Img3 = new ReadJson().GetElement(site3, new FileReader(ImgPathJSON));
-        String Img4 = new ReadJson().GetElement(site4, new FileReader(ImgPathJSON));
-        String Img5 = new ReadJson().GetElement(site5, new FileReader(ImgPathJSON));
-        String Img6 = new ReadJson().GetElement(site6, new FileReader(ImgPathJSON));
-        String Img7 = new ReadJson().GetElement(site7, new FileReader(ImgPathJSON));
-        String Img8 = new ReadJson().GetElement(site8, new FileReader(ImgPathJSON));
-        String Img9 = new ReadJson().GetElement(site9, new FileReader(ImgPathJSON));
-        String Img10 = new ReadJson().GetElement(site10, new FileReader(ImgPathJSON));
+        String Img1 = ReadJson.GetElement(site1, new FileReader(ImgPathJSON));
+        String Img2 = ReadJson.GetElement(site2, new FileReader(ImgPathJSON));
+        String Img3 = ReadJson.GetElement(site3, new FileReader(ImgPathJSON));
+        String Img4 = ReadJson.GetElement(site4, new FileReader(ImgPathJSON));
+        String Img5 = ReadJson.GetElement(site5, new FileReader(ImgPathJSON));
+        String Img6 = ReadJson.GetElement(site6, new FileReader(ImgPathJSON));
+        String Img7 = ReadJson.GetElement(site7, new FileReader(ImgPathJSON));
+        String Img8 = ReadJson.GetElement(site8, new FileReader(ImgPathJSON));
+        String Img9 = ReadJson.GetElement(site9, new FileReader(ImgPathJSON));
+        String Img10 = ReadJson.GetElement(site10, new FileReader(ImgPathJSON));
 
-        imgDownloadButton.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/ImageInfo/download.png")).getPath()));
+        imgDownloadButton.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/ImageInfo/download.png").getPath()));
         imgDownloadButton.setPreserveRatio(true);
         imgDownloadButton.setFitWidth(37);
         imgDownloadButton.setFitHeight(34);
-        imgOpenPage.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/ImageInfo/search.png")).getPath()));
+        imgOpenPage.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/ImageInfo/search.png").getPath()));
         imgOpenPage.setPreserveRatio(true);
         imgOpenPage.setFitWidth(30);
         imgOpenPage.setFitHeight(30);
-        imgSetWall.setImage(new Image("file://" + (cls.getResource("/images/PNG_Sources/ImageInfo/image.png")).getPath()));
+        imgSetWall.setImage(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/PNG_Sources/ImageInfo/image.png").getPath()));
         imgSetWall.setPreserveRatio(true);
         imgSetWall.setFitWidth(42);
         imgSetWall.setFitHeight(33);
@@ -732,12 +716,12 @@ public class MainIoTdPage implements Initializable {
         DateLabel.setText(todaysDate);
         System.out.println(site1 + ", " + site2 + ", " + site3 + ", " + site4 + ", " + site5 + ", " + site6 + ", " + site7 + ", " + site8 + ", " + site9 + ", " + site10);
 
-        ImageView SettButtonImg = new ImageView(new Image("file://" + (cls.getResource("/images/MainPage/sett.png")).getPath()));
+        ImageView SettButtonImg = new ImageView(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/MainPage/sett.png").getPath()));
         SettButtonImg.setFitWidth(21);
         SettButtonImg.setFitHeight(21);
         settingsButt.setGraphic(SettButtonImg);
 
-        ImageView DownButtonImg = new ImageView(new Image("file://" + (cls.getResource("/images/MainPage/down.png")).getPath()));
+        ImageView DownButtonImg = new ImageView(new Image("file://" + new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/MainPage/down.png").getPath()));
         DownButtonImg.setFitWidth(21);
         DownButtonImg.setFitHeight(21);
         downloadButt.setGraphic(DownButtonImg);

@@ -12,7 +12,6 @@ public class OpenUrl {
             try {
                 if (OS.contains("Windows")) {
                     if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                        System.out.println("wtf");
                         Desktop.getDesktop().browse(new URI(url));
                     } else {
                         run.exec("rundll32 url.dll,FileProtocolHandler " + url).waitFor();

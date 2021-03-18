@@ -1,17 +1,15 @@
 package Settings;
 
-import sample.Main;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SetWallpaper {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");
 
     public SetWallpaper() throws IOException {
         new ShowAlert("Downloaded", "The image is downloaded and will be set as your wallpaper");
@@ -19,7 +17,7 @@ public class SetWallpaper {
         String ImgPath = null;
         String OS = System.getProperty("os.name");
 
-        Scanner sc = new Scanner(new File((cls.getResource("/controllers/WallpaperPath.txt")).getPath()));
+        Scanner sc = new Scanner(new File(new URL("file:" + MyPath + "/out/production/ImageOfTheDay/controllers/WallpaperPath.txt").getPath()));
         int num = 0;
         while (sc.hasNextLine()) {
             num++;
@@ -28,7 +26,6 @@ public class SetWallpaper {
             }
         }
 
-        assert ImgPath != null;
         if (ImgPath != null) {
             if (OS.contains("Windows")) {
                 System.out.println(OS);

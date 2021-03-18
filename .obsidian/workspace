@@ -1,0 +1,99 @@
+{
+  "main": {
+    "id": "adb0eb8280fc6c7a",
+    "type": "split",
+    "children": [
+      {
+        "id": "2e9c56a20a9fcff3",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "image",
+          "state": {
+            "file": "src/images/sites/APOD/apod.png"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d9b0671004239956",
+    "type": "split",
+    "children": [
+      {
+        "id": "d7486ed9dcab04bd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "72bff1b9c895fa0a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "7987c38b29dc80cc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fd8e1b58fb4a7145",
+    "type": "split",
+    "children": [
+      {
+        "id": "73de0dc2d270669f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3af24238f74ac3eb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "src/images/sites/APOD/apod.png",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "src/images/sites/APOD/apod.png",
+    "src/images/sites/APOD/logo.png",
+    "src/images/sites/BGD/bgd.png",
+    "src/images/sites/BGD/logo.png",
+    "src/images/Logo/logo.png",
+    "src/images/Logo/logo_75x75.png",
+    "src/images/Logo/logo_50x50.png",
+    "README.md",
+    "out/production/ImageOfTheDay/images/MainPage/sett.png",
+    "out/production/ImageOfTheDay/images/MainPage/error.png"
+  ]
+}

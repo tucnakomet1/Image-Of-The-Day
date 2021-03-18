@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.1.4
+Type=Application
+GenericName=Image-Of-The-Day
+Name=Image-Of-The-Day
+Categories=Application;System;Utility;Settings
+Keywords=image;image-of-the-day;day;img;iotd;
+Exec=java -jar ImageOfTheDay.jar
+Path=/home/tucna/Dokumenty/Java/ImageOfTheDay
+Icon=/home/tucna/Dokumenty/Java/ImageOfTheDay/src/images/Logo/logo.png
+Terminal=false

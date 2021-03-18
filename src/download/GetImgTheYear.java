@@ -4,17 +4,14 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import sample.Main;
-
-import java.io.BufferedWriter;
+import sample.WriteFile;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class GetImgTheYear {
-    static Main mn = new Main();
-    static Class cls = mn.getClass();
+    public static String MyPath = System.getProperty("user.dir");
 
     public GetImgTheYear(){
     }
@@ -54,10 +51,8 @@ public class GetImgTheYear {
         url_author.add(img_urls.get(rand)+"?quality=10");
         url_author.add(author);
 
-        File fl = new File((cls.getResource("/images/Splash/author.txt")).getPath());
-        FileWriter fw = new FileWriter(fl, false);
-        fw.write(author);
-        fw.close();
+        File fl = new File(new URL("file:" + MyPath + "/out/production/ImageOfTheDay/images/Splash/author.txt").getPath());
+        new WriteFile(fl, author, false);
 
         new download_img(url_author.get(0), url_author.get(1).replace(" ", "-"));
 

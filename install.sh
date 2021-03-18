@@ -14,13 +14,14 @@ echo ""
 echo ""
 
 echo "Image-Of-The-Day"
-echo "      - Version v0.1.3-release"
+echo "      - Version v0.1.4"
 
 echo ""
 echo "GitHub: <https://github.com/tucnakomet1/Image-Of-The-Day>"
 echo "Author: Karel Velička (Tucnakomet)"
 echo ""
 
+path=$(pwd)
 read -p "Do you want to install Image-Of-The-Day? [Y/n]" inst
 
 if [ $inst = "Y" ] || [ $inst = "y" ]; then
@@ -39,8 +40,13 @@ if [ $inst = "Y" ] || [ $inst = "y" ]; then
         echo "Java is not installed!"
         echo "Java installation..."
         debDis=$(which apt-get)
-        fedDis=$(which yum)
-        if [ $debDis != "" ] || [ $fedDis != "" ] ; then
+        echo ""
+        if [ $debDis != "" ]; then
+            read -p "Do you want to install Java? [y/N]" sooo
+            if [ $sooo = "N" ] || [ $sooo = "n" ]; then
+                echo "You can not run Image-Of-The-Day without java!"
+                exit
+            fi
             echo "You are Debain based!"
             wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/15.0.2+7/0d1cfde4252546c6931946de8db48ee2/jdk-15.0.2_linux-x64_bin.tar.gz
             sudo mkdir /usr/lib/jvm
@@ -59,43 +65,56 @@ if [ $inst = "Y" ] || [ $inst = "y" ]; then
         else
             echo ""
             echo "Your distribution is not supported!"
-            echo "If your distro is based on Debian/ Fedora, report it please."
+            echo "Install java and then repeat installation."
             echo "Thank you!"
             exit
         fi
     fi
 
-    echo "Creating Desktop and Menu shortcut..."
     echo ""
-    read -p "Is '$(xdg-user-dir DESKTOP)' your Desktop directory? [Y/n]" desktop
-    if [ $desktop = "Y" ] || [ $desktop = "y" ]; then
-        desk = $(xdg-user-dir DESKTOP)
-    else
-        read -p "Enter your Desktop directory?" desktop
+    read -p "Do you want to create a Desktop Shortcut? [Y/n]" DeskShortcut
+    read -p "Do you want to create a Application Menu Shortcut? [Y/n]" MenuShortcut
+    if [ $DeskShortcut = "Y" ] || [ $DeskShortcut = "y" ] || [ $MenuShortcut = "Y" ] || [ $MenuShortcut = "y" ]; then
+        touch $path/img_of_the_day.desktop
+        echo "[Desktop Entry]" >> $path/img_of_the_day.desktop
+        echo "Version=0.1.4" >> $path/img_of_the_day.desktop
+        echo "Type=Application" >> $path/img_of_the_day.desktop
+        echo "GenericName=Image-Of-The-Day" >> $path/img_of_the_day.desktop
+        echo "Name=Image-Of-The-Day" >> $path/img_of_the_day.desktop
+        echo "Categories=Application;System;Utility;Settings" >> $path/img_of_the_day.desktop
+        echo "Keywords=image;image-of-the-day;day;img;iotd;" >> $path/img_of_the_day.desktop
+        echo "Exec=java -jar ImageOfTheDay.jar" >> $path/img_of_the_day.desktop
+        echo "Path=$path" >> $path/img_of_the_day.desktop
+        echo "Icon=$path/src/images/Logo/logo.png" >> $path/img_of_the_day.desktop
+        echo "Terminal=false" >> $path/img_of_the_day.desktop
+        sudo chmod +x $path/img_of_the_day.desktop
+        
+        if [ $DeskShortcut = "Y" ] || [ $DeskShortcut = "y" ]; then
+            echo ""
+            read -p "Is '$(xdg-user-dir DESKTOP)' your Desktop directory? [Y/n]" desktop
+            if [ $desktop = "Y" ] || [ $desktop = "y" ]; then
+                desk=$(xdg-user-dir DESKTOP)
+            else
+                read -p "Enter your Desktop directory?" desk
+            fi
+
+            sudo cp $path/img_of_the_day.desktop $desk/img_of_the_day.desktop
+            echo ""
+            echo -e "Done! Desktop shortcut created!"
+            echo ""
+        fi
+
+        if [ $MenuShortcut = "Y" ] || [ $MenuShortcut = "y" ]; then
+            sudo cp $path/img_of_the_day.desktop /usr/share/applications/
+            echo ""
+            echo -e "Done! Application Menu shortcut created!"
+            echo ""
+        fi
     fi
 
-    touch $desktop/img_of_the_day.desktop
-
-    echo "[Desktop Entry]" >> $desktop/img_of_the_day.desktop
-    echo "Version=0.1.3" >> $desktop/img_of_the_day.desktop
-    echo "GenericName=Image-Of-The-Day" >> $desktop/img_of_the_day.desktop
-    echo "Name=Image-Of-The-Day" >> $desktop/img_of_the_day.desktop
-    echo "Categories=Application;System;Utility;Settings" >> $desktop/img_of_the_day.desktop
-    echo "Exec=$(pwd)" >> $desktop/img_of_the_day.desktop
-    echo "Icon=$(pwd)/src/images/Logo/logo.png" >> $desktop/img_of_the_day.desktop
-    echo "Terminal=false" >> $desktop/img_of_the_day.desktop
-
-    sudo chmod +x $desktop/img_of_the_day.desktop
-    sudo cp $desktop/img_of_the_day.desktop /usr/share/applications/
-
-    echo ""
-    echo -e "Done! Desktop and Menu shortcuts created!"
-    echo ""
-
     mkdir ~/.images
-
+    mkdir ~/.ImageOfTheDay/
 
 else
-    echo "no!"
+    echo "So sad!"
 fi
-

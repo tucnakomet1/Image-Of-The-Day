@@ -42,9 +42,6 @@
       <AnchorPane fx:id="AboutPane" prefHeight="200.0" prefWidth="200.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="LogoImg" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="100.0">
-               <image>
-                  <Image url="@../../images/Logo/logo.png" />
-               </image>
             </ImageView>
             <Label fx:id="VersionAb" text="Version:" textFill="WHITE" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="275.0">
                <font>

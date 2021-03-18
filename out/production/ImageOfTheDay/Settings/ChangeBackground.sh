@@ -1,1 +1,0 @@
-xfconf-query -c xfce4-desktop -l | grep last-image | while read path; do xfconf-query -c xfce4-desktop -p $path -s "/home/tucna/Desktop/Images/Unsplash-2021-02-23-03-14-38.png"; done

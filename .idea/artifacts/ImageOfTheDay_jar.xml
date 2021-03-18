@@ -14,6 +14,27 @@
       <element id="extracted-dir" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/javafx.graphics.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../jsoup-1.13.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../json-simple-1.1.1.jar" path-in-jar="/" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libavplugin-54.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libavplugin-56.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libavplugin-57.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libavplugin-ffmpeg-56.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libavplugin-ffmpeg-57.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libavplugin-ffmpeg-58.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libdecora_sse.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libfxplugins.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libglass.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libglassgtk2.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libglassgtk3.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libgstreamer-lite.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libjavafx_font.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libjavafx_font_freetype.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libjavafx_font_pango.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libjavafx_iio.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libjfxmedia.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libjfxwebkit.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libprism_common.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libprism_es2.so" />
+      <element id="file-copy" path="$USER_HOME$/Stažené/javafx-sdk-15.0.1/lib/libprism_sw.so" />
     </root>
   </artifact>
 </component>
