@@ -42,7 +42,8 @@ Coming really soon (`.exe` and `msi`)
 Coming really soon (`.deb`)
 
 <h4 id="tar">Tarball</h4>
-Download the latest tar [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases)
+
+Download the latest tar [release](https://github.com/tucnakomet1/Image-Of-The-Day/releases).
 Use any file manager or run command to extract package. Then go to the folder and run installation scripts:
 
 ```bash
