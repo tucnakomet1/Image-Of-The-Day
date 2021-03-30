@@ -47,11 +47,10 @@ if [ $inst = "Y" ] || [ $inst = "y" ]; then
                 echo "You can not run Image-Of-The-Day without java!"
                 exit
             fi
-            echo "You are Debain based!"
             wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/15.0.2+7/0d1cfde4252546c6931946de8db48ee2/jdk-15.0.2_linux-x64_bin.tar.gz
             sudo mkdir /usr/lib/jvm
             cd /usr/lib/jvm
-            sudo tar -xvzf ~/Downloads/jdk-15.0.2_linux-x64_bin.tar.gz
+            sudo tar -xvzf $path/jdk-15.0.2_linux-x64_bin.tar.gz
             sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk-15.0.2/bin/java" 0
             sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk-15.0.2/bin/javac" 0
             sudo update-alternatives --set java /usr/lib/jvm/jdk-15.0.2/bin/java
